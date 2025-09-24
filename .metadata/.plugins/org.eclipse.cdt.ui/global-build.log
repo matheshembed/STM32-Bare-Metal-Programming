@@ -1,0 +1,303 @@
+17:54:08 **** Clean-only build of configuration Debug for project 10_ADC_Continuous_Conversion ****
+make -j16 clean 
+rm -rf ./Startup/startup_stm32f446retx.d ./Startup/startup_stm32f446retx.o
+rm -rf ./Src/adc.cyclo ./Src/adc.d ./Src/adc.o ./Src/adc.su ./Src/main.cyclo ./Src/main.d ./Src/main.o ./Src/main.su ./Src/syscalls.cyclo ./Src/syscalls.d ./Src/syscalls.o ./Src/syscalls.su ./Src/sysmem.cyclo ./Src/sysmem.d ./Src/sysmem.o ./Src/sysmem.su ./Src/uart.cyclo ./Src/uart.d ./Src/uart.o ./Src/uart.su
+rm -rf 10_ADC_Continuous_Conversion.elf 10_ADC_Continuous_Conversion.list 10_ADC_Continuous_Conversion.map default.size.stdout
+ 
+17:54:11 **** Build of configuration Debug for project 10_ADC_Continuous_Conversion ****
+make -j16 all 
+arm-none-eabi-gcc -mcpu=cortex-m4 -g3 -DDEBUG -c -x assembler-with-cpp -MMD -MP -MF"Startup/startup_stm32f446retx.d" -MT"Startup/startup_stm32f446retx.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Startup/startup_stm32f446retx.o" "../Startup/startup_stm32f446retx.s"
+arm-none-eabi-gcc "../Src/adc.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -DSTM32F446xx -c -I../Inc -I"D:/Softwares/Stm32/en.stm32cubef4-v1-28-0/STM32Cube_FW_F4_V1.28.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"D:/Softwares/Stm32/en.stm32cubef4-v1-28-0/STM32Cube_FW_F4_V1.28.0/Drivers/CMSIS/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/adc.d" -MT"Src/adc.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/adc.o"
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -DSTM32F446xx -c -I../Inc -I"D:/Softwares/Stm32/en.stm32cubef4-v1-28-0/STM32Cube_FW_F4_V1.28.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"D:/Softwares/Stm32/en.stm32cubef4-v1-28-0/STM32Cube_FW_F4_V1.28.0/Drivers/CMSIS/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+arm-none-eabi-gcc "../Src/syscalls.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -DSTM32F446xx -c -I../Inc -I"D:/Softwares/Stm32/en.stm32cubef4-v1-28-0/STM32Cube_FW_F4_V1.28.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"D:/Softwares/Stm32/en.stm32cubef4-v1-28-0/STM32Cube_FW_F4_V1.28.0/Drivers/CMSIS/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/syscalls.d" -MT"Src/syscalls.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/syscalls.o"
+arm-none-eabi-gcc "../Src/sysmem.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -DSTM32F446xx -c -I../Inc -I"D:/Softwares/Stm32/en.stm32cubef4-v1-28-0/STM32Cube_FW_F4_V1.28.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"D:/Softwares/Stm32/en.stm32cubef4-v1-28-0/STM32Cube_FW_F4_V1.28.0/Drivers/CMSIS/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/sysmem.d" -MT"Src/sysmem.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/sysmem.o"
+arm-none-eabi-gcc "../Src/uart.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -DSTM32F446xx -c -I../Inc -I"D:/Softwares/Stm32/en.stm32cubef4-v1-28-0/STM32Cube_FW_F4_V1.28.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"D:/Softwares/Stm32/en.stm32cubef4-v1-28-0/STM32Cube_FW_F4_V1.28.0/Drivers/CMSIS/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/uart.d" -MT"Src/uart.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/uart.o"
+../Src/main.c: In function 'main':
+../Src/main.c:9:9: warning: implicit declaration of function 'Pa1_Adc_Init' [-Wimplicit-function-declaration]
+    9 |         Pa1_Adc_Init();
+      |         ^~~~~~~~~~~~
+../Src/main.c:11:9: warning: implicit declaration of function 'Start_Conversion_Conti' [-Wimplicit-function-declaration]
+   11 |         Start_Conversion_Conti();
+      |         ^~~~~~~~~~~~~~~~~~~~~~
+../Src/main.c:16:32: warning: implicit declaration of function 'Adc_Read' [-Wimplicit-function-declaration]
+   16 |                 sensor_value = Adc_Read();
+      |                                ^~~~~~~~
+arm-none-eabi-gcc -o "10_ADC_Continuous_Conversion.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\MCU1_Bare_Metal_Progamming_BHM\10_ADC_Continuous_Conversion\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="10_ADC_Continuous_Conversion.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: 10_ADC_Continuous_Conversion.elf
+ 
+arm-none-eabi-size  10_ADC_Continuous_Conversion.elf 
+arm-none-eabi-objdump -h -S 10_ADC_Continuous_Conversion.elf  > "10_ADC_Continuous_Conversion.list"
+   text	   data	    bss	    dec	    hex	filename
+    940	      0	   1568	   2508	    9cc	10_ADC_Continuous_Conversion.elf
+Finished building: default.size.stdout
+ 
+Finished building: 10_ADC_Continuous_Conversion.list
+ 
+17:55:25 **** Incremental Build of configuration Debug for project 10_ADC_Continuous_Conversion ****
+make -j16 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -DSTM32F446xx -c -I../Inc -I"D:/Softwares/Stm32/en.stm32cubef4-v1-28-0/STM32Cube_FW_F4_V1.28.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"D:/Softwares/Stm32/en.stm32cubef4-v1-28-0/STM32Cube_FW_F4_V1.28.0/Drivers/CMSIS/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+arm-none-eabi-gcc -o "10_ADC_Continuous_Conversion.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\MCU1_Bare_Metal_Progamming_BHM\10_ADC_Continuous_Conversion\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="10_ADC_Continuous_Conversion.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: 10_ADC_Continuous_Conversion.elf
+ 
+arm-none-eabi-size  10_ADC_Continuous_Conversion.elf 
+arm-none-eabi-objdump -h -S 10_ADC_Continuous_Conversion.elf  > "10_ADC_Continuous_Conversion.list"
+   text	   data	    bss	    dec	    hex	filename
+    940	      0	   1568	   2508	    9cc	10_ADC_Continuous_Conversion.elf
+Finished building: default.size.stdout
+ 
+Finished building: 10_ADC_Continuous_Conversion.list
+ 
+17:55:33 **** Incremental Build of configuration Debug for project 10_ADC_Continuous_Conversion ****
+make -j16 all 
+arm-none-eabi-size  10_ADC_Continuous_Conversion.elf 
+   text	   data	    bss	    dec	    hex	filename
+    940	      0	   1568	   2508	    9cc	10_ADC_Continuous_Conversion.elf
+Finished building: default.size.stdout
+ 
+17:56:45 **** Incremental Build of configuration Debug for project 10_ADC_Continuous_Conversion ****
+make -j16 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -DSTM32F446xx -c -I../Inc -I"D:/Softwares/Stm32/en.stm32cubef4-v1-28-0/STM32Cube_FW_F4_V1.28.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"D:/Softwares/Stm32/en.stm32cubef4-v1-28-0/STM32Cube_FW_F4_V1.28.0/Drivers/CMSIS/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+arm-none-eabi-gcc -o "10_ADC_Continuous_Conversion.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\MCU1_Bare_Metal_Progamming_BHM\10_ADC_Continuous_Conversion\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="10_ADC_Continuous_Conversion.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: 10_ADC_Continuous_Conversion.elf
+ 
+arm-none-eabi-size  10_ADC_Continuous_Conversion.elf 
+arm-none-eabi-objdump -h -S 10_ADC_Continuous_Conversion.elf  > "10_ADC_Continuous_Conversion.list"
+   text	   data	    bss	    dec	    hex	filename
+    940	      0	   1568	   2508	    9cc	10_ADC_Continuous_Conversion.elf
+Finished building: default.size.stdout
+ 
+Finished building: 10_ADC_Continuous_Conversion.list
+ 
+18:01:55 **** Incremental Build of configuration Debug for project 10_ADC_Continuous_Conversion ****
+make -j16 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -DSTM32F446xx -c -I../Inc -I"D:/Softwares/Stm32/en.stm32cubef4-v1-28-0/STM32Cube_FW_F4_V1.28.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"D:/Softwares/Stm32/en.stm32cubef4-v1-28-0/STM32Cube_FW_F4_V1.28.0/Drivers/CMSIS/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+../Src/main.c: In function 'main':
+../Src/main.c:17:17: warning: implicit declaration of function 'printf' [-Wimplicit-function-declaration]
+   17 |                 printf("Temperature: %ld \n\r",sensor_value);
+      |                 ^~~~~~
+../Src/main.c:2:1: note: include '<stdio.h>' or provide a declaration of 'printf'
+    1 | #include "adc.h"
+  +++ |+#include <stdio.h>
+    2 | #include <stdint.h>
+../Src/main.c:17:17: warning: incompatible implicit declaration of built-in function 'printf' [-Wbuiltin-declaration-mismatch]
+   17 |                 printf("Temperature: %ld \n\r",sensor_value);
+      |                 ^~~~~~
+../Src/main.c:17:17: note: include '<stdio.h>' or provide a declaration of 'printf'
+arm-none-eabi-gcc -o "10_ADC_Continuous_Conversion.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\MCU1_Bare_Metal_Progamming_BHM\10_ADC_Continuous_Conversion\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="10_ADC_Continuous_Conversion.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: 10_ADC_Continuous_Conversion.elf
+ 
+arm-none-eabi-size  10_ADC_Continuous_Conversion.elf 
+arm-none-eabi-objdump -h -S 10_ADC_Continuous_Conversion.elf  > "10_ADC_Continuous_Conversion.list"
+   text	   data	    bss	    dec	    hex	filename
+   5200	     92	   1908	   7200	   1c20	10_ADC_Continuous_Conversion.elf
+Finished building: default.size.stdout
+ 
+Finished building: 10_ADC_Continuous_Conversion.list
+ 
+18:02:34 **** Incremental Build of configuration Debug for project 10_ADC_Continuous_Conversion ****
+make -j16 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -DSTM32F446xx -c -I../Inc -I"D:/Softwares/Stm32/en.stm32cubef4-v1-28-0/STM32Cube_FW_F4_V1.28.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"D:/Softwares/Stm32/en.stm32cubef4-v1-28-0/STM32Cube_FW_F4_V1.28.0/Drivers/CMSIS/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+arm-none-eabi-gcc -o "10_ADC_Continuous_Conversion.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\MCU1_Bare_Metal_Progamming_BHM\10_ADC_Continuous_Conversion\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="10_ADC_Continuous_Conversion.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: 10_ADC_Continuous_Conversion.elf
+ 
+arm-none-eabi-size  10_ADC_Continuous_Conversion.elf 
+arm-none-eabi-objdump -h -S 10_ADC_Continuous_Conversion.elf  > "10_ADC_Continuous_Conversion.list"
+   text	   data	    bss	    dec	    hex	filename
+   5200	     92	   1908	   7200	   1c20	10_ADC_Continuous_Conversion.elf
+Finished building: default.size.stdout
+ 
+Finished building: 10_ADC_Continuous_Conversion.list
+ 
+18:04:28 **** Incremental Build of configuration Debug for project 10_ADC_Continuous_Conversion ****
+make -j16 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -DSTM32F446xx -c -I../Inc -I"D:/Softwares/Stm32/en.stm32cubef4-v1-28-0/STM32Cube_FW_F4_V1.28.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"D:/Softwares/Stm32/en.stm32cubef4-v1-28-0/STM32Cube_FW_F4_V1.28.0/Drivers/CMSIS/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+arm-none-eabi-gcc -o "10_ADC_Continuous_Conversion.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\MCU1_Bare_Metal_Progamming_BHM\10_ADC_Continuous_Conversion\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="10_ADC_Continuous_Conversion.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: 10_ADC_Continuous_Conversion.elf
+ 
+arm-none-eabi-size  10_ADC_Continuous_Conversion.elf 
+arm-none-eabi-objdump -h -S 10_ADC_Continuous_Conversion.elf  > "10_ADC_Continuous_Conversion.list"
+   text	   data	    bss	    dec	    hex	filename
+   5436	     92	   1908	   7436	   1d0c	10_ADC_Continuous_Conversion.elf
+Finished building: default.size.stdout
+ 
+Finished building: 10_ADC_Continuous_Conversion.list
+ 
+18:10:25 **** Incremental Build of configuration Debug for project 10_ADC_Continuous_Conversion ****
+make -j16 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -DSTM32F446xx -c -I../Inc -I"D:/Softwares/Stm32/en.stm32cubef4-v1-28-0/STM32Cube_FW_F4_V1.28.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"D:/Softwares/Stm32/en.stm32cubef4-v1-28-0/STM32Cube_FW_F4_V1.28.0/Drivers/CMSIS/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+../Src/main.c: In function 'main':
+../Src/main.c:51:31: warning: format '%d' expects argument of type 'int', but argument 2 has type 'double' [-Wformat=]
+   51 |         printf("Temperature: %d °C \n\r", tempC);
+      |                              ~^           ~~~~~
+      |                               |           |
+      |                               int         double
+      |                              %f
+arm-none-eabi-gcc -o "10_ADC_Continuous_Conversion.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\MCU1_Bare_Metal_Progamming_BHM\10_ADC_Continuous_Conversion\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="10_ADC_Continuous_Conversion.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: 10_ADC_Continuous_Conversion.elf
+ 
+arm-none-eabi-size  10_ADC_Continuous_Conversion.elf 
+arm-none-eabi-objdump -h -S 10_ADC_Continuous_Conversion.elf  > "10_ADC_Continuous_Conversion.list"
+   text	   data	    bss	    dec	    hex	filename
+   6408	     92	   1916	   8416	   20e0	10_ADC_Continuous_Conversion.elf
+Finished building: default.size.stdout
+ 
+Finished building: 10_ADC_Continuous_Conversion.list
+ 
+18:12:14 **** Incremental Build of configuration Debug for project 10_ADC_Continuous_Conversion ****
+make -j16 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -DSTM32F446xx -c -I../Inc -I"D:/Softwares/Stm32/en.stm32cubef4-v1-28-0/STM32Cube_FW_F4_V1.28.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"D:/Softwares/Stm32/en.stm32cubef4-v1-28-0/STM32Cube_FW_F4_V1.28.0/Drivers/CMSIS/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+arm-none-eabi-gcc -o "10_ADC_Continuous_Conversion.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\MCU1_Bare_Metal_Progamming_BHM\10_ADC_Continuous_Conversion\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="10_ADC_Continuous_Conversion.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: 10_ADC_Continuous_Conversion.elf
+ 
+arm-none-eabi-size  10_ADC_Continuous_Conversion.elf 
+arm-none-eabi-objdump -h -S 10_ADC_Continuous_Conversion.elf  > "10_ADC_Continuous_Conversion.list"
+   text	   data	    bss	    dec	    hex	filename
+   7592	     92	   1916	   9600	   2580	10_ADC_Continuous_Conversion.elf
+Finished building: default.size.stdout
+ 
+Finished building: 10_ADC_Continuous_Conversion.list
+ 
+18:12:57 **** Incremental Build of configuration Debug for project 10_ADC_Continuous_Conversion ****
+make -j16 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -DSTM32F446xx -c -I../Inc -I"D:/Softwares/Stm32/en.stm32cubef4-v1-28-0/STM32Cube_FW_F4_V1.28.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"D:/Softwares/Stm32/en.stm32cubef4-v1-28-0/STM32Cube_FW_F4_V1.28.0/Drivers/CMSIS/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+arm-none-eabi-gcc -o "10_ADC_Continuous_Conversion.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\MCU1_Bare_Metal_Progamming_BHM\10_ADC_Continuous_Conversion\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="10_ADC_Continuous_Conversion.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: 10_ADC_Continuous_Conversion.elf
+ 
+arm-none-eabi-size  10_ADC_Continuous_Conversion.elf 
+arm-none-eabi-objdump -h -S 10_ADC_Continuous_Conversion.elf  > "10_ADC_Continuous_Conversion.list"
+   text	   data	    bss	    dec	    hex	filename
+   7664	     92	   1916	   9672	   25c8	10_ADC_Continuous_Conversion.elf
+Finished building: default.size.stdout
+ 
+Finished building: 10_ADC_Continuous_Conversion.list
+ 
+18:19:16 **** Incremental Build of configuration Debug for project 10_ADC_Continuous_Conversion ****
+make -j16 all 
+arm-none-eabi-gcc -mcpu=cortex-m4 -g3 -DDEBUG -c -x assembler-with-cpp -MMD -MP -MF"Startup/startup_stm32f446retx.d" -MT"Startup/startup_stm32f446retx.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=soft -mthumb -o "Startup/startup_stm32f446retx.o" "../Startup/startup_stm32f446retx.s"
+arm-none-eabi-gcc "../Src/adc.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -DSTM32F446xx -c -I../Inc -I"D:/Softwares/Stm32/en.stm32cubef4-v1-28-0/STM32Cube_FW_F4_V1.28.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"D:/Softwares/Stm32/en.stm32cubef4-v1-28-0/STM32Cube_FW_F4_V1.28.0/Drivers/CMSIS/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/adc.d" -MT"Src/adc.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=soft -mthumb -o "Src/adc.o"
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -DSTM32F446xx -c -I../Inc -I"D:/Softwares/Stm32/en.stm32cubef4-v1-28-0/STM32Cube_FW_F4_V1.28.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"D:/Softwares/Stm32/en.stm32cubef4-v1-28-0/STM32Cube_FW_F4_V1.28.0/Drivers/CMSIS/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=soft -mthumb -o "Src/main.o"
+arm-none-eabi-gcc "../Src/syscalls.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -DSTM32F446xx -c -I../Inc -I"D:/Softwares/Stm32/en.stm32cubef4-v1-28-0/STM32Cube_FW_F4_V1.28.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"D:/Softwares/Stm32/en.stm32cubef4-v1-28-0/STM32Cube_FW_F4_V1.28.0/Drivers/CMSIS/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/syscalls.d" -MT"Src/syscalls.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=soft -mthumb -o "Src/syscalls.o"
+arm-none-eabi-gcc "../Src/sysmem.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -DSTM32F446xx -c -I../Inc -I"D:/Softwares/Stm32/en.stm32cubef4-v1-28-0/STM32Cube_FW_F4_V1.28.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"D:/Softwares/Stm32/en.stm32cubef4-v1-28-0/STM32Cube_FW_F4_V1.28.0/Drivers/CMSIS/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/sysmem.d" -MT"Src/sysmem.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=soft -mthumb -o "Src/sysmem.o"
+arm-none-eabi-gcc "../Src/uart.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -DSTM32F446xx -c -I../Inc -I"D:/Softwares/Stm32/en.stm32cubef4-v1-28-0/STM32Cube_FW_F4_V1.28.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"D:/Softwares/Stm32/en.stm32cubef4-v1-28-0/STM32Cube_FW_F4_V1.28.0/Drivers/CMSIS/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/uart.d" -MT"Src/uart.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=soft -mthumb -o "Src/uart.o"
+arm-none-eabi-gcc -o "10_ADC_Continuous_Conversion.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\MCU1_Bare_Metal_Progamming_BHM\10_ADC_Continuous_Conversion\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="10_ADC_Continuous_Conversion.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: 10_ADC_Continuous_Conversion.elf
+ 
+arm-none-eabi-size  10_ADC_Continuous_Conversion.elf 
+arm-none-eabi-objdump -h -S 10_ADC_Continuous_Conversion.elf  > "10_ADC_Continuous_Conversion.list"
+   text	   data	    bss	    dec	    hex	filename
+   7988	     92	   1916	   9996	   270c	10_ADC_Continuous_Conversion.elf
+Finished building: default.size.stdout
+ 
+Finished building: 10_ADC_Continuous_Conversion.list
+ 
+18:20:11 **** Incremental Build of configuration Debug for project 10_ADC_Continuous_Conversion ****
+make -j16 all 
+arm-none-eabi-gcc -mcpu=cortex-m4 -g3 -DDEBUG -c -x assembler-with-cpp -MMD -MP -MF"Startup/startup_stm32f446retx.d" -MT"Startup/startup_stm32f446retx.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Startup/startup_stm32f446retx.o" "../Startup/startup_stm32f446retx.s"
+arm-none-eabi-gcc "../Src/adc.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -DSTM32F446xx -c -I../Inc -I"D:/Softwares/Stm32/en.stm32cubef4-v1-28-0/STM32Cube_FW_F4_V1.28.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"D:/Softwares/Stm32/en.stm32cubef4-v1-28-0/STM32Cube_FW_F4_V1.28.0/Drivers/CMSIS/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/adc.d" -MT"Src/adc.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/adc.o"
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -DSTM32F446xx -c -I../Inc -I"D:/Softwares/Stm32/en.stm32cubef4-v1-28-0/STM32Cube_FW_F4_V1.28.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"D:/Softwares/Stm32/en.stm32cubef4-v1-28-0/STM32Cube_FW_F4_V1.28.0/Drivers/CMSIS/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+arm-none-eabi-gcc "../Src/syscalls.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -DSTM32F446xx -c -I../Inc -I"D:/Softwares/Stm32/en.stm32cubef4-v1-28-0/STM32Cube_FW_F4_V1.28.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"D:/Softwares/Stm32/en.stm32cubef4-v1-28-0/STM32Cube_FW_F4_V1.28.0/Drivers/CMSIS/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/syscalls.d" -MT"Src/syscalls.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/syscalls.o"
+arm-none-eabi-gcc "../Src/sysmem.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -DSTM32F446xx -c -I../Inc -I"D:/Softwares/Stm32/en.stm32cubef4-v1-28-0/STM32Cube_FW_F4_V1.28.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"D:/Softwares/Stm32/en.stm32cubef4-v1-28-0/STM32Cube_FW_F4_V1.28.0/Drivers/CMSIS/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/sysmem.d" -MT"Src/sysmem.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/sysmem.o"
+arm-none-eabi-gcc "../Src/uart.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -DSTM32F446xx -c -I../Inc -I"D:/Softwares/Stm32/en.stm32cubef4-v1-28-0/STM32Cube_FW_F4_V1.28.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"D:/Softwares/Stm32/en.stm32cubef4-v1-28-0/STM32Cube_FW_F4_V1.28.0/Drivers/CMSIS/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/uart.d" -MT"Src/uart.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/uart.o"
+arm-none-eabi-gcc -o "10_ADC_Continuous_Conversion.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\MCU1_Bare_Metal_Progamming_BHM\10_ADC_Continuous_Conversion\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="10_ADC_Continuous_Conversion.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: 10_ADC_Continuous_Conversion.elf
+ 
+arm-none-eabi-size  10_ADC_Continuous_Conversion.elf 
+arm-none-eabi-objdump -h -S 10_ADC_Continuous_Conversion.elf  > "10_ADC_Continuous_Conversion.list"
+   text	   data	    bss	    dec	    hex	filename
+  16164	    456	   1912	  18532	   4864	10_ADC_Continuous_Conversion.elf
+Finished building: default.size.stdout
+ 
+Finished building: 10_ADC_Continuous_Conversion.list
+ 
+18:20:16 **** Incremental Build of configuration Debug for project 10_ADC_Continuous_Conversion ****
+make -j16 all 
+arm-none-eabi-size  10_ADC_Continuous_Conversion.elf 
+   text	   data	    bss	    dec	    hex	filename
+  16164	    456	   1912	  18532	   4864	10_ADC_Continuous_Conversion.elf
+Finished building: default.size.stdout
+ 
+18:36:53 **** Incremental Build of configuration Debug for project 10_ADC_Continuous_Conversion ****
+make -j16 all 
+arm-none-eabi-gcc "../Src/adc.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -DSTM32F446xx -c -I../Inc -I"D:/Softwares/Stm32/en.stm32cubef4-v1-28-0/STM32Cube_FW_F4_V1.28.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"D:/Softwares/Stm32/en.stm32cubef4-v1-28-0/STM32Cube_FW_F4_V1.28.0/Drivers/CMSIS/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/adc.d" -MT"Src/adc.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/adc.o"
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -DSTM32F446xx -c -I../Inc -I"D:/Softwares/Stm32/en.stm32cubef4-v1-28-0/STM32Cube_FW_F4_V1.28.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"D:/Softwares/Stm32/en.stm32cubef4-v1-28-0/STM32Cube_FW_F4_V1.28.0/Drivers/CMSIS/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+arm-none-eabi-gcc -o "10_ADC_Continuous_Conversion.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\MCU1_Bare_Metal_Progamming_BHM\10_ADC_Continuous_Conversion\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="10_ADC_Continuous_Conversion.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: 10_ADC_Continuous_Conversion.elf
+ 
+arm-none-eabi-size  10_ADC_Continuous_Conversion.elf 
+arm-none-eabi-objdump -h -S 10_ADC_Continuous_Conversion.elf  > "10_ADC_Continuous_Conversion.list"
+   text	   data	    bss	    dec	    hex	filename
+  16164	    456	   1912	  18532	   4864	10_ADC_Continuous_Conversion.elf
+Finished building: default.size.stdout
+ 
+Finished building: 10_ADC_Continuous_Conversion.list
+ 
+18:40:41 **** Build of configuration Debug for project 11_SysTick_Delay ****
+make -j16 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -DSTM32F446xx -c -I../Inc -I"D:/Softwares/Stm32/en.stm32cubef4-v1-28-0/STM32Cube_FW_F4_V1.28.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"D:/Softwares/Stm32/en.stm32cubef4-v1-28-0/STM32Cube_FW_F4_V1.28.0/Drivers/CMSIS/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+arm-none-eabi-gcc -o "11_SysTick_Delay.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\MCU1_Bare_Metal_Progamming_BHM\11_SysTick_Delay\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="11_SysTick_Delay.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: 11_SysTick_Delay.elf
+ 
+arm-none-eabi-size  11_SysTick_Delay.elf 
+arm-none-eabi-objdump -h -S 11_SysTick_Delay.elf  > "11_SysTick_Delay.list"
+   text	   data	    bss	    dec	    hex	filename
+   5364	     92	   1900	   7356	   1cbc	11_SysTick_Delay.elf
+Finished building: default.size.stdout
+ 
+Finished building: 11_SysTick_Delay.list
+ 
+18:41:33 **** Incremental Build of configuration Debug for project 11_SysTick_Delay ****
+make -j16 all 
+arm-none-eabi-size  11_SysTick_Delay.elf 
+   text	   data	    bss	    dec	    hex	filename
+   5364	     92	   1900	   7356	   1cbc	11_SysTick_Delay.elf
+Finished building: default.size.stdout
+ 
+18:46:25 **** Incremental Build of configuration Debug for project 11_SysTick_Delay ****
+make -j16 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -DSTM32F446xx -c -I../Inc -I"D:/Softwares/Stm32/en.stm32cubef4-v1-28-0/STM32Cube_FW_F4_V1.28.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"D:/Softwares/Stm32/en.stm32cubef4-v1-28-0/STM32Cube_FW_F4_V1.28.0/Drivers/CMSIS/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+../Src/main.c:9:1: error: unknown type name 'uint32_t'
+    9 | uint32_t sensor_value;
+      | ^~~~~~~~
+../Src/main.c:4:1: note: 'uint32_t' is defined in header '<stdint.h>'; did you forget to '#include <stdint.h>'?
+    3 | #include "sys_tick.h"
+  +++ |+#include <stdint.h>
+    4 | 
+../Src/main.c: In function 'main':
+../Src/main.c:12:9: error: 'RCC' undeclared (first use in this function)
+   12 |         RCC->AHB1ENR |= GPIOAEN;
+      |         ^~~
+../Src/main.c:12:9: note: each undeclared identifier is reported only once for each function it appears in
+../Src/main.c:14:9: error: 'GPIOA' undeclared (first use in this function); did you mean 'GPIOAEN'?
+   14 |         GPIOA->MODER |= (1U <<10);
+      |         ^~~~~
+      |         GPIOAEN
+make: *** [Src/subdir.mk:34: Src/main.o] Error 1
+"make -j16 all" terminated with exit code 2. Build might be incomplete.
+18:48:11 **** Incremental Build of configuration Debug for project 11_SysTick_Delay ****
+make -j16 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -DSTM32F446xx -c -I../Inc -I"D:/Softwares/Stm32/en.stm32cubef4-v1-28-0/STM32Cube_FW_F4_V1.28.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"D:/Softwares/Stm32/en.stm32cubef4-v1-28-0/STM32Cube_FW_F4_V1.28.0/Drivers/CMSIS/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+arm-none-eabi-gcc -o "11_SysTick_Delay.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\MCU1_Bare_Metal_Progamming_BHM\11_SysTick_Delay\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="11_SysTick_Delay.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: 11_SysTick_Delay.elf
+ 
+arm-none-eabi-size  11_SysTick_Delay.elf 
+arm-none-eabi-objdump -h -S 11_SysTick_Delay.elf  > "11_SysTick_Delay.list"
+   text	   data	    bss	    dec	    hex	filename
+    868	      0	   1568	   2436	    984	11_SysTick_Delay.elf
+Finished building: default.size.stdout
+ 
+Finished building: 11_SysTick_Delay.list
+ 
+18:48:41 **** Incremental Build of configuration Debug for project 11_SysTick_Delay ****
+make -j16 all 
+arm-none-eabi-size  11_SysTick_Delay.elf 
+   text	   data	    bss	    dec	    hex	filename
+    868	      0	   1568	   2436	    984	11_SysTick_Delay.elf
+Finished building: default.size.stdout
+ 
+18:49:35 **** Incremental Build of configuration Debug for project 11_SysTick_Delay ****
+make -j16 all 
+arm-none-eabi-size  11_SysTick_Delay.elf 
+   text	   data	    bss	    dec	    hex	filename
+    868	      0	   1568	   2436	    984	11_SysTick_Delay.elf
+Finished building: default.size.stdout
+ 

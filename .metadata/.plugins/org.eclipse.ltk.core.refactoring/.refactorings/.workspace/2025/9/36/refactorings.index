@@ -1,0 +1,30 @@
+1756755038283	Delete resource '1_Led_Blinky/Debug/0_Led_Toggle_Addr.elf'
+1756755041156	Delete resource '1_Led_Blinky/Debug/0_Led_Toggle_Addr.list'
+1756755043340	Delete resource '1_Led_Blinky/Debug/0_Led_Toggle_Addr.map'
+1756755049843	Delete resource '1_Led_Blinky/0_Led_Toggle_Addr Debug.launch'
+1756994488051	Delete 3 resources
+1756994495359	Delete resource '1_Led_Blinky_Struct/1_Led_Blinky.launch'
+1757005303669	Delete resource '3_GPIO_Output_BSRR_Reg/Debug/2_GPIO_Output.elf'
+1757005308110	Delete 2 resources
+1757005317956	Delete resource '3_GPIO_Output_BSRR_Reg/2_GPIO_Output.launch'
+1757007125064	Delete 3 resources
+1757007129113	Delete resource '4_GPIO_Input/3_GPIO_Output_BSRR_Reg Debug.launch'
+1757065677155	Delete resource '4_GPIO_Input/4_GPIO_Input Debug.launch'
+1757066173875	Delete resource '4_UART_TX/4_GPIO_Input Debug.launch'
+1757066204007	Rename resource '4_UART_TX'
+1757066216241	Delete resource '5_UART_TX/Debug/4_GPIO_Input.elf'
+1757066220474	Delete resource '5_UART_TX/Debug/4_UART_TX.elf'
+1757066341030	Delete resource '6_UART_Printf/5_UART_TX Debug.launch'
+1757066348562	Delete 5 resources
+1757066399769	Delete resource '4_GPIO_Input/3_GPIO_Output_BSRR_Reg Debug.launch'
+1757066413982	Delete resource '3_GPIO_Output_BSRR_Reg'
+1757066844641	Delete resource '4_GPIO_Input/3_GPIO_BSRR Debug.launch'
+1757069893950	Delete resource '7_UART_Modular/6_UART_Printf Debug.launch'
+1757070669654	Delete resource '8_UART_RX/7_UART_Modular Debug.launch'
+1757070680381	Delete 6 resources
+1757172876406	Delete resource '9_ADC/8_UART_RX Debug.launch'
+1757172890029	Delete resource '9_ADC'
+1757172915317	Delete resource '9_ADC/8_UART_RX Debug.launch'
+1757172923157	Delete 3 resources
+1757181473281	Rename resource '9_ADC'
+1757185225454	Rename resource '10_ADC_Continuous'

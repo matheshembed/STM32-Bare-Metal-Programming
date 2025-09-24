@@ -1,0 +1,16 @@
+15:26:15 **** Build of configuration Debug for project 4_UART_TX ****
+make -j16 all 
+arm-none-eabi-gcc -o "4_UART_TX.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\MCU1_Bare_Metal_Progamming_BHM\4_UART_TX\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="4_UART_TX.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: 4_UART_TX.elf
+ 
+arm-none-eabi-size  4_UART_TX.elf 
+arm-none-eabi-objdump -h -S 4_UART_TX.elf  > "4_UART_TX.list"
+   text	   data	    bss	    dec	    hex	filename
+   1004	      0	   1568	   2572	    a0c	4_UART_TX.elf
+Finished building: default.size.stdout
+ 
+Finished building: 4_UART_TX.list
+ 
+
+15:26:16 Build Finished. 0 errors, 0 warnings. (took 453ms)
+

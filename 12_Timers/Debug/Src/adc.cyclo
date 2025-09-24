@@ -1,0 +1,3 @@
+../Src/adc.c:75:6:Pa1_Adc_Init	1
+../Src/adc.c:119:6:Start_Conversion_Conti	1
+../Src/adc.c:131:10:Adc_Read	2
