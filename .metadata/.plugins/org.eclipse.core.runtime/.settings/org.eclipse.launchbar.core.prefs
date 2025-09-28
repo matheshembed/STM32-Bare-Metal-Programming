@@ -2,14 +2,14 @@ LaunchTargetManager/org.eclipse.launchbar.core.launchTargetType.local,Local/arch
 LaunchTargetManager/org.eclipse.launchbar.core.launchTargetType.local,Local/name=Local
 LaunchTargetManager/org.eclipse.launchbar.core.launchTargetType.local,Local/os=win32
 activeLaunchTarget=null\:---
-configDescList=org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:11_SysTick_Delay Debug,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:10_ADC_Continuous_Conversion Debug
+configDescList=org.eclipse.launchbar.core.descriptorType.default\:13_Timer_Output_Compare Debug,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:12_Timers Debug
 eclipse.preferences.version=1
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:0_Led_Toggle_Addr\ Debug/activeLaunchTarget=null\:---
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:10_ADC_Continuous_Conversion\ Debug/activeLaunchMode=debug
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:10_ADC_Continuous_Conversion\ Debug/activeLaunchTarget=null\:---
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:11_SysTick_Delay\ Debug/activeLaunchMode=debug
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:11_SysTick_Delay\ Debug/activeLaunchTarget=null\:---
-org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:12_Timers\ Debug/activeLaunchMode=run
+org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:12_Timers\ Debug/activeLaunchMode=debug
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:12_Timers\ Debug/activeLaunchTarget=null\:---
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:1_Led_Blinky/activeLaunchMode=debug
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:1_Led_Blinky/activeLaunchTarget=null\:---
@@ -32,6 +32,8 @@ org.eclipse.launchbar.core.descriptorType.default\:0_Led_Toggle_Addr\ Debug/acti
 org.eclipse.launchbar.core.descriptorType.default\:0_Led_Toggle_Addr\ Debug/activeLaunchTarget=org.eclipse.launchbar.core.launchTargetType.local\:Local
 org.eclipse.launchbar.core.descriptorType.default\:10_ADC_Continuous_Conversion\ Debug/activeLaunchMode=debug
 org.eclipse.launchbar.core.descriptorType.default\:10_ADC_Continuous_Conversion\ Debug/activeLaunchTarget=org.eclipse.launchbar.core.launchTargetType.local\:Local
+org.eclipse.launchbar.core.descriptorType.default\:13_Timer_Output_Compare\ Debug/activeLaunchMode=debug
+org.eclipse.launchbar.core.descriptorType.default\:13_Timer_Output_Compare\ Debug/activeLaunchTarget=org.eclipse.launchbar.core.launchTargetType.local\:Local
 org.eclipse.launchbar.core.descriptorType.default\:1_Led_Blinky_Struct\ Debug/activeLaunchMode=run
 org.eclipse.launchbar.core.descriptorType.default\:1_Led_Blinky_Struct\ Debug/activeLaunchTarget=org.eclipse.launchbar.core.launchTargetType.local\:Local
 org.eclipse.launchbar.core.descriptorType.default\:3_GPIO_BSRR\ Debug/activeLaunchMode=debug
