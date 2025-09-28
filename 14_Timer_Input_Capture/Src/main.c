@@ -1,0 +1,28 @@
+
+#include "Tim.h"
+
+#define GPIOAEN		(1U<<0)
+#define GPIOA_5		(1U<<5)
+#define LED			GPIOA_5
+
+int timestamp =0;
+
+int main(void)
+{
+	Tim2_PA5_Output_Compare();
+	Tim3_PA6_Input_Capture();
+
+	while(1)
+	{
+		/*Wait Until edge is captured*/
+		while((TIM3->SR & SR_CCI1F)){};
+
+		/*Read Captured Value*/
+		timestamp = TIM3->CCR1;
+	}
+
+}
+
+
+
+
