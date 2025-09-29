@@ -156,7 +156,7 @@ g_pfnVectors:
   .word	EXTI1_IRQHandler             			/* EXTI Line1 interrupt                                               */
   .word	EXTI2_IRQHandler             			/* EXTI Line2 interrupt                                               */
   .word	EXTI3_IRQHandler             			/* EXTI Line3 interrupt                                               */
-  .word	EXTI4_IRQHandler             			/* EXTI Line4 interrupt                                               */
+  .word	             			/* EXTI Line4 interrupt                                               */
   .word	DMA1_Stream0_IRQHandler      			/* DMA1 Stream0 global interrupt                                      */
   .word	DMA1_Stream1_IRQHandler      			/* DMA1 Stream1 global interrupt                                      */
   .word	DMA1_Stream2_IRQHandler      			/* DMA1 Stream2 global interrupt                                      */

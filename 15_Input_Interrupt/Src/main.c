@@ -1,29 +1,51 @@
+#include "Exti.h"
+#include "uart.h"
+#define GPIOAEN		(1U << 0)
+#define LED			(1U << 5)
 
+static void Exti_Callback(void);
 
-#include "Tim.h"
+/*Pending Register EXTI_PR
+ *0 - No trigger request occured
+ *1 - Selected trigger request occured
+ *PRx This bit is set when the selected edge event arrives on the external interrupt line
+ *PRx This bit is cleared by programming it to '1'*/
 
-#define GPIOAEN		(1U<<0)
-#define GPIOA_5		(1U<<5)
-#define LED			GPIOA_5
-
-int timestamp =0;
 
 int main(void)
 {
-	Tim2_PA5_Output_Compare();
-	Tim3_PA6_Input_Capture();
+	RCC->AHB1ENR |=GPIOAEN;
 
+	GPIOA->MODER |= (1U << 10);
+	GPIOA->MODER &= ~(1U << 11);
+
+	PC13_Exti_Init();
+	UART2TX_Init();
 	while(1)
 	{
-		/*Wait Until edge is captured*/
-		while((TIM3->SR & SR_CCI1F)){};
 
-		/*Read Captured Value*/
-		timestamp = TIM3->CCR1;
+	}
+}
+
+static void Exti_Callback(void)
+{
+	//printf("Button Pressed... \n\r");
+	GPIOA->ODR ^= LED;
+}
+
+/*The name of the function has to exactly this .. coz this is defined in the vector table */
+/*And it must be a void (void) function*/
+/*This can be found in the startup file */
+/*  .word	EXTI15_10_IRQHandler         			EXTI Line[15:10] interrupts */
+
+void EXTI15_10_IRQHandler(void)
+{
+	if((EXTI->PR & LINE13)!= 0)
+	{
+		// Clear the PR Flag to rearm it
+		EXTI->PR |=LINE13;
+		// Do something
+		Exti_Callback();
 	}
 
 }
-
-
-
-

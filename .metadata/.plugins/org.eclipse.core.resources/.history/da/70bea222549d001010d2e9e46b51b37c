@@ -1,0 +1,12 @@
+#include "Exti.h"
+#include "uart.h"
+
+
+int main(void)
+{
+	PC13_Exti_Init();
+	while(1)
+	{
+
+	}
+}

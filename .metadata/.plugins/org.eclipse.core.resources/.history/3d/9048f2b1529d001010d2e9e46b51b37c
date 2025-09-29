@@ -1,0 +1,153 @@
+/*
+	**********Interrupts**********Polling**********
+
+	Interrupt
+		-When module needs service, it notifies the CPU By sending and interrupt signal. When the cpu receives the signal the CPU interrputs whatever it is doing and services the module
+		-ISR -> Interrupt Service Routine
+
+		EG:
+			int main()
+			{
+				while(1)
+				{
+					.....
+				}
+				On_Switch_ISR
+				{
+					get_data()
+				}
+
+			}
+
+	Polling
+		-The CPU Continuously monitors the status of a given module, when a particular status considtion is met the CPU then services the module.
+
+		EG:
+			int main()
+			{
+				while(1)
+				{
+					if(switch = on)
+					{
+						getdata();
+					}
+					.....
+				}
+			}
+
+******************************************************************************************************************************************************************************
+
+Interrupt Service Routine
+	- The function that gets executed when an interrupt occurs is called inter service routine (ISR) or Interrupt Handler
+
+
+NVIC - Nested Vector Interrupt Controler
+	- A dedicated Hardware Inside the Cortex-Microcontroller
+	- It is responsible for Handling Interrupts
+
+	Peripherals  ->					}
+	Systick		 ->					}
+	Gpio ->ExtiController ->		}	NVIC    <- { Processor core
+	Clock security system (css)	 ->	}
+
+	-Interrupts From the processor core known as  EXCEPTIONS.
+	-Interrupts from outside the processor core are knows as HARDWARE_EXCEPTIONS or INTERRUPT_REQUEST
+
+------------------------------------------------------------------------------
+External Interrupt (EXTI) Lines
+
+	-GPIO Pins are connected to EXTI Lines.
+	-It is possible to enable interrupt for any GPIO Pin
+	-Multiple pins share the same EXTI Lines
+
+	-Port 0 of every port is connected TO EXTI0_IRQ
+	-Port 1 of every port is connected TO EXTI1_IRQ
+	-Port 2 of every port is connected TO EXTI2_IRQ
+	-Port 3 of every port is connected TO EXTI3_IRQ
+	-.....
+
+	-This means we cannot have PB0 and PA0 and Input interrupt pins at the same time since, they are connected tothe same multiplexer
+	-Same goes for PC4 AND PB4 .... ETC... At the same time.
+
+	- Pins 10 to 15 Share the same IRQ Inside the NVIC and therefore are serviced by the same ISR
+	- Application Code Must be able to find which pin frmom 10 to 15 generated the interrupt
+	                                      [Refter the Reference Manual]
+
+-----------------------Interrupt States------------------------------
+Disabled: This is the default state
+Enabled: Interrupt is enabled
+Pending: Waiting to be serviced
+Active: Being serviced (IRQ Is executing now)
+----------------------------------------------------------------------
+Priorities in M3/M4/M7
+	-Priorities allow ust o set which interrupt should execute first
+	-They also allow us to set which interrupt can interrupt which
+
+	Some interrupt priorities are defined by ARM these cannot be changed
+	EG:
+		RESET: Priority of -3
+		NMI: Priority of -2
+		HardFault: Priority of -1
+
+		Lower the Number = Higher the priority
+
+	FROM ARM
+	-Priority of each interrupt is defined using one of the Interrupt Priority Register (IPR)
+	-Each Inerrupt Request Uses 8-bit inside a single IPR register
+	-Therefore one IPR register allows us to configrure the priorities of four different Interrupt Requests
+	-EG: IP0 Holds the priorities of IRQ0,IRQ1,IRQ2 AND IRQ3
+	-There are 60 Inerrrupt Priority Registers: iPR0 - IPR59
+	-There are 60 X 4 = 240 Interrupt Requests (IRQ)
+
+	FROM ST
+	-Use only the 4 upper Bits to configrure the priority of each IRQ this implies that in STM32 MUCs there are 2^4 = 16 Priority Levels
+	- Highest Priority = 0
+	- Lowest Priority = 16
+
+	-To fine the IPR number, We divide the IRQ number by 4 , the remainder will determine whihch byte it is in the IPR register
+	-Because only the highest 4 bits are used for Priority, the priority number needs to be multiplied by 16 or left shift 4 bits
+	-To simplify the calculation, The NVIC_IPRx are defined as an array of 8 bit registers in the core_cm3.h ,core_cm4.h,core_cm7.h
+	-such that the priority of IRQx is controlled by IPx
+
+Sub-Priorities
+	-The Interrupt Priority Registers (IPR) can also divided into sub-priorities
+	-In this configuration there are a series of bits defining preemption priority and a series of bits defining the sub-priority
+	-The sub-priority  will determine which IRQ will be executed first int he case of multiple pending IRQs
+
+*/
+#include "Exti.h"
+#define GPIOCEN		(1U << 2)
+#define SYSCFGEN	(1U << 14)
+void PC13_Exti_Init(void)
+{
+	/*Disable Global Interrupt (Good Practice .. Does not affect the code) */
+	__disable_irq(); // Built in function of ARM (feature)
+
+	/*Enable Clock access for GPIOC (That is where the USR_BTN is connected)*/
+	RCC->AHB1ENR |= GPIOCEN;
+
+	/*EXTI Is part of the SYSCFG Module so we have to enable the clock for it*/
+	RCC->APB2ENR |=SYSCFGEN ;
+
+	/*Make PC13 As input*/
+	GPIOC->MODER |= (~(1U << 26));
+	GPIOC->MODER |= (~(1U << 27));
+
+	/*Select PORTC For EXTI13*/ // Section 8.2.6
+	/*The values are zero by default so we dont have to clear every bit... if not it is mandatory to clear the bits*/
+	SYSCFG->EXTICR[3] |= (1U << 5); //0010 FOR PC13
+
+	/*Unmask EXTI13*/
+	/*Mask = Ignore*/
+	/* Uncover-- They are covered by default */ // Sec 10.3.1
+	EXTI->IMR |= (1U << 13);
+
+	/*Select Falling edge Trigger*/ // Sec 10.3.4
+	EXTI->FTSR |= (1U << 13);
+
+	/*Enable EXTI Line in NVIC*/
+	NVIC_EnableIRQ(EXTI15_10_IRQn);
+
+	/*Enable Global Interrupt  */
+	__enable_irq(); // Built in function of ARM (feature)
+}
