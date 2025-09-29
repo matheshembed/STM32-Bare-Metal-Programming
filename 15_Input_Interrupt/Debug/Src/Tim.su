@@ -1,0 +1,3 @@
+../Src/Tim.c:8:6:Tim2_1hr_Init	4	static
+../Src/Tim.c:32:6:Tim2_PA5_Output_Compare	4	static
+../Src/Tim.c:74:6:Tim3_PA6_Input_Capture	4	static

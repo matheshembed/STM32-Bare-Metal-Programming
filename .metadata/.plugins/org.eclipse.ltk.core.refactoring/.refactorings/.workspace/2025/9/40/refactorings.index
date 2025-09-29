@@ -9,3 +9,9 @@
 1759053575749	Delete resource '12_Timers/Src/adc.c'
 1759053578917	Delete resource '12_Timers/Src/sys_tick.c'
 1759053592249	Delete 2 resources
+1759065714924	Delete resource '14_Timer_Input_Capture/13_Timer_Output_Compare Debug.launch'
+1759065719953	Delete 3 resources
+1759077750625	Delete resource '14_Timer_Input_Capture/Inc/Exti.h'
+1759077755032	Delete resource '14_Timer_Input_Capture/Src/Exti.c'
+1759077876021	Delete 3 resources
+1759077880563	Delete resource '15_Input_Interrupt/14_Timer_Input_Capture.launch'

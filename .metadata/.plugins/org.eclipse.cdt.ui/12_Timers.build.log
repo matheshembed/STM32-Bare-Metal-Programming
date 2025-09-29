@@ -1,10 +1,9 @@
-10:28:16 **** Incremental Build of configuration Debug for project 12_Timers ****
-make -j16 all 
-arm-none-eabi-size  12_Timers.elf 
-   text	   data	    bss	    dec	    hex	filename
-   5372	     92	   1900	   7364	   1cc4	12_Timers.elf
-Finished building: default.size.stdout
+15:34:46 **** Clean-only build of configuration Debug for project 12_Timers ****
+make -j16 clean 
+rm -rf ./Startup/startup_stm32f446retx.d ./Startup/startup_stm32f446retx.o
+rm -rf ./Src/Tim.cyclo ./Src/Tim.d ./Src/Tim.o ./Src/Tim.su ./Src/adc.cyclo ./Src/adc.d ./Src/adc.o ./Src/adc.su ./Src/main.cyclo ./Src/main.d ./Src/main.o ./Src/main.su ./Src/sys_tick.cyclo ./Src/sys_tick.d ./Src/sys_tick.o ./Src/sys_tick.su ./Src/syscalls.cyclo ./Src/syscalls.d ./Src/syscalls.o ./Src/syscalls.su ./Src/sysmem.cyclo ./Src/sysmem.d ./Src/sysmem.o ./Src/sysmem.su ./Src/uart.cyclo ./Src/uart.d ./Src/uart.o ./Src/uart.su
+rm -rf 12_Timers.elf 12_Timers.list 12_Timers.map default.size.stdout
  
 
-10:28:16 Build Finished. 0 errors, 0 warnings. (took 225ms)
+15:34:46 Build Finished. 0 errors, 0 warnings. (took 238ms)
 
