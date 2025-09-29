@@ -4,7 +4,7 @@
 #include "stm32f4xx.h"
 
 #define SR_UIF	(1U << 0)
-void Tim2_1hr_Init(void);
+
 void Tim2_PA5_Output_Compare(void);
 void Tim3_PA6_Input_Capture(void);
 

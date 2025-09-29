@@ -9,7 +9,7 @@
 #define TIM_H_
 
 #define SR_UIF	(1U << 0)
-
+void Tim2_1hr_Init(void);
 void Tim2_PA5_Output_Compare(void);
 
 
