@@ -1,4 +1,4 @@
-15:37:46 **** Incremental Build of configuration Debug for project 4_GPIO_Input ****
+18:36:40 **** Incremental Build of configuration Debug for project 4_GPIO_Input ****
 make -j16 all 
 arm-none-eabi-size  4_GPIO_Input.elf 
    text	   data	    bss	    dec	    hex	filename
@@ -6,5 +6,5 @@ arm-none-eabi-size  4_GPIO_Input.elf
 Finished building: default.size.stdout
  
 
-15:37:46 Build Finished. 0 errors, 0 warnings. (took 147ms)
+18:36:40 Build Finished. 0 errors, 0 warnings. (took 253ms)
 

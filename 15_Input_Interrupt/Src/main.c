@@ -3,7 +3,6 @@
 #define GPIOAEN		(1U << 0)
 #define LED			(1U << 5)
 
-static void Exti_Callback(void);
 
 /*Pending Register EXTI_PR
  *0 - No trigger request occured
@@ -20,18 +19,14 @@ int main(void)
 	GPIOA->MODER &= ~(1U << 11);
 
 	PC13_Exti_Init();
-	UART2TX_Init();
+	//UART2TX_Init();
 	while(1)
 	{
 
 	}
 }
 
-static void Exti_Callback(void)
-{
-	//printf("Button Pressed... \n\r");
-	GPIOA->ODR ^= LED;
-}
+
 
 /*The name of the function has to exactly this .. coz this is defined in the vector table */
 /*And it must be a void (void) function*/
@@ -40,12 +35,14 @@ static void Exti_Callback(void)
 
 void EXTI15_10_IRQHandler(void)
 {
-	if((EXTI->PR & LINE13)!= 0)
+	if(EXTI->PR & LINE13)
 	{
 		// Clear the PR Flag to rearm it
 		EXTI->PR |=LINE13;
 		// Do something
-		Exti_Callback();
+		GPIOA->ODR ^= LED;
+
 	}
+
 
 }

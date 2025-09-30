@@ -15,7 +15,7 @@ org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:13_Timer_Output_Compare\ Debug/
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:13_Timer_Output_Compare\ Debug/activeLaunchTarget=null\:---
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:14_Timer_Input_Capture/activeLaunchMode=debug
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:14_Timer_Input_Capture/activeLaunchTarget=null\:---
-org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:15_Input_Interrupt\ Debug/activeLaunchMode=run
+org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:15_Input_Interrupt\ Debug/activeLaunchMode=debug
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:15_Input_Interrupt\ Debug/activeLaunchTarget=null\:---
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:1_Led_Blinky/activeLaunchMode=debug
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:1_Led_Blinky/activeLaunchTarget=null\:---
