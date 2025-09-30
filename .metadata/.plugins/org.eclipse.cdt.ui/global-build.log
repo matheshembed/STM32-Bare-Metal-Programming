@@ -130,3 +130,205 @@ Finished building: default.size.stdout
  
 Finished building: 15_Input_Interrupt.list
  
+20:13:29 **** Build of configuration Debug for project 16_Uart_Rx_Interrupt ****
+make -j16 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -DSTM32F446xx -c -I../Inc -I"D:/Softwares/Stm32/en.stm32cubef4-v1-28-0/STM32Cube_FW_F4_V1.28.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"D:/Softwares/Stm32/en.stm32cubef4-v1-28-0/STM32Cube_FW_F4_V1.28.0/Drivers/CMSIS/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+arm-none-eabi-gcc "../Src/uart.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -DSTM32F446xx -c -I../Inc -I"D:/Softwares/Stm32/en.stm32cubef4-v1-28-0/STM32Cube_FW_F4_V1.28.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"D:/Softwares/Stm32/en.stm32cubef4-v1-28-0/STM32Cube_FW_F4_V1.28.0/Drivers/CMSIS/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/uart.d" -MT"Src/uart.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/uart.o"
+../Src/uart.c:141:5: error: redefinition of 'UART2_Read'
+  141 | int UART2_Read(void){
+      |     ^~~~~~~~~~
+../Src/uart.c:76:5: note: previous definition of 'UART2_Read' with type 'int(void)'
+   76 | int UART2_Read(void){
+      |     ^~~~~~~~~~
+../Src/main.c: In function 'USART2_IRQHandler':
+../Src/main.c:34:25: error: 'UART_SR_RXE' undeclared (first use in this function); did you mean 'USART_SR_RXNE'?
+   34 |         if(USART2->SR & UART_SR_RXE)
+      |                         ^~~~~~~~~~~
+      |                         USART_SR_RXNE
+../Src/main.c:34:25: note: each undeclared identifier is reported only once for each function it appears in
+make: *** [Src/subdir.mk:28: Src/uart.o] Error 1
+make: *** Waiting for unfinished jobs....
+make: *** [Src/subdir.mk:28: Src/main.o] Error 1
+"make -j16 all" terminated with exit code 2. Build might be incomplete.
+20:14:41 **** Incremental Build of configuration Debug for project 16_Uart_Rx_Interrupt ****
+make -j16 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -DSTM32F446xx -c -I../Inc -I"D:/Softwares/Stm32/en.stm32cubef4-v1-28-0/STM32Cube_FW_F4_V1.28.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"D:/Softwares/Stm32/en.stm32cubef4-v1-28-0/STM32Cube_FW_F4_V1.28.0/Drivers/CMSIS/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+arm-none-eabi-gcc "../Src/uart.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -DSTM32F446xx -c -I../Inc -I"D:/Softwares/Stm32/en.stm32cubef4-v1-28-0/STM32Cube_FW_F4_V1.28.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"D:/Softwares/Stm32/en.stm32cubef4-v1-28-0/STM32Cube_FW_F4_V1.28.0/Drivers/CMSIS/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/uart.d" -MT"Src/uart.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/uart.o"
+../Src/uart.c:141:5: error: redefinition of 'UART2_Read'
+  141 | int UART2_Read(void){
+      |     ^~~~~~~~~~
+../Src/uart.c:76:5: note: previous definition of 'UART2_Read' with type 'int(void)'
+   76 | int UART2_Read(void){
+      |     ^~~~~~~~~~
+make: *** [Src/subdir.mk:28: Src/uart.o] Error 1
+make: *** Waiting for unfinished jobs....
+"make -j16 all" terminated with exit code 2. Build might be incomplete.
+20:15:45 **** Incremental Build of configuration Debug for project 16_Uart_Rx_Interrupt ****
+make -j16 all 
+arm-none-eabi-gcc "../Src/uart.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -DSTM32F446xx -c -I../Inc -I"D:/Softwares/Stm32/en.stm32cubef4-v1-28-0/STM32Cube_FW_F4_V1.28.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"D:/Softwares/Stm32/en.stm32cubef4-v1-28-0/STM32Cube_FW_F4_V1.28.0/Drivers/CMSIS/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/uart.d" -MT"Src/uart.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/uart.o"
+arm-none-eabi-gcc -o "16_Uart_Rx_Interrupt.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\MCU1_Bare_Metal_Progamming_BHM\16_Uart_Rx_Interrupt\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="16_Uart_Rx_Interrupt.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: 16_Uart_Rx_Interrupt.elf
+ 
+arm-none-eabi-size  16_Uart_Rx_Interrupt.elf 
+arm-none-eabi-objdump -h -S 16_Uart_Rx_Interrupt.elf  > "16_Uart_Rx_Interrupt.list"
+   text	   data	    bss	    dec	    hex	filename
+   1240	      0	   1568	   2808	    af8	16_Uart_Rx_Interrupt.elf
+Finished building: default.size.stdout
+ 
+Finished building: 16_Uart_Rx_Interrupt.list
+ 
+20:16:16 **** Incremental Build of configuration Debug for project 16_Uart_Rx_Interrupt ****
+make -j16 all 
+arm-none-eabi-gcc "../Src/uart.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -DSTM32F446xx -c -I../Inc -I"D:/Softwares/Stm32/en.stm32cubef4-v1-28-0/STM32Cube_FW_F4_V1.28.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"D:/Softwares/Stm32/en.stm32cubef4-v1-28-0/STM32Cube_FW_F4_V1.28.0/Drivers/CMSIS/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/uart.d" -MT"Src/uart.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/uart.o"
+arm-none-eabi-gcc -o "16_Uart_Rx_Interrupt.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\MCU1_Bare_Metal_Progamming_BHM\16_Uart_Rx_Interrupt\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="16_Uart_Rx_Interrupt.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: 16_Uart_Rx_Interrupt.elf
+ 
+arm-none-eabi-size  16_Uart_Rx_Interrupt.elf 
+arm-none-eabi-objdump -h -S 16_Uart_Rx_Interrupt.elf  > "16_Uart_Rx_Interrupt.list"
+   text	   data	    bss	    dec	    hex	filename
+   1240	      0	   1568	   2808	    af8	16_Uart_Rx_Interrupt.elf
+Finished building: default.size.stdout
+ 
+Finished building: 16_Uart_Rx_Interrupt.list
+ 
+20:16:39 **** Incremental Build of configuration Debug for project 16_Uart_Rx_Interrupt ****
+make -j16 all 
+arm-none-eabi-size  16_Uart_Rx_Interrupt.elf 
+   text	   data	    bss	    dec	    hex	filename
+   1240	      0	   1568	   2808	    af8	16_Uart_Rx_Interrupt.elf
+Finished building: default.size.stdout
+ 
+20:19:02 **** Incremental Build of configuration Debug for project 16_Uart_Rx_Interrupt ****
+make -j16 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -DSTM32F446xx -c -I../Inc -I"D:/Softwares/Stm32/en.stm32cubef4-v1-28-0/STM32Cube_FW_F4_V1.28.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"D:/Softwares/Stm32/en.stm32cubef4-v1-28-0/STM32Cube_FW_F4_V1.28.0/Drivers/CMSIS/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+arm-none-eabi-gcc -o "16_Uart_Rx_Interrupt.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\MCU1_Bare_Metal_Progamming_BHM\16_Uart_Rx_Interrupt\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="16_Uart_Rx_Interrupt.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: 16_Uart_Rx_Interrupt.elf
+ 
+arm-none-eabi-size  16_Uart_Rx_Interrupt.elf 
+arm-none-eabi-objdump -h -S 16_Uart_Rx_Interrupt.elf  > "16_Uart_Rx_Interrupt.list"
+   text	   data	    bss	    dec	    hex	filename
+   1240	      0	   1568	   2808	    af8	16_Uart_Rx_Interrupt.elf
+Finished building: default.size.stdout
+ 
+Finished building: 16_Uart_Rx_Interrupt.list
+ 
+20:19:06 **** Incremental Build of configuration Debug for project 16_Uart_Rx_Interrupt ****
+make -j16 all 
+arm-none-eabi-size  16_Uart_Rx_Interrupt.elf 
+   text	   data	    bss	    dec	    hex	filename
+   1240	      0	   1568	   2808	    af8	16_Uart_Rx_Interrupt.elf
+Finished building: default.size.stdout
+ 
+20:50:43 **** Incremental Build of configuration Debug for project 15_Input_Interrupt ****
+make -j16 all 
+arm-none-eabi-gcc "../Src/Exti.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -DSTM32F446xx -c -I../Inc -I"D:/Softwares/Stm32/en.stm32cubef4-v1-28-0/STM32Cube_FW_F4_V1.28.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"D:/Softwares/Stm32/en.stm32cubef4-v1-28-0/STM32Cube_FW_F4_V1.28.0/Drivers/CMSIS/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/Exti.d" -MT"Src/Exti.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/Exti.o"
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -DSTM32F446xx -c -I../Inc -I"D:/Softwares/Stm32/en.stm32cubef4-v1-28-0/STM32Cube_FW_F4_V1.28.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"D:/Softwares/Stm32/en.stm32cubef4-v1-28-0/STM32Cube_FW_F4_V1.28.0/Drivers/CMSIS/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+arm-none-eabi-gcc -o "15_Input_Interrupt.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\MCU1_Bare_Metal_Progamming_BHM\15_Input_Interrupt\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="15_Input_Interrupt.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: 15_Input_Interrupt.elf
+ 
+arm-none-eabi-size  15_Input_Interrupt.elf 
+arm-none-eabi-objdump -h -S 15_Input_Interrupt.elf  > "15_Input_Interrupt.list"
+   text	   data	    bss	    dec	    hex	filename
+   1024	      0	   1568	   2592	    a20	15_Input_Interrupt.elf
+Finished building: default.size.stdout
+ 
+Finished building: 15_Input_Interrupt.list
+ 
+20:52:30 **** Incremental Build of configuration Debug for project 15_Input_Interrupt ****
+make -j16 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -DSTM32F446xx -c -I../Inc -I"D:/Softwares/Stm32/en.stm32cubef4-v1-28-0/STM32Cube_FW_F4_V1.28.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"D:/Softwares/Stm32/en.stm32cubef4-v1-28-0/STM32Cube_FW_F4_V1.28.0/Drivers/CMSIS/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+arm-none-eabi-gcc -o "15_Input_Interrupt.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\MCU1_Bare_Metal_Progamming_BHM\15_Input_Interrupt\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="15_Input_Interrupt.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: 15_Input_Interrupt.elf
+ 
+arm-none-eabi-size  15_Input_Interrupt.elf 
+arm-none-eabi-objdump -h -S 15_Input_Interrupt.elf  > "15_Input_Interrupt.list"
+   text	   data	    bss	    dec	    hex	filename
+   1012	      0	   1568	   2580	    a14	15_Input_Interrupt.elf
+Finished building: default.size.stdout
+ 
+Finished building: 15_Input_Interrupt.list
+ 
+20:56:22 **** Incremental Build of configuration Debug for project 15_Input_Interrupt ****
+make -j16 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -DSTM32F446xx -c -I../Inc -I"D:/Softwares/Stm32/en.stm32cubef4-v1-28-0/STM32Cube_FW_F4_V1.28.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"D:/Softwares/Stm32/en.stm32cubef4-v1-28-0/STM32Cube_FW_F4_V1.28.0/Drivers/CMSIS/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+arm-none-eabi-gcc -o "15_Input_Interrupt.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\MCU1_Bare_Metal_Progamming_BHM\15_Input_Interrupt\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="15_Input_Interrupt.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: 15_Input_Interrupt.elf
+ 
+arm-none-eabi-size  15_Input_Interrupt.elf 
+arm-none-eabi-objdump -h -S 15_Input_Interrupt.elf  > "15_Input_Interrupt.list"
+   text	   data	    bss	    dec	    hex	filename
+   1012	      0	   1568	   2580	    a14	15_Input_Interrupt.elf
+Finished building: default.size.stdout
+ 
+Finished building: 15_Input_Interrupt.list
+ 
+20:56:59 **** Incremental Build of configuration Debug for project 15_Input_Interrupt ****
+make -j16 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -DSTM32F446xx -c -I../Inc -I"D:/Softwares/Stm32/en.stm32cubef4-v1-28-0/STM32Cube_FW_F4_V1.28.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"D:/Softwares/Stm32/en.stm32cubef4-v1-28-0/STM32Cube_FW_F4_V1.28.0/Drivers/CMSIS/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+arm-none-eabi-gcc -o "15_Input_Interrupt.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\MCU1_Bare_Metal_Progamming_BHM\15_Input_Interrupt\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="15_Input_Interrupt.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: 15_Input_Interrupt.elf
+ 
+arm-none-eabi-size  15_Input_Interrupt.elf 
+arm-none-eabi-objdump -h -S 15_Input_Interrupt.elf  > "15_Input_Interrupt.list"
+   text	   data	    bss	    dec	    hex	filename
+   1012	      0	   1568	   2580	    a14	15_Input_Interrupt.elf
+Finished building: default.size.stdout
+ 
+Finished building: 15_Input_Interrupt.list
+ 
+20:57:03 **** Incremental Build of configuration Debug for project 15_Input_Interrupt ****
+make -j16 all 
+arm-none-eabi-size  15_Input_Interrupt.elf 
+   text	   data	    bss	    dec	    hex	filename
+   1012	      0	   1568	   2580	    a14	15_Input_Interrupt.elf
+Finished building: default.size.stdout
+ 
+20:57:34 **** Incremental Build of configuration Debug for project 15_Input_Interrupt ****
+make -j16 all 
+arm-none-eabi-gcc "../Src/Exti.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -DSTM32F446xx -c -I../Inc -I"D:/Softwares/Stm32/en.stm32cubef4-v1-28-0/STM32Cube_FW_F4_V1.28.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"D:/Softwares/Stm32/en.stm32cubef4-v1-28-0/STM32Cube_FW_F4_V1.28.0/Drivers/CMSIS/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/Exti.d" -MT"Src/Exti.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/Exti.o"
+arm-none-eabi-gcc -o "15_Input_Interrupt.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\MCU1_Bare_Metal_Progamming_BHM\15_Input_Interrupt\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="15_Input_Interrupt.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: 15_Input_Interrupt.elf
+ 
+arm-none-eabi-size  15_Input_Interrupt.elf 
+arm-none-eabi-objdump -h -S 15_Input_Interrupt.elf  > "15_Input_Interrupt.list"
+   text	   data	    bss	    dec	    hex	filename
+   1000	      0	   1568	   2568	    a08	15_Input_Interrupt.elf
+Finished building: default.size.stdout
+ 
+Finished building: 15_Input_Interrupt.list
+ 
+20:58:47 **** Incremental Build of configuration Debug for project 15_Input_Interrupt ****
+make -j16 all 
+arm-none-eabi-gcc "../Src/Exti.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -DSTM32F446xx -c -I../Inc -I"D:/Softwares/Stm32/en.stm32cubef4-v1-28-0/STM32Cube_FW_F4_V1.28.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"D:/Softwares/Stm32/en.stm32cubef4-v1-28-0/STM32Cube_FW_F4_V1.28.0/Drivers/CMSIS/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/Exti.d" -MT"Src/Exti.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/Exti.o"
+arm-none-eabi-gcc -o "15_Input_Interrupt.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\MCU1_Bare_Metal_Progamming_BHM\15_Input_Interrupt\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="15_Input_Interrupt.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: 15_Input_Interrupt.elf
+ 
+arm-none-eabi-size  15_Input_Interrupt.elf 
+arm-none-eabi-objdump -h -S 15_Input_Interrupt.elf  > "15_Input_Interrupt.list"
+   text	   data	    bss	    dec	    hex	filename
+    996	      0	   1568	   2564	    a04	15_Input_Interrupt.elf
+Finished building: default.size.stdout
+ 
+Finished building: 15_Input_Interrupt.list
+ 
+21:03:54 **** Incremental Build of configuration Debug for project 15_Input_Interrupt ****
+make -j16 all 
+arm-none-eabi-gcc "../Src/Exti.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -DSTM32F446xx -c -I../Inc -I"D:/Softwares/Stm32/en.stm32cubef4-v1-28-0/STM32Cube_FW_F4_V1.28.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"D:/Softwares/Stm32/en.stm32cubef4-v1-28-0/STM32Cube_FW_F4_V1.28.0/Drivers/CMSIS/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/Exti.d" -MT"Src/Exti.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/Exti.o"
+arm-none-eabi-gcc -o "15_Input_Interrupt.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\MCU1_Bare_Metal_Progamming_BHM\15_Input_Interrupt\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="15_Input_Interrupt.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: 15_Input_Interrupt.elf
+ 
+arm-none-eabi-size  15_Input_Interrupt.elf 
+arm-none-eabi-objdump -h -S 15_Input_Interrupt.elf  > "15_Input_Interrupt.list"
+   text	   data	    bss	    dec	    hex	filename
+   1028	      0	   1568	   2596	    a24	15_Input_Interrupt.elf
+Finished building: default.size.stdout
+ 
+Finished building: 15_Input_Interrupt.list
+ 
+21:03:56 **** Incremental Build of configuration Debug for project 15_Input_Interrupt ****
+make -j16 all 
+arm-none-eabi-size  15_Input_Interrupt.elf 
+   text	   data	    bss	    dec	    hex	filename
+   1028	      0	   1568	   2596	    a24	15_Input_Interrupt.elf
+Finished building: default.size.stdout
+ 

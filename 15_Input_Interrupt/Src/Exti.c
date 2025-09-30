@@ -121,7 +121,7 @@ Sub-Priorities
 void PC13_Exti_Init(void)
 {
 	/*Disable Global Interrupt (Good Practice .. Does not affect the code) */
-	__disable_irq(); // Built in function of ARM (feature)
+	//__disable_irq(); // Built in function of ARM (feature)
 
 	/*Enable Clock access for GPIOC (That is where the USR_BTN is connected)*/
 	RCC->AHB1ENR |= GPIOCEN;
@@ -135,7 +135,10 @@ void PC13_Exti_Init(void)
 
 	/*Select PORTC For EXTI13*/ // Section 8.2.6
 	/*The values are zero by default so we dont have to clear every bit... if not it is mandatory to clear the bits*/
-	SYSCFG->EXTICR[3] |= (1U << 5); //0010 FOR PC13
+	SYSCFG->EXTICR[3] |= ~(1U << 5); //0010 FOR PC13
+	SYSCFG->EXTICR[3] &= ~(1U << 4); //0010 FOR PC13
+	SYSCFG->EXTICR[3] &= ~(1U << 6); //0010 FOR PC13
+	SYSCFG->EXTICR[3] &= ~(1U << 7); //0010 FOR PC13
 
 	/*Unmask EXTI13*/
 	/*Mask = Ignore*/
@@ -144,13 +147,11 @@ void PC13_Exti_Init(void)
 
 	/*Select Falling edge Trigger*/ // Sec 10.3.4
 	EXTI->FTSR	 |= (1U << 13);
-	EXTI->RTSR	 |= (1U << 13);
-
 
 	/*Enable EXTI Line in NVIC*/
 	//Enabling EXTI Lines from 10 to 15 as a part of core_cm4.h functions
 	NVIC_EnableIRQ(EXTI15_10_IRQn);
 
 	/*Enable Global Interrupt  */
-	__enable_irq(); // Built in function of ARM (feature)
+	//__enable_irq(); // Built in function of ARM (feature)
 }

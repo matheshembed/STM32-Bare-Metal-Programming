@@ -1,0 +1,49 @@
+
+#include "uart.h"
+
+#define GPIOAEN				(1U << 0);
+#define GPIOA_5				(1U << 5);
+
+#define LED_PIN				GPIOA_5
+
+
+char key;
+int main(void){
+
+	// Clock Access to GPIOA
+	RCC->AHB1ENR |= GPIOAEN;
+
+	// PA5 AS OUTPUT
+	GPIOA->MODER |= (1U << 10);
+	GPIOA->MODER &= (~(1U << 11));
+
+	UART2RX_Interrupt_Init();
+
+	while(1)
+	{
+
+
+	}
+}
+
+
+
+void USART2_IRQHandler(void)
+{
+	//Check if RXNE is set
+	if(USART2->SR & UART_SR_RXE)
+	{
+		 key = USART2->DR;
+		if(key == '1')
+		{
+			GPIOA->ODR |= LED_PIN;
+		}
+		else
+		{
+			GPIOA->ODR &= ~LED_PIN;
+		}
+	}
+
+}
+
+

@@ -35,7 +35,7 @@ int main(void)
 
 void EXTI15_10_IRQHandler(void)
 {
-	if(EXTI->PR & LINE13)
+	if((EXTI->PR & LINE13)!=0)
 	{
 		// Clear the PR Flag to rearm it
 		EXTI->PR |=LINE13;
@@ -43,6 +43,7 @@ void EXTI15_10_IRQHandler(void)
 		GPIOA->ODR ^= LED;
 
 	}
+
 
 
 }
