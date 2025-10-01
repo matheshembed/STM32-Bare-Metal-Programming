@@ -1,0 +1,16 @@
+
+#ifndef ADC_H_
+#define ADC_H_
+
+#include "stm32f4xx.h"
+#include <stdint.h>
+
+#define SR_EOC					(1U << 1) //End of conversion Flag in the ADC_SR Register
+
+void Pa1_Adc_Init(void);
+void Start_Conversion_Conti(void);
+uint32_t Adc_Read(void);
+void Pa1_Adc_Interrupt_Init(void);
+
+
+#endif /* ADC_H_ */
