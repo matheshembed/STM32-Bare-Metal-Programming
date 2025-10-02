@@ -21,8 +21,11 @@ int main(void)
 	GPIOA->MODER &= ~(1U << 11);
 
 	PC13_Exti_Init();
-	UART2TX_Init();
+	//UART2TX_Init();
+	while(1)
+	{
 
+	}
 }
 
 

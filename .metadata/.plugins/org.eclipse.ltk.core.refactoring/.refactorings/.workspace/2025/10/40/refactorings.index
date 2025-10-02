@@ -4,3 +4,6 @@
 1759388475106	Delete resource '18_SysTick_Interrupt/11_SysTick_Delay Debug.launch'
 1759388957067	Delete resource '18_SysTick_Interrupt/Inc/adc.h'
 1759388960613	Delete resource '18_SysTick_Interrupt/Src/adc.c'
+1759399872042	Delete resource '15_Input_Interrupt/15_Input_Interrupt Debug.launch'
+1759399902801	Delete resource '15_Input_Interrupt/Debug/15_Input_Interrupt.list'
+1759399905922	Delete resource '15_Input_Interrupt/Debug/15_Input_Interrupt.map'

@@ -22,7 +22,10 @@ int main(void)
 
 	PC13_Exti_Init();
 	UART2TX_Init();
+	while(1)
+	{
 
+	}
 }
 
 
