@@ -115,6 +115,7 @@ Sub-Priorities
 	-The sub-priority  will determine which IRQ will be executed first int he case of multiple pending IRQs
 
 */
+
 #include "Exti.h"
 #define GPIOCEN		(1U << 2)
 #define SYSCFGEN	(1U << 14)
@@ -130,20 +131,22 @@ void PC13_Exti_Init(void)
 	RCC->APB2ENR |=SYSCFGEN ;
 
 	/*Make PC13 As input*/
-	GPIOC->MODER &= ~(1U << 26);
-	GPIOC->MODER &= ~(1U << 27);
+	GPIOC->MODER &= ~(3U <<26);
 
 	/*Select PORTC For EXTI13*/ // Section 8.2.6
 	/*The values are zero by default so we dont have to clear every bit... if not it is mandatory to clear the bits*/
-	SYSCFG->EXTICR[3] |= (1U << 5); //0010 FOR PC13
+	SYSCFG->EXTICR[3] &= ~(0xF << 4);  // Clear bits 7:4
+	SYSCFG->EXTICR[3] |=  (0x2 << 4);  // Set to Port C //0010 FOR PC13
 
 	/*Unmask EXTI13*/
 	/*Mask = Ignore*/
-	/* Uncover-- They are covered by default */ // Sec 10.3.1
+	/* Uncover-- They are covered by default */
+	// Sec 10.3.1
 	EXTI->IMR |= (1U << 13);
 
 	/*Select Falling edge Trigger*/ // Sec 10.3.4
 	EXTI->FTSR	 |= (1U << 13);
+
 
 	/*Enable EXTI Line in NVIC*/
 	//Enabling EXTI Lines from 10 to 15 as a part of core_cm4.h functions
@@ -152,3 +155,4 @@ void PC13_Exti_Init(void)
 	/*Enable Global Interrupt  */
 	__enable_irq(); // Built in function of ARM (feature)
 }
+

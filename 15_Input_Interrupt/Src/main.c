@@ -22,6 +22,10 @@ int main(void)
 
 	PC13_Exti_Init();
 	UART2TX_Init();
+	while(1)
+	{
+
+	}
 
 }
 
@@ -42,15 +46,13 @@ static void EXTI_CallBack(void)
 
 void EXTI15_10_IRQHandler(void)
 {
-	if((EXTI->PR & LINE13)!=0)
+	if((EXTI->PR & LINE13))
 	{
 		// Clear the PR Flag to rearm it
-		EXTI->PR |=LINE13;
+		EXTI->PR =LINE13;
 		// Do something
 		EXTI_CallBack();
 
 	}
-
-
 
 }

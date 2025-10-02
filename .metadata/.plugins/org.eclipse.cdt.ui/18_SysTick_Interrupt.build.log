@@ -1,4 +1,4 @@
-12:41:10 **** Incremental Build of configuration Debug for project 18_SysTick_Interrupt ****
+17:59:29 **** Incremental Build of configuration Debug for project 18_SysTick_Interrupt ****
 make -j16 all 
 arm-none-eabi-gcc -mcpu=cortex-m4 -g3 -DDEBUG -c -x assembler-with-cpp -MMD -MP -MF"Startup/startup_stm32f446retx.d" -MT"Startup/startup_stm32f446retx.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Startup/startup_stm32f446retx.o" "../Startup/startup_stm32f446retx.s"
 arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -DSTM32F446xx -c -I../Inc -I"D:/Softwares/Stm32/en.stm32cubef4-v1-28-0/STM32Cube_FW_F4_V1.28.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"D:/Softwares/Stm32/en.stm32cubef4-v1-28-0/STM32Cube_FW_F4_V1.28.0/Drivers/CMSIS/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
@@ -18,5 +18,5 @@ Finished building: default.size.stdout
 Finished building: 18_SysTick_Interrupt.list
  
 
-12:41:11 Build Finished. 0 errors, 0 warnings. (took 750ms)
+17:59:30 Build Finished. 0 errors, 0 warnings. (took 1s.150ms)
 
