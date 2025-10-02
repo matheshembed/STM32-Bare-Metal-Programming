@@ -3,9 +3,9 @@
 	<item key="hasShownOverlayPopupBefore" value="true"/>
 	<item key="replaceBarOpen" value="false"/>
 	<list key="searchhistory">
+		<item value="exti"/>
 		<item value="exti15_10"/>
 		<item value="uart2_read"/>
-		<item value="exti"/>
 		<item value="STM32F446xx"/>
 		<item value="stm32f446re"/>
 	</list>

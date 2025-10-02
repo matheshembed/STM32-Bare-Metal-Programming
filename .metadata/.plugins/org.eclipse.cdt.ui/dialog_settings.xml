@@ -15,7 +15,7 @@
 		<item key="org.eclipse.cdt.internal.ui.text.COutlineInformationControlDIALOG_USE_PERSISTED_LOCATION" value="true"/>
 	</section>
 	<section name="org.eclipse.cdt.ui.text.hover.CMacroExpansionExploration.internal">
-		<item key="size.width" value="512"/>
+		<item key="size.width" value="1666"/>
 		<item key="size.height" value="180"/>
 	</section>
 	<section name="CResourceRenameRefactoringInputPage">
