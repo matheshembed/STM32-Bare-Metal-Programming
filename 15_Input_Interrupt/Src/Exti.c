@@ -121,7 +121,7 @@ Sub-Priorities
 void PC13_Exti_Init(void)
 {
 	/*Disable Global Interrupt (Good Practice .. Does not affect the code) */
-	//__disable_irq(); // Built in function of ARM (feature)
+	__disable_irq(); // Built in function of ARM (feature)
 
 	/*Enable Clock access for GPIOC (That is where the USR_BTN is connected)*/
 	RCC->AHB1ENR |= GPIOCEN;
@@ -153,5 +153,5 @@ void PC13_Exti_Init(void)
 	NVIC_EnableIRQ(EXTI15_10_IRQn);
 
 	/*Enable Global Interrupt  */
-	//__enable_irq(); // Built in function of ARM (feature)
+	__enable_irq(); // Built in function of ARM (feature)
 }

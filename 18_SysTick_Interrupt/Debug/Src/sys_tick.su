@@ -1,0 +1,2 @@
+../Src/sys_tick.c:77:6:SysTickDelayMs	24	static
+../Src/sys_tick.c:102:6:SysTick_1Hz_Interrupt	4	static

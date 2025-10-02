@@ -1,0 +1,33 @@
+
+//#include "uart.h"
+#include "sys_tick.h"
+
+#define GPIOAEN		(1U<<0)
+#define GPIOA_5		(1U<<5)
+#define LED			GPIOA_5
+
+uint32_t sensor_value;
+int main(void)
+{
+	RCC->AHB1ENR |= GPIOAEN;
+
+	GPIOA->MODER |= (1U <<10);
+	GPIOA->MODER &= (~(1U <<11));
+
+	//UART2TX_Init();
+	SysTick_1Hz_Interrupt();
+	while(1)
+	{
+
+		//printf("A second is passed  \n\r");
+		GPIOA->ODR ^= LED;
+		SysTickDelayMs(1000);
+	}
+
+
+
+
+}
+
+
+

@@ -1,2 +1,6 @@
 1759336082238	Delete resource '17_Adc_Interrupt/10_ADC_Continuous_Conversion Debug.launch'
 1759336089988	Delete 3 resources
+1759388471477	Delete 3 resources
+1759388475106	Delete resource '18_SysTick_Interrupt/11_SysTick_Delay Debug.launch'
+1759388957067	Delete resource '18_SysTick_Interrupt/Inc/adc.h'
+1759388960613	Delete resource '18_SysTick_Interrupt/Src/adc.c'
