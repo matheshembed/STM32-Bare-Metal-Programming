@@ -1,0 +1,17 @@
+18:48:06 **** Incremental Build of configuration Debug for project 19_Timer_Interrupt ****
+make -j16 all 
+arm-none-eabi-gcc "../Src/Tim.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -DSTM32F446xx -c -I../Inc -I"D:/Softwares/Stm32/en.stm32cubef4-v1-28-0/STM32Cube_FW_F4_V1.28.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"D:/Softwares/Stm32/en.stm32cubef4-v1-28-0/STM32Cube_FW_F4_V1.28.0/Drivers/CMSIS/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/Tim.d" -MT"Src/Tim.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/Tim.o"
+arm-none-eabi-gcc -o "19_Timer_Interrupt.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\MCU1_Bare_Metal_Progamming_BHM\19_Timer_Interrupt\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="19_Timer_Interrupt.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: 19_Timer_Interrupt.elf
+ 
+arm-none-eabi-size  19_Timer_Interrupt.elf 
+arm-none-eabi-objdump -h -S 19_Timer_Interrupt.elf  > "19_Timer_Interrupt.list"
+   text	   data	    bss	    dec	    hex	filename
+   5456	     92	   1900	   7448	   1d18	19_Timer_Interrupt.elf
+Finished building: default.size.stdout
+ 
+Finished building: 19_Timer_Interrupt.list
+ 
+
+18:48:07 Build Finished. 0 errors, 0 warnings. (took 1s.139ms)
+

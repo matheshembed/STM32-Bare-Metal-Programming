@@ -1,0 +1,122 @@
+/*
+Timer Vs Counter
+
+Timer - When the clock source is internal Then it is called as timer
+EG: Pll, XTAL, RC
+
+Counter - External clock source .. The Clock fed to the CPU
+
+Timers
+	- Can be used as a timer base generator
+	- Can be used to measure the frequency of an external event -> Input capture Mode
+	- Control an output waveform, or to indicate when a period of time has elapsed -> Output Compare Mode
+	- One Pulse Mode(OPM)-> Allows the countre to be started in response to a stimulus and to generate a pulse with a programmable length after a programmable delay
+
+Timer-Registers
+	-Timer Counter Register (TIMx_CNT)
+		- Shows the current counter value. Size could be a 32-bit or 16-bit depending on the timer module used
+
+	-Timer Auto-Reload Register (TIMx_ARR)
+		- Timer raises a flag and the counter restarts automatically whe counter value reaches the value in the auto-reload register. The counter is an up counter by default but can also be configured to be a down counter
+
+	-Timer Prescalar Register (TIMx_PSC)
+		-The prescalar slows down the counting speed of the timer by dividing the input clock of the timer
+
+**********************************************************************************************************************************************************************************
+	- Timer Some Terms
+		- Update Event
+			- When timeout occurs or how long it takes for flag to be raised
+		- Period
+			- Value loaded into auto-reload register (TIM_ARR)
+		- Up Counter
+			Counts from zero to a set value
+		- Down Counter
+			Counts from a set value down to zero
+**********************************************************************************************************************************************************************************
+Timer - Computing Update Event
+
+Update Event = Clock / (Prescalar+1)(Period+1)
+
+EG:
+Let
+Timer Clock = APB1 CLOCK = 48MHZ (FOR F401re)
+Prescalar = TIM_PSC Value = 47999+1
+Period = TIM_ARR Value = 499+1
+
+Update Event = 48 000 000 /  (47999+1) (499+1)  ==> 2Hz ==> 1/2 s ==> 0.5s
+
+**********************************************************************************************************************************************************************************
+Timer - Registers
+
+Prescalar - (PSC)
+	-Prescaler value is put here
+	EG: TIM->PSC == 1600-1 // Set the prescalar value
+
+Auto-Reload Register (ARR)
+	-Auto Reload value is put here
+	EG: TIM->ARR == 10000
+
+Control Register 1 (CR1) and CR2
+	-Enabling and disabling the timer
+	TIM2->CR1 = 1; // Enable Timer 2
+
+Status Register (SR)
+	-Checking, Setting and clearing the flags of the timer
+	EG: TIM2->SR &=  1; // Check Update Interrupt flag
+	  : TIM2->SR &= ~1; // Clear Update Interrupt flag
+
+Capture/Compare Register (CCR1, CCR2, CCR3, CCR4)
+	-One capture/Compare Register for each of the 4 channels
+	EG: Timestamp = TIM2->CCR1 ;
+
+Capture Compare Mode Register 1 and 2 for CH1 CH2 AND CH3 CH4
+
+Capture/Compare Enable Register
+	- Used to enable any of the timer channels either as input or output compare
+
+
+
+
+
+
+
+
+*/
+#include "stm32f4xx.h"
+
+#define TIM2_EN					(1U << 0) // To enable to clock access to the timer APB1ENR
+#define CR1_CEN					(1U << 0)
+
+//Interrupt Parameters
+#define TIM_IE					(1U << 0) // To enable the Timer Interrupt inthe DIER Reg
+
+
+void Tim2_1hz_Interrupt_Init(void)
+{
+	/* Enable Clock access to tim2*/
+	/* Tim2 Is connected with APB1 BUS Runs at 45Mhz*/
+	RCC->APB1ENR |= TIM2_EN;
+
+
+	/* Set the Prescalar value*/
+	/* Our default system clock is 16 Mhz */
+	/* We want to the timer to end up at 1 Hz */
+	TIM2->PSC = 1600 - 1; // We count from Zero so , we put minus 1 here
+	// 16 000 000/1600 = 10000
+
+	/* Set the auto reload value*/
+	TIM2->ARR = 10000 - 1; // We count from Zero so , we put minus 1 here again
+	// 10 000 / 10 000 = 1 // Therefore we end up with 1 hertz
+
+	/* Clear counter*/
+	TIM2->CNT = 0;
+
+	/* Enable Timer*/
+	TIM2->CR1 |= CR1_CEN ;
+
+	//Enable Timer Interrupt
+	TIM2->DIER |= TIM_IE;
+
+	//Enable Timer In NVIC
+	NVIC_EnableIRQ(TIM2_IRQn);
+}
