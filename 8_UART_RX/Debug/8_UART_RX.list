@@ -222,8 +222,8 @@ void UART2RXTX_Init(void){
  80002d6:	f443 7380 	orr.w	r3, r3, #256	@ 0x100
  80002da:	6213      	str	r3, [r2, #32]
 
-	// Set PA2 to alternate function tyoe to UART_TX (AF7)
-	// AFRL REGISTER DUE THE USART IS CONNECTED TO THE GPIO PIN 2
+	// Set PA3 to alternate function tyoe to UART_RX (AF7)
+	// AFRL REGISTER DUE THE USART IS CONNECTED TO THE GPIO PIN 3
 	GPIOA->AFR[0] &= (~(1U << 15));
  80002dc:	4b1c      	ldr	r3, [pc, #112]	@ (8000350 <UART2RXTX_Init+0xe4>)
  80002de:	6a1b      	ldr	r3, [r3, #32]
