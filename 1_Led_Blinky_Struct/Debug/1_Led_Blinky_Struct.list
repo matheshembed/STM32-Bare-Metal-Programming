@@ -127,7 +127,7 @@ int main(void){
  8000234:	f083 0320 	eor.w	r3, r3, #32
  8000238:	6153      	str	r3, [r2, #20]
 
-		for(long i=0; i<10000000; i++){
+		for(long i=0; i<1000000; i++){
  800023a:	2300      	movs	r3, #0
  800023c:	607b      	str	r3, [r7, #4]
  800023e:	e002      	b.n	8000246 <main+0x42>
@@ -137,12 +137,12 @@ int main(void){
  8000246:	687b      	ldr	r3, [r7, #4]
  8000248:	4a03      	ldr	r2, [pc, #12]	@ (8000258 <main+0x54>)
  800024a:	4293      	cmp	r3, r2
- 800024c:	dbf8      	blt.n	8000240 <main+0x3c>
+ 800024c:	ddf8      	ble.n	8000240 <main+0x3c>
 		GPIOA->ODR ^= LED_PIN;
  800024e:	e7ee      	b.n	800022e <main+0x2a>
  8000250:	40023800 	.word	0x40023800
  8000254:	40020000 	.word	0x40020000
- 8000258:	00989680 	.word	0x00989680
+ 8000258:	000f423f 	.word	0x000f423f
 
 0800025c <Reset_Handler>:
 

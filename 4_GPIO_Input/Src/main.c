@@ -44,6 +44,7 @@ int main(void)
 		// Here we are using bit masking
 
 		// IF IDR == 1 SWITCH IS OPEN AND IF IDR == 0 SWITCH IS CLOSED
+		// Basically its a active low switch
 		while((GPIOC->IDR & (1U << 13 ))==0){
 			// Turn on the led
 			GPIOA->ODR |= (LED);

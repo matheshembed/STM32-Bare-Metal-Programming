@@ -115,7 +115,7 @@ int main(void){
 		//GPIOA_ODR_ADDR ^= LED_PIN;
 		GPIOA->ODR ^= LED_PIN;
 
-		for(long i=0; i<10000000; i++){
+		for(long i=0; i<1000000; i++){
 			// Delay loop
 		}
 	}
