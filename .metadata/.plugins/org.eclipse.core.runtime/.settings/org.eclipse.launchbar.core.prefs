@@ -2,7 +2,7 @@ LaunchTargetManager/org.eclipse.launchbar.core.launchTargetType.local,Local/arch
 LaunchTargetManager/org.eclipse.launchbar.core.launchTargetType.local,Local/name=Local
 LaunchTargetManager/org.eclipse.launchbar.core.launchTargetType.local,Local/os=win32
 activeLaunchTarget=null\:---
-configDescList=org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:5_UART_TX Debug,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:1_Led_Blinky_Struct Debug
+configDescList=org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:1_Led_Blinky_Struct Debug,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:5_UART_TX Debug
 eclipse.preferences.version=1
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:0_Led_Toggle_Addr\ Debug/activeLaunchMode=run
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:0_Led_Toggle_Addr\ Debug/activeLaunchTarget=null\:---
@@ -32,7 +32,7 @@ org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:3_GPIO_BSRR\ Debug/activeLaunch
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:3_GPIO_Output_BSRR_Reg\ Debug/activeLaunchMode=run
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:4_GPIO_Input\ Debug/activeLaunchMode=run
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:4_GPIO_Input\ Debug/activeLaunchTarget=null\:---
-org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:5_UART_TX\ Debug/activeLaunchMode=run
+org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:5_UART_TX\ Debug/activeLaunchMode=debug
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:5_UART_TX\ Debug/activeLaunchTarget=null\:---
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:6_UART_Printf\ Debug/activeLaunchTarget=null\:---
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:7_UART_Modular\ Debug/activeLaunchMode=run
