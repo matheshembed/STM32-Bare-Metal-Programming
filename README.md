@@ -1,6 +1,6 @@
 # 🧠 STM32 Bare Metal Programming
 
-This repository contains my collection of **bare-metal (no HAL, no RTOS)** projects for the **STM32 Nucleo-F446RE** board. Each example demonstrates how to configure and control peripherals by directly accessing **registers** as defined in the STM32 reference manual and datasheet.
+This repository contains my collection of **bare-metal (no HAL, no RTOS)**  for the **STM32 Nucleo-F446RE** board. Each example demonstrates how to configure and control peripherals by directly accessing **registers** as defined in the STM32 reference manual and datasheet.
 
 ---
 
@@ -66,15 +66,11 @@ STM32-Bare-Metal-Programming/
 ## 💬 Author
 
 **Mathesh Varma**  
-📍 PSNACET, Dindigul  
 🔗 [LinkedIn](www.linkedin.com/in/matheshvarma25)  
 🧰 [GitHub](https://github.com/matheshembed)
 
 ---
 
-## 📸 Preview
-
-Each folder includes screenshots or code snippets from **STM32CubeIDE** showing register configurations and results.
 
 ---
 
