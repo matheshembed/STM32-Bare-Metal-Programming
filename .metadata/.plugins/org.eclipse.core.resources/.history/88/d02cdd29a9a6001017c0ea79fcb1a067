@@ -47,8 +47,8 @@ void UART2RXTX_Init(void){
 	GPIOA->AFR[0] |= (1U << 9);
 	GPIOA->AFR[0] |= (1U << 8);
 
-	// Set PA3 to alternate function tyoe to UART_RX (AF7)
-	// AFRL REGISTER DUE THE USART IS CONNECTED TO THE GPIO PIN 3
+	// Set PA2 to alternate function tyoe to UART_TX (AF7)
+	// AFRL REGISTER DUE THE USART IS CONNECTED TO THE GPIO PIN 2
 	GPIOA->AFR[0] &= (~(1U << 15));
 	GPIOA->AFR[0] |= (1U << 14);
 	GPIOA->AFR[0] |= (1U << 13);

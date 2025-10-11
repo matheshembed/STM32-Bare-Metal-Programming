@@ -1034,11 +1034,11 @@ LOAD C:/ST/STM32CubeIDE_1.18.1/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.ext
  .debug_macro   0x00001739       0x16 ./Src/main.o
  .debug_macro   0x0000174f       0x16 ./Src/main.o
  .debug_macro   0x00001765      0x146 ./Src/main.o
- .debug_macro   0x000018ab       0x28 ./Src/main.o
- .debug_macro   0x000018d3       0x28 ./Src/main.o
- .debug_macro   0x000018fb      0x103 ./Src/main.o
- .debug_macro   0x000019fe       0x6a ./Src/main.o
- .debug_macro   0x00001a68      0x1df ./Src/main.o
+ .debug_macro   0x000018ab      0x103 ./Src/main.o
+ .debug_macro   0x000019ae       0x6a ./Src/main.o
+ .debug_macro   0x00001a18      0x1df ./Src/main.o
+ .debug_macro   0x00001bf7       0x28 ./Src/main.o
+ .debug_macro   0x00001c1f       0x28 ./Src/main.o
  .debug_macro   0x00001c47       0x1c ./Src/main.o
  .debug_macro   0x00001c63       0x22 ./Src/main.o
  .debug_macro   0x00001c85       0xfb ./Src/main.o
