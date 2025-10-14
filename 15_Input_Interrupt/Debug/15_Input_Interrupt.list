@@ -37,15 +37,15 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING, OCTETS
  16 .debug_macro  0001ab32  00000000  00000000  000051f9  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 17 .debug_line   0000249f  00000000  00000000  0001fd2b  2**0
+ 17 .debug_line   00002499  00000000  00000000  0001fd2b  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 18 .debug_str    0009141c  00000000  00000000  000221ca  2**0
+ 18 .debug_str    0009141c  00000000  00000000  000221c4  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 19 .comment      00000043  00000000  00000000  000b35e6  2**0
+ 19 .comment      00000043  00000000  00000000  000b35e0  2**0
                   CONTENTS, READONLY
- 20 .debug_frame  00000c30  00000000  00000000  000b362c  2**2
+ 20 .debug_frame  00000c30  00000000  00000000  000b3624  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 21 .debug_line_str 0000005e  00000000  00000000  000b425c  2**0
+ 21 .debug_line_str 0000005e  00000000  00000000  000b4254  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
 
 Disassembly of section .text:
@@ -214,22 +214,23 @@ __STATIC_FORCEINLINE void __disable_irq(void)
  80002fa:	6453      	str	r3, [r2, #68]	@ 0x44
 
 	/*Make PC13 As input*/
-	GPIOC->MODER &= ~(3U <<26);
+	GPIOC->MODER &= ~(1U <<26);
  80002fc:	4b13      	ldr	r3, [pc, #76]	@ (800034c <PC13_Exti_Init+0x70>)
  80002fe:	681b      	ldr	r3, [r3, #0]
  8000300:	4a12      	ldr	r2, [pc, #72]	@ (800034c <PC13_Exti_Init+0x70>)
- 8000302:	f023 6340 	bic.w	r3, r3, #201326592	@ 0xc000000
+ 8000302:	f023 6380 	bic.w	r3, r3, #67108864	@ 0x4000000
  8000306:	6013      	str	r3, [r2, #0]
+	GPIOC->MODER &= ~(1U <<27);
+ 8000308:	4b10      	ldr	r3, [pc, #64]	@ (800034c <PC13_Exti_Init+0x70>)
+ 800030a:	681b      	ldr	r3, [r3, #0]
+ 800030c:	4a0f      	ldr	r2, [pc, #60]	@ (800034c <PC13_Exti_Init+0x70>)
+ 800030e:	f023 6300 	bic.w	r3, r3, #134217728	@ 0x8000000
+ 8000312:	6013      	str	r3, [r2, #0]
+
 
 	/*Select PORTC For EXTI13*/ // Section 8.2.6
-	/*The values are zero by default so we dont have to clear every bit... if not it is mandatory to clear the bits*/
-	SYSCFG->EXTICR[3] &= ~(0xF << 4);  // Clear bits 7:4
- 8000308:	4b11      	ldr	r3, [pc, #68]	@ (8000350 <PC13_Exti_Init+0x74>)
- 800030a:	695b      	ldr	r3, [r3, #20]
- 800030c:	4a10      	ldr	r2, [pc, #64]	@ (8000350 <PC13_Exti_Init+0x74>)
- 800030e:	f023 03f0 	bic.w	r3, r3, #240	@ 0xf0
- 8000312:	6153      	str	r3, [r2, #20]
-	SYSCFG->EXTICR[3] |=  (0x2 << 4);  // Set to Port C //0010 FOR PC13
+	/*The values are zero by default so we dont have to clear every bit... if not ..it is mandatory to clear the bits*/
+	SYSCFG->EXTICR[3] |=  (1U <<5);  // Set to Port C //0010 FOR PC13
  8000314:	4b0e      	ldr	r3, [pc, #56]	@ (8000350 <PC13_Exti_Init+0x74>)
  8000316:	695b      	ldr	r3, [r3, #20]
  8000318:	4a0d      	ldr	r2, [pc, #52]	@ (8000350 <PC13_Exti_Init+0x74>)

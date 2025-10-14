@@ -137,7 +137,8 @@ void PC13_Exti_Init(void)
 
 	/*Select PORTC For EXTI13*/ // Section 8.2.6
 	/*The values are zero by default so we dont have to clear every bit... if not ..it is mandatory to clear the bits*/
-	SYSCFG->EXTICR[3] |=  (1U <<5);  // Set to Port C //0010 FOR PC13
+	SYSCFG->EXTICR[3] &= ~(0xF << 4);  // Clear bits 7:4
+	SYSCFG->EXTICR[3] |=  (0x2 << 4);  // Set to Port C //0010 FOR PC13
 
 	/*Unmask EXTI13*/
 	/*Mask = Ignore*/
