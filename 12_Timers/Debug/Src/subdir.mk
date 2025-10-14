@@ -6,27 +6,21 @@
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
 ../Src/Tim.c \
-../Src/adc.c \
 ../Src/main.c \
-../Src/sys_tick.c \
 ../Src/syscalls.c \
 ../Src/sysmem.c \
 ../Src/uart.c 
 
 OBJS += \
 ./Src/Tim.o \
-./Src/adc.o \
 ./Src/main.o \
-./Src/sys_tick.o \
 ./Src/syscalls.o \
 ./Src/sysmem.o \
 ./Src/uart.o 
 
 C_DEPS += \
 ./Src/Tim.d \
-./Src/adc.d \
 ./Src/main.d \
-./Src/sys_tick.d \
 ./Src/syscalls.d \
 ./Src/sysmem.d \
 ./Src/uart.d 
@@ -39,7 +33,7 @@ Src/%.o Src/%.su Src/%.cyclo: ../Src/%.c Src/subdir.mk
 clean: clean-Src
 
 clean-Src:
-	-$(RM) ./Src/Tim.cyclo ./Src/Tim.d ./Src/Tim.o ./Src/Tim.su ./Src/adc.cyclo ./Src/adc.d ./Src/adc.o ./Src/adc.su ./Src/main.cyclo ./Src/main.d ./Src/main.o ./Src/main.su ./Src/sys_tick.cyclo ./Src/sys_tick.d ./Src/sys_tick.o ./Src/sys_tick.su ./Src/syscalls.cyclo ./Src/syscalls.d ./Src/syscalls.o ./Src/syscalls.su ./Src/sysmem.cyclo ./Src/sysmem.d ./Src/sysmem.o ./Src/sysmem.su ./Src/uart.cyclo ./Src/uart.d ./Src/uart.o ./Src/uart.su
+	-$(RM) ./Src/Tim.cyclo ./Src/Tim.d ./Src/Tim.o ./Src/Tim.su ./Src/main.cyclo ./Src/main.d ./Src/main.o ./Src/main.su ./Src/syscalls.cyclo ./Src/syscalls.d ./Src/syscalls.o ./Src/syscalls.su ./Src/sysmem.cyclo ./Src/sysmem.d ./Src/sysmem.o ./Src/sysmem.su ./Src/uart.cyclo ./Src/uart.d ./Src/uart.o ./Src/uart.su
 
 .PHONY: clean-Src
 

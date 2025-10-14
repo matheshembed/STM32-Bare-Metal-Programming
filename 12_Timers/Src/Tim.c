@@ -90,7 +90,7 @@ Capture/Compare Enable Register
 //Interrupt Parameters
 #define TIM_IE					(1U << 6)
 
-void Tim2_1hr_Init(void)
+void Tim2_1hz_Init(void)
 {
 	/* Enable Clock access to tim2*/
 	/* Tim2 Is connected with APB1 BUS Runs at 45Mhz*/
@@ -114,31 +114,3 @@ void Tim2_1hr_Init(void)
 	TIM2->CR1 |= CR1_CEN ;
 }
 
-void Tim2_1hz_Interrupt_Init(void)
-{
-	/* Enable Clock access to tim2*/
-	/* Tim2 Is connected with APB1 BUS Runs at 45Mhz*/
-	RCC->APB1ENR |= TIM2_EN;
-
-
-	/* Set the Prescalar value*/
-	/* Our default system clock is 16 Mhz */
-	/* We want to the timer to end up at 1 Hz */
-	TIM2->PSC = 1600 - 1; // We count from Zero so , we put minus 1 here
-	// 16 000 000/1600 = 10000
-
-	/* Set the auto reload value*/
-	TIM2->ARR = 10000 - 1; // We count from Zero so , we put minus 1 here again
-	// 10 000 / 10 000 = 1 // Therefore we end up with 1 hertz
-
-	/* Clear counter*/
-	TIM2->CNT = 0;
-
-	/* Enable Timer*/
-	TIM2->CR1 |= CR1_CEN ;
-
-	//Enable TIM Interrupt
-	TIM2->DIER |= TIM_IE;
-	//Enable TIM Interrupt in NVIC
-
-}

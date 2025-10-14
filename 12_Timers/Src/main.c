@@ -14,7 +14,7 @@ int main(void)
 	GPIOA->MODER &= (~(1U <<11));
 
 	UART2TX_Init();
-	Tim2_1hr_Init();
+	Tim2_1hz_Init();
 
 	while(1)
 	{

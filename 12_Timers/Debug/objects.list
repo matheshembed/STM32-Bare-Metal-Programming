@@ -1,7 +1,5 @@
 "./Src/Tim.o"
-"./Src/adc.o"
 "./Src/main.o"
-"./Src/sys_tick.o"
 "./Src/syscalls.o"
 "./Src/sysmem.o"
 "./Src/uart.o"

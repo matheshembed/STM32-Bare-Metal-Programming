@@ -1,0 +1,38 @@
+
+#include "uart.h"
+#include "Tim.h"
+
+#define GPIOAEN		(1U<<0)
+#define GPIOA_5		(1U<<5)
+#define LED			GPIOA_5
+
+int main(void)
+{
+	RCC->AHB1ENR |= GPIOAEN;
+
+	GPIOA->MODER |= (1U <<10);
+	GPIOA->MODER &= (~(1U <<11));
+
+	UART2TX_Init();
+	Tim2_1hr_Init();
+
+	while(1)
+	{
+		// Wait for UIF
+		while(!(TIM2->SR & SR_UIF)){}
+
+		// Clear UIF
+		TIM2->SR &= ~SR_UIF;
+
+		printf("A second is passed  \n\r");
+		GPIOA->ODR ^= LED;
+	}
+
+
+
+
+}
+
+
+
+
