@@ -6,9 +6,12 @@
 
 #define LED_PIN				GPIOA_5
 
+static void DMA_CallBack(void);
 
-char key;
-int main(void){
+
+int main(void)
+{
+	char message[31] = "Hello From Stm32 DMA Transfer\n\r";
 
 	// Clock Access to GPIOA
 	RCC->AHB1ENR |= GPIOAEN;
@@ -17,33 +20,38 @@ int main(void){
 	GPIOA->MODER |= (1U << 10);
 	GPIOA->MODER &= (~(1U << 11));
 
-	UART2RX_Interrupt_Init();
+	UART2TX_Init();
+	DMA1_Stream6_Init((uint32_t) message, (uint32_t) &USART2->DR ,31 );
 
 	while(1)
 	{
 
 
 	}
+
 }
 
-
-
-void USART2_IRQHandler(void)
+static void DMA_CallBack(void)
 {
-	//Check if RXNE is set
-	if(USART2->SR & UART_SR_RXE)
+	/*Turn on the Led when the transfer is complete*/
+	GPIOA->ODR |= LED_PIN;
+}
+
+void DMA1_Stream6_IRQHandler(void)
+{
+	/*Check for Transfer complete interrupt*/
+	if(DMA1->HISR & HISR_TCIF6)
 	{
-		 key = USART2->DR;
-		if(key == '1')
-		{
-			GPIOA->ODR |= LED_PIN;
-		}
-		else
-		{
-			GPIOA->ODR &= ~LED_PIN;
-		}
+		/*Clear the Transfer complete flag*/ // done in DMA_HIFCR Reg
+		DMA1->HIFCR |= HIFCR_CTC1F6;
+
+		/*Do something*/
+		DMA_CallBack();
 	}
 
 }
+
+
+
 
 

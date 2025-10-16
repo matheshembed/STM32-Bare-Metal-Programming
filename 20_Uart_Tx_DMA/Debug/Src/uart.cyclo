@@ -1,9 +1,10 @@
 D:/Softwares/Stm32/en.stm32cubef4-v1-28-0/STM32Cube_FW_F4_V1.28.0/Drivers/CMSIS/Include/core_cm4.h:1684:22:__NVIC_EnableIRQ	2
 ../Src/uart.c:38:5:__io_putchar	1
-../Src/uart.c:43:6:DMA1_Stream6_init	1
-../Src/uart.c:104:6:UART2RXTX_Init	1
-../Src/uart.c:148:5:UART2_Read	2
-../Src/uart.c:162:6:UART2RX_Interrupt_Init	1
-../Src/uart.c:225:6:Uart2_Write	2
-../Src/uart.c:236:13:Uart_Set_Bd	1
-../Src/uart.c:241:17:Compute_Uart_Bd	1
+../Src/uart.c:43:6:DMA1_Stream6_Init	2
+../Src/uart.c:107:6:UART2TX_Init	1
+../Src/uart.c:139:6:UART2RXTX_Init	1
+../Src/uart.c:183:5:UART2_Read	2
+../Src/uart.c:197:6:UART2RX_Interrupt_Init	1
+../Src/uart.c:260:6:Uart2_Write	2
+../Src/uart.c:271:13:Uart_Set_Bd	1
+../Src/uart.c:276:17:Compute_Uart_Bd	1

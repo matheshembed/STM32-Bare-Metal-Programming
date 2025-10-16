@@ -23,7 +23,7 @@
 #define DMA_MEM_INC				(1U << 10)
 #define DMA_DIR					(1U << 6)  // Memory to Peripheral
 #define DMA_TR_COM_INT_EN		(1U << 4)
-#define DMA_CR_EN				(1U << 0)
+#define DMA_CR_EN				DMA_S_EN
 #define UART_CR3_DMAT			(1U << 7)
 
 
@@ -52,7 +52,10 @@ void DMA1_Stream6_Init(uint32_t src, uint32_t dest, uint32_t len)
 	RCC->AHB1ENR |= DMA_CLK_EN; // Clock Enabled
 
 	/*Disable DMA1 Stream 6*/ //Look in the stream configuration register 9.5.5
-	DMA1_Stream6->CR &= ~DMA_S_EN;
+	DMA1_Stream6->CR &= ~DMA_CR_EN;
+
+	/*Wait until DMA1 Stream 6 is disabled*/
+	while(DMA1_Stream6->CR & DMA_CR_EN){}
 
 	/*Clear all the interrupt flag for stream 6*/
 	// 9.5.4
@@ -101,6 +104,38 @@ void DMA1_Stream6_Init(uint32_t src, uint32_t dest, uint32_t len)
 	NVIC_EnableIRQ(DMA1_Stream6_IRQn);
 }
 
+void UART2TX_Init(void){
+	// The UART2 IS CONNECTED TO THE GPIOA AND PIN 2
+	// To initialize the uart we have to make the gpio as the alternate function which is
+
+
+
+	// Clock access to the GPIOA
+	RCC->AHB1ENR |=  GPIOAEN ;
+
+	// Setting PA2 to alternate function mode
+	GPIOA->MODER |=  (1U << 5);
+	GPIOA->MODER &= ~((1U << 4));
+
+	// Set PA2 to alternate function tyoe to UART_TX (AF7)
+	// AFRL REGISTER DUE THE USART IS CONNECTED TO THE GPIO PIN 2
+	GPIOA->AFR[0] &= (~(1U << 11));
+	GPIOA->AFR[0] |= (1U << 10);
+	GPIOA->AFR[0] |= (1U << 9);
+	GPIOA->AFR[0] |= (1U << 8);
+
+	// Enable the Clock access to the UART 2
+	RCC->APB1ENR |=  UART2EN ;
+
+	// Configure the Baud rate
+	Uart_Set_Bd(USART2, APB1_CLK, UART_BAUDRATE);
+
+	// Configure the transfer direction
+	// I want to clear every bits of the register and set only the 3 pin that is why we are not usig the OR operator
+	USART2->CR1 |= USART2_CR1;
+	//Since we are already written the value in the CR1 Register ourself we dont want it to be vanished .. we need that ... so using the OR Operator as usual.
+	USART2->CR1 |= UART_EN;
+}
 void UART2RXTX_Init(void){
 	// The UART2 IS CONNECTED TO THE GPIOA AND PIN 2
 	// To initialize the uart we have to make the gpio as the alternate function which is.
@@ -209,16 +244,6 @@ void UART2RX_Interrupt_Init(void){
 	USART2->CR1 |= UART_EN;
 }
 /*************************************************************************************************/
-
-
-
-
-
-
-
-
-
-
 
 
 /************************************************************************************************/
