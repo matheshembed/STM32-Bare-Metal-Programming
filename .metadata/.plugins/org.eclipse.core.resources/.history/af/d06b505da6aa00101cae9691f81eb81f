@@ -192,6 +192,8 @@ int UART2_Read(void){
 
 
 
+
+
 void UART2RX_Interrupt_Init(void){
 	// The UART2 IS CONNECTED TO THE GPIOA AND PIN 2
 	// To initialize the uart we have to make the gpio as the alternate function which is.

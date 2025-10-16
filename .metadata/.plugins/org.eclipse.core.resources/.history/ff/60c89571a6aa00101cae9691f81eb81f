@@ -70,7 +70,6 @@ Dma - Transfer types
 
 
 #include "uart.h"
-// Every DMA Functions located inside this uart.h and .c files
 
 #define GPIOAEN				(1U << 0);
 #define GPIOA_5				(1U << 5);

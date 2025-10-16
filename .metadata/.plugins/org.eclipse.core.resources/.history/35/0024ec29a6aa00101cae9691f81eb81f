@@ -1,3 +1,55 @@
+
+#include "uart.h"
+
+#define GPIOAEN				(1U << 0);
+#define GPIOA_5				(1U << 5);
+
+#define LED_PIN				GPIOA_5
+
+static void DMA_CallBack(void);
+
+
+int main(void)
+{
+	char message[31] = "Hello From Stm32 DMA Transfer\n\r";
+
+	// Clock Access to GPIOA
+	RCC->AHB1ENR |= GPIOAEN;
+
+	// PA5 AS OUTPUT
+	GPIOA->MODER |= (1U << 10);
+	GPIOA->MODER &= (~(1U << 11));
+
+	UART2TX_Init();
+	DMA1_Stream6_Init((uint32_t) message, (uint32_t) &USART2->DR ,31 );
+
+	while(1)
+	{
+
+
+	}
+
+}
+
+static void DMA_CallBack(void)
+{
+	/*Turn on the Led when the transfer is complete*/
+	GPIOA->ODR |= LED_PIN;
+}
+
+void DMA1_Stream6_IRQHandler(void)
+{
+	/*Check for Transfer complete interrupt*/
+	if(DMA1->HISR & HISR_TCIF6)
+	{
+		/*Clear the Transfer complete flag*/ // done in DMA_HIFCR Reg
+		DMA1->HIFCR |= HIFCR_CTC1F6;
+
+		/*Do something*/
+		DMA_CallBack();
+	}
+
+}
 /*
 DMA Programming
 
@@ -68,60 +120,10 @@ Dma - Transfer types
 		-Once the DMA_SxNDTR Register reaches zero, the stream is disabled.
 */
 
-
-#include "uart.h"
-// Every DMA Functions located inside this uart.h and .c files
-
-#define GPIOAEN				(1U << 0);
-#define GPIOA_5				(1U << 5);
-
-#define LED_PIN				GPIOA_5
-
-static void DMA_CallBack(void);
-
-
-int main(void)
-{
-	char message[31] = "Hello From Stm32 DMA Transfer\n\r";
-
-	// Clock Access to GPIOA
-	RCC->AHB1ENR |= GPIOAEN;
-
-	// PA5 AS OUTPUT
-	GPIOA->MODER |= (1U << 10);
-	GPIOA->MODER &= (~(1U << 11));
-
-	UART2TX_Init();
-	DMA1_Stream6_Init((uint32_t) message, (uint32_t) &USART2->DR ,31 );
-
-	while(1)
-	{
-
-
-	}
-
-}
-
-static void DMA_CallBack(void)
-{
-	/*Turn on the Led when the transfer is complete*/
-	GPIOA->ODR |= LED_PIN;
-}
-
-void DMA1_Stream6_IRQHandler(void)
-{
-	/*Check for Transfer complete interrupt*/
-	if(DMA1->HISR & HISR_TCIF6)
-	{
-		/*Clear the Transfer complete flag*/ // done in DMA_HIFCR Reg
-		DMA1->HIFCR |= HIFCR_CTC1F6;
-
-		/*Do something*/
-		DMA_CallBack();
-	}
-
-}
-
+/*
+	Lets see Which DMA Module our UART Line is connected
+	For that DMA Request mapping Table 28 Pg:208 in RM
+*/
 
 
 
