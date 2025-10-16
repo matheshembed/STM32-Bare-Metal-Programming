@@ -18,7 +18,14 @@
 
 /*DMA Definitions*/
 #define DMA_CLK_EN				(1U << 21)
-#define DMA_S_EN				(1U << 0) // Stream Disable
+#define DMA_S_EN				(1U << 0)  //Stream Disable
+#define CHSEL4					(1U << 27) //Channel Select 4
+#define DMA_MEM_INC				(1U << 10)
+#define DMA_DIR					(1U << 6)  // Memory to Peripheral
+#define DMA_TR_COM_INT_EN		(1U << 4)
+#define DMA_CR_EN				(1U << 0)
+#define UART_CR3_DMAT			(1U << 7)
+
 
 static void Uart_Set_Bd(USART_TypeDef *USARTx, uint32_t PeriClk, uint32_t BaudRate);
 static uint16_t Compute_Uart_Bd(uint32_t PeriClk, uint32_t BaudrRate);
@@ -33,7 +40,7 @@ int __io_putchar(int ch){
 	return ch;
 }
 
-void DMA1_Stream6_init(uint32_t src, uint32_t dest, uint32_t len)
+void DMA1_Stream6_Init(uint32_t src, uint32_t dest, uint32_t len)
 {
 	/*
 		Lets see Which DMA Module our UART Line is connected
@@ -50,11 +57,11 @@ void DMA1_Stream6_init(uint32_t src, uint32_t dest, uint32_t len)
 	/*Clear all the interrupt flag for stream 6*/
 	// 9.5.4
 	//By setting 1 to these bits clears the interrupt flags of the stream 6.
-	DMA1->HIFR |= (1U <<16);
-	DMA1->HIFR |= (1U <<18);
-	DMA1->HIFR |= (1U <<19);
-	DMA1->HIFR |= (1U <<20);
-	DMA1->HIFR |= (1U <<21);
+	DMA1->HIFCR |= (1U <<16);
+	DMA1->HIFCR |= (1U <<18);
+	DMA1->HIFCR |= (1U <<19);
+	DMA1->HIFCR |= (1U <<20);
+	DMA1->HIFCR |= (1U <<21);
 
 	/*Set the destination buffer*/
 	DMA1_Stream6->PAR =dest;
@@ -64,15 +71,34 @@ void DMA1_Stream6_init(uint32_t src, uint32_t dest, uint32_t len)
 	DMA1_Stream6->M0AR = src;
 
 	/*Set length*/
-	DMA1_Stream6->NDTR = length;
+	DMA1_Stream6->NDTR = len;
 
 	/*Select stream6 ch4*/
+	//Configure the CHSEL (Channel Selection) Bit to select the desired channel
+	// 110 for Channel 4
+	DMA1_Stream6->CR = CHSEL4;
+
 	/*Enable Memory increment*/
+	DMA1_Stream6->CR |= DMA_MEM_INC;
+
 	/*Configure Transfer direction */
-	/*Enable direct mode and disable FIFO*/
+	DMA1_Stream6->CR |= DMA_DIR;// 01 for Memory to Peripheral
+
+	/*Enable DMA Transfer complete interrupt*/
+	DMA1_Stream6->CR |= DMA_TR_COM_INT_EN;
+
+	/*Enable direct mode and disable FIFO*/ //9.5.10
+	DMA1_Stream6->FCR = 0;
+
 	/*Enable DMA1 Stream 6*/
-	/*Enable UART2 Transmitter DMA*/
+	DMA1_Stream6->CR |=DMA_CR_EN;
+
+	/*Enable UART2 Transmitter DMA*/ // 25.6.6 Read the USART_CR3 Reg
+	//Bit DMAT
+	USART2->CR3 |= UART_CR3_DMAT;
+
 	/*DMA Interrupt enable in NVIC*/
+	NVIC_EnableIRQ(DMA1_Stream6_IRQn);
 }
 
 void UART2RXTX_Init(void){

@@ -1,0 +1,234 @@
+#include "uart.h"
+
+#define GPIOAEN					(1U << 0)
+#define UART2EN					(1U << 17)
+#define USART2_CR1				(1U << 3) // UART Transmitter
+#define UART_EN					(1U << 13)
+#define UART_SR_TXE				(1U << 7)
+
+#define UART2_RE_CR1			(1U << 2) // UART Receiver
+
+#define SYS_FREQ				16000000 // MCU CLOCK SPEED
+#define APB1_CLK				SYS_FREQ
+
+#define UART_BAUDRATE			115200
+
+/* Interrupt definitions*/
+#define RXNEIE_CR1				(1U << 5)
+
+/*DMA Definitions*/
+#define DMA_CLK_EN				(1U << 21)
+#define DMA_S_EN				(1U << 0) // Stream Disable
+#define CHSEL4					(1U << 27)//Channel Select 4
+#define DMA_MEM_INC				(1U <<10)
+#define DMA_DIR					(1U << 6)// Memory to Peripheral
+#define DMA_TR_COM_INT_EN		(1U << 4)
+
+
+static void Uart_Set_Bd(USART_TypeDef *USARTx, uint32_t PeriClk, uint32_t BaudRate);
+static uint16_t Compute_Uart_Bd(uint32_t PeriClk, uint32_t BaudrRate);
+void UART2TX_Init(void);
+void Uart2_Write(int ch);
+int UART2_Read(void);
+void UART2RXTX_Init(void);
+void UART2RX_Interrupt_Init(void);
+
+int __io_putchar(int ch){
+	Uart2_Write(ch);
+	return ch;
+}
+
+void DMA1_Stream6_init(uint32_t src, uint32_t dest, uint32_t len)
+{
+	/*
+		Lets see Which DMA Module our UART Line is connected
+		For that DMA Request mapping Table 28 Pg:208 in RM
+	*/
+
+	/*Enable clock access to DMA*/
+	// DMA1 Connected to the AHB1 Bus
+	RCC->AHB1ENR |= DMA_CLK_EN; // Clock Enabled
+
+	/*Disable DMA1 Stream 6*/ //Look in the stream configuration register 9.5.5
+	DMA1_Stream6->CR &= ~DMA_S_EN;
+
+	/*Clear all the interrupt flag for stream 6*/
+	// 9.5.4
+	//By setting 1 to these bits clears the interrupt flags of the stream 6.
+	DMA1->HIFCR |= (1U <<16);
+	DMA1->HIFCR |= (1U <<18);
+	DMA1->HIFCR |= (1U <<19);
+	DMA1->HIFCR |= (1U <<20);
+	DMA1->HIFCR |= (1U <<21);
+
+	/*Set the destination buffer*/
+	DMA1_Stream6->PAR =dest;
+
+	/*Source the source buffer*/
+	//Memory source
+	DMA1_Stream6->M0AR = src;
+
+	/*Set length*/
+	DMA1_Stream6->NDTR = len;
+
+	/*Select stream6 ch4*/
+	//Configure the CHSEL (Channel Selection) Bit to select the desired channel
+	// 110 for Channel 4
+	DMA1_Stream6->CR = CHSEL4;
+
+	/*Enable Memory increment*/
+	DMA1_Stream6->CR |= DMA_MEM_INC;
+
+	/*Configure Transfer direction */
+	DMA1_Stream6->CR |= DMA_DIR;// 01 for Memory to Peripheral
+
+	/*Enable DMA Transfer complete interrupt*/
+	DMA1_Stream6->CR = DMA_TR_COM_INT_EN;
+	/*Enable direct mode and disable FIFO*/
+	/*Enable DMA1 Stream 6*/
+	/*Enable UART2 Transmitter DMA*/
+	/*DMA Interrupt enable in NVIC*/
+}
+
+void UART2RXTX_Init(void){
+	// The UART2 IS CONNECTED TO THE GPIOA AND PIN 2
+	// To initialize the uart we have to make the gpio as the alternate function which is.
+
+	// Clock access to the GPIOA
+	RCC->AHB1ENR |=  GPIOAEN ;
+
+	// Setting PA2 to alternate function mode
+	GPIOA->MODER |=  (1U << 5);
+	GPIOA->MODER &= ~((1U << 4));
+
+	// Set PA3 as Alternate Function
+	GPIOA->MODER |=  (1U << 7);
+	GPIOA->MODER &= ~(1U << 6);
+
+	// Set PA2 to alternate function tyoe to UART_TX (AF7)
+	// AFRL REGISTER DUE THE USART IS CONNECTED TO THE GPIO PIN 2
+	GPIOA->AFR[0] &= (~(1U << 11));
+	GPIOA->AFR[0] |= (1U << 10);
+	GPIOA->AFR[0] |= (1U << 9);
+	GPIOA->AFR[0] |= (1U << 8);
+
+	// Set PA2 to alternate function tyoe to UART_TX (AF7)
+	// AFRL REGISTER DUE THE USART IS CONNECTED TO THE GPIO PIN 2
+	GPIOA->AFR[0] &= (~(1U << 15));
+	GPIOA->AFR[0] |= (1U << 14);
+	GPIOA->AFR[0] |= (1U << 13);
+	GPIOA->AFR[0] |= (1U << 12);
+
+	// Enable the Clock access to the UART 2
+	RCC->APB1ENR |=  UART2EN ;
+
+	// Configure the Baud rate
+	Uart_Set_Bd(USART2, APB1_CLK, UART_BAUDRATE);
+
+	// Configure the transfer direction
+	// I want to clear every bits of the register and set only the 3 pin that is why we are not usig the OR operator
+	USART2->CR1 |= USART2_CR1 ;
+	USART2->CR1 |= UART2_RE_CR1 ;
+	//Since we are already written the value in the CR1 Register ourself we dont want it to be vanished .. we need that ... so using the OR Operator as usual.
+	USART2->CR1 |= UART_EN;
+}
+/*************************************************************************************************/
+
+int UART2_Read(void){
+	// Make sure the Receive data register is  Not empty before writing the data to it
+	// 0 => Data is not received (empty)
+	// 1 => Data ready to be read
+	while(!(USART2->SR & UART_SR_RXE));
+
+	// Read data
+	return USART2->DR;
+}
+
+
+
+
+
+void UART2RX_Interrupt_Init(void){
+	// The UART2 IS CONNECTED TO THE GPIOA AND PIN 2
+	// To initialize the uart we have to make the gpio as the alternate function which is.
+
+	// Clock access to the GPIOA
+	RCC->AHB1ENR |=  GPIOAEN ;
+
+	// Setting PA2 to alternate function mode
+	GPIOA->MODER |=  (1U << 5);
+	GPIOA->MODER &= ~((1U << 4));
+
+	// Set PA3 as Alternate Function
+	GPIOA->MODER |=  (1U << 7);
+	GPIOA->MODER &= ~(1U << 6);
+
+	// Set PA2 to alternate function tyoe to UART_TX (AF7)
+	// AFRL REGISTER DUE THE USART IS CONNECTED TO THE GPIO PIN 2
+	GPIOA->AFR[0] &= (~(1U << 11));
+	GPIOA->AFR[0] |= (1U << 10);
+	GPIOA->AFR[0] |= (1U << 9);
+	GPIOA->AFR[0] |= (1U << 8);
+
+	// Set PA2 to alternate function tyoe to UART_TX (AF7)
+	// AFRL REGISTER DUE THE USART IS CONNECTED TO THE GPIO PIN 2
+	GPIOA->AFR[0] &= (~(1U << 15));
+	GPIOA->AFR[0] |= (1U << 14);
+	GPIOA->AFR[0] |= (1U << 13);
+	GPIOA->AFR[0] |= (1U << 12);
+
+	// Enable the Clock access to the UART 2
+	RCC->APB1ENR |=  UART2EN ;
+
+	// Configure the Baud rate
+	Uart_Set_Bd(USART2, APB1_CLK, UART_BAUDRATE);
+
+	// Configure the transfer direction
+	// I want to clear every bits of the register and set only the 3 pin that is why we are not usig the OR operator
+	USART2->CR1 |= USART2_CR1 ;
+	USART2->CR1 |= UART2_RE_CR1 ;
+
+	//Enable RXNE Interrupt
+	USART2->CR1 |= RXNEIE_CR1;
+
+	//Enable UART2 Interrupt IN NVIC
+	NVIC_EnableIRQ(USART2_IRQn);
+
+	//Since we are already written the value in the CR1 Register ourself we dont want it to be vanished .. we need that ... so using the OR Operator as usual.
+	USART2->CR1 |= UART_EN;
+}
+/*************************************************************************************************/
+
+
+
+
+
+
+
+
+
+
+
+
+/************************************************************************************************/
+void Uart2_Write(int ch){
+	// Make sure the transmit data register is empty before writing the data to it
+	// Then Write to transmit data register
+
+	// 0 => Data is not transferred to the shift register
+	// 1 =>  Data is transferred to the shift register
+	while(!(USART2->SR & UART_SR_TXE));
+
+	// Write to the Transmit data register
+	USART2->DR =  (ch & 0xFF);
+}
+static void Uart_Set_Bd(USART_TypeDef *USARTx, uint32_t PeriClk, uint32_t BaudRate){
+
+	USARTx->BRR = Compute_Uart_Bd(PeriClk,BaudRate);
+}
+
+static uint16_t Compute_Uart_Bd(uint32_t PeriClk, uint32_t BaudRate){
+
+	return ((PeriClk + (BaudRate/2U))/BaudRate);
+}
+

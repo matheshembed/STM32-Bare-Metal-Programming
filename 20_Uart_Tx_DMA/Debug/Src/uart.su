@@ -1,8 +1,9 @@
 D:/Softwares/Stm32/en.stm32cubef4-v1-28-0/STM32Cube_FW_F4_V1.28.0/Drivers/CMSIS/Include/core_cm4.h:1684:22:__NVIC_EnableIRQ	16	static,ignoring_inline_asm
-../Src/uart.c:27:5:__io_putchar	16	static
-../Src/uart.c:32:6:UART2RXTX_Init	8	static
-../Src/uart.c:76:5:UART2_Read	4	static
-../Src/uart.c:90:6:UART2RX_Interrupt_Init	8	static
-../Src/uart.c:153:6:Uart2_Write	16	static
-../Src/uart.c:164:13:Uart_Set_Bd	24	static
-../Src/uart.c:169:17:Compute_Uart_Bd	16	static
+../Src/uart.c:38:5:__io_putchar	16	static
+../Src/uart.c:43:6:DMA1_Stream6_init	24	static
+../Src/uart.c:104:6:UART2RXTX_Init	8	static
+../Src/uart.c:148:5:UART2_Read	4	static
+../Src/uart.c:162:6:UART2RX_Interrupt_Init	8	static
+../Src/uart.c:225:6:Uart2_Write	16	static
+../Src/uart.c:236:13:Uart_Set_Bd	24	static
+../Src/uart.c:241:17:Compute_Uart_Bd	16	static

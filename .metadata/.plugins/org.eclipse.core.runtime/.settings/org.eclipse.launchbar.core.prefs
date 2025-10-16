@@ -25,7 +25,7 @@ org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:17_Adc_Interrupt/activeLaunchTa
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:18_SysTick_Interrupt/activeLaunchMode=debug
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:19_Timer_Interrupt\ Debug/activeLaunchMode=run
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:19_Timer_Interrupt\ Debug/activeLaunchTarget=null\:---
-org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:1_Led_Blinky/activeLaunchMode=debug
+org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:1_Led_Blinky/activeLaunchMode=run
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:1_Led_Blinky/activeLaunchTarget=null\:---
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:2_GPIO_Output/activeLaunchMode=run
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:3_GPIO_BSRR\ Debug/activeLaunchMode=run

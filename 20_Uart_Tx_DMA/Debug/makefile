@@ -33,34 +33,34 @@ $(wildcard ../makefile.init) \
 $(wildcard ../makefile.targets) \
 
 
-BUILD_ARTIFACT_NAME := 16_Uart_Rx_Interrupt
+BUILD_ARTIFACT_NAME := 20_Uart_Tx_DMA
 BUILD_ARTIFACT_EXTENSION := elf
 BUILD_ARTIFACT_PREFIX :=
 BUILD_ARTIFACT := $(BUILD_ARTIFACT_PREFIX)$(BUILD_ARTIFACT_NAME)$(if $(BUILD_ARTIFACT_EXTENSION),.$(BUILD_ARTIFACT_EXTENSION),)
 
 # Add inputs and outputs from these tool invocations to the build variables 
 EXECUTABLES += \
-16_Uart_Rx_Interrupt.elf \
+20_Uart_Tx_DMA.elf \
 
 MAP_FILES += \
-16_Uart_Rx_Interrupt.map \
+20_Uart_Tx_DMA.map \
 
 SIZE_OUTPUT += \
 default.size.stdout \
 
 OBJDUMP_LIST += \
-16_Uart_Rx_Interrupt.list \
+20_Uart_Tx_DMA.list \
 
 
 # All Target
 all: main-build
 
 # Main-build Target
-main-build: 16_Uart_Rx_Interrupt.elf secondary-outputs
+main-build: 20_Uart_Tx_DMA.elf secondary-outputs
 
 # Tool invocations
-16_Uart_Rx_Interrupt.elf 16_Uart_Rx_Interrupt.map: $(OBJS) $(USER_OBJS) D:\MCU1_Bare_Metal_Progamming_BHM\16_Uart_Rx_Interrupt\STM32F446RETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "16_Uart_Rx_Interrupt.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"D:\MCU1_Bare_Metal_Progamming_BHM\16_Uart_Rx_Interrupt\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="16_Uart_Rx_Interrupt.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+20_Uart_Tx_DMA.elf 20_Uart_Tx_DMA.map: $(OBJS) $(USER_OBJS) D:\MCU1_Bare_Metal_Progamming_BHM\20_Uart_Tx_DMA\STM32F446RETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "20_Uart_Tx_DMA.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"D:\MCU1_Bare_Metal_Progamming_BHM\20_Uart_Tx_DMA\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="20_Uart_Tx_DMA.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
@@ -69,14 +69,14 @@ default.size.stdout: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
 	@echo 'Finished building: $@'
 	@echo ' '
 
-16_Uart_Rx_Interrupt.list: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-objdump -h -S $(EXECUTABLES) > "16_Uart_Rx_Interrupt.list"
+20_Uart_Tx_DMA.list: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-objdump -h -S $(EXECUTABLES) > "20_Uart_Tx_DMA.list"
 	@echo 'Finished building: $@'
 	@echo ' '
 
 # Other Targets
 clean:
-	-$(RM) 16_Uart_Rx_Interrupt.elf 16_Uart_Rx_Interrupt.list 16_Uart_Rx_Interrupt.map default.size.stdout
+	-$(RM) 20_Uart_Tx_DMA.elf 20_Uart_Tx_DMA.list 20_Uart_Tx_DMA.map default.size.stdout
 	-@echo ' '
 
 secondary-outputs: $(SIZE_OUTPUT) $(OBJDUMP_LIST)

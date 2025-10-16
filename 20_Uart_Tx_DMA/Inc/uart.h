@@ -16,5 +16,8 @@ void Uart2_Write(int ch);
 void UART2RXTX_Init(void);
 void UART2RX_Interrupt_Init(void);
 
+// Dma Functions
+void DMA1_Stream6_Init(uint32_t src, uint32_t dest, uint32_t len);
+
 
 #endif /* UART_H_ */
