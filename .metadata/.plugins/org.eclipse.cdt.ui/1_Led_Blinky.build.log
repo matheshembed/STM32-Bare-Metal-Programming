@@ -1,4 +1,4 @@
-20:01:41 **** Build of configuration Debug for project 1_Led_Blinky ****
+22:45:58 **** Incremental Build of configuration Debug for project 1_Led_Blinky ****
 make -j16 all 
 arm-none-eabi-size  1_Led_Blinky.elf 
    text	   data	    bss	    dec	    hex	filename
@@ -6,5 +6,5 @@ arm-none-eabi-size  1_Led_Blinky.elf
 Finished building: default.size.stdout
  
 
-20:01:41 Build Finished. 0 errors, 0 warnings. (took 432ms)
+22:45:58 Build Finished. 0 errors, 0 warnings. (took 196ms)
 

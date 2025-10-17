@@ -1,10 +1,17 @@
-15:35:13 **** Incremental Build of configuration Debug for project 3_GPIO_BSRR ****
+22:45:59 **** Build of configuration Debug for project 3_GPIO_BSRR ****
 make -j16 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -DSTM32F446xx -c -I../Inc -I"D:/Softwares/Stm32/en.stm32cubef4-v1-28-0/STM32Cube_FW_F4_V1.28.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"D:/Softwares/Stm32/en.stm32cubef4-v1-28-0/STM32Cube_FW_F4_V1.28.0/Drivers/CMSIS/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+arm-none-eabi-gcc -o "3_GPIO_BSRR.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\MCU1_Bare_Metal_Progamming_BHM\3_GPIO_BSRR\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="3_GPIO_BSRR.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: 3_GPIO_BSRR.elf
+ 
 arm-none-eabi-size  3_GPIO_BSRR.elf 
+arm-none-eabi-objdump -h -S 3_GPIO_BSRR.elf  > "3_GPIO_BSRR.list"
    text	   data	    bss	    dec	    hex	filename
     816	      0	   1568	   2384	    950	3_GPIO_BSRR.elf
 Finished building: default.size.stdout
  
+Finished building: 3_GPIO_BSRR.list
+ 
 
-15:35:13 Build Finished. 0 errors, 0 warnings. (took 196ms)
+22:46:00 Build Finished. 0 errors, 0 warnings. (took 754ms)
 

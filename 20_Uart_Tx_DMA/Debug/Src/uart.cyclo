@@ -4,7 +4,7 @@ D:/Softwares/Stm32/en.stm32cubef4-v1-28-0/STM32Cube_FW_F4_V1.28.0/Drivers/CMSIS/
 ../Src/uart.c:107:6:UART2TX_Init	1
 ../Src/uart.c:139:6:UART2RXTX_Init	1
 ../Src/uart.c:183:5:UART2_Read	2
-../Src/uart.c:197:6:UART2RX_Interrupt_Init	1
-../Src/uart.c:260:6:Uart2_Write	2
-../Src/uart.c:271:13:Uart_Set_Bd	1
-../Src/uart.c:276:17:Compute_Uart_Bd	1
+../Src/uart.c:195:6:UART2RX_Interrupt_Init	1
+../Src/uart.c:248:6:Uart2_Write	2
+../Src/uart.c:259:13:Uart_Set_Bd	1
+../Src/uart.c:264:17:Compute_Uart_Bd	1

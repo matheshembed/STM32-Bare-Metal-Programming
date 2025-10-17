@@ -1,33 +1,163 @@
-21:03:18 **** Clean-only build of configuration Debug for project 20_Uart_Tx_DMA ****
-make -j16 clean 
-rm -rf ./Startup/startup_stm32f446retx.d ./Startup/startup_stm32f446retx.o
-rm -rf ./Src/main.cyclo ./Src/main.d ./Src/main.o ./Src/main.su ./Src/syscalls.cyclo ./Src/syscalls.d ./Src/syscalls.o ./Src/syscalls.su ./Src/sysmem.cyclo ./Src/sysmem.d ./Src/sysmem.o ./Src/sysmem.su ./Src/uart.cyclo ./Src/uart.d ./Src/uart.o ./Src/uart.su
-rm -rf 20_Uart_Tx_DMA.elf 20_Uart_Tx_DMA.list 20_Uart_Tx_DMA.map default.size.stdout
-rm: can't remove '20_Uart_Tx_DMA.elf': Permission denied
-make: [makefile:79: clean] Error 1 (ignored)
- 
-21:03:23 **** Build of configuration Debug for project 20_Uart_Tx_DMA ****
+23:13:00 **** Incremental Build of configuration Debug for project 04_GPIO_Input ****
 make -j16 all 
-arm-none-eabi-gcc -mcpu=cortex-m4 -g3 -DDEBUG -c -x assembler-with-cpp -MMD -MP -MF"Startup/startup_stm32f446retx.d" -MT"Startup/startup_stm32f446retx.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Startup/startup_stm32f446retx.o" "../Startup/startup_stm32f446retx.s"
-arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -DSTM32F446xx -c -I../Inc -I"D:/Softwares/Stm32/en.stm32cubef4-v1-28-0/STM32Cube_FW_F4_V1.28.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"D:/Softwares/Stm32/en.stm32cubef4-v1-28-0/STM32Cube_FW_F4_V1.28.0/Drivers/CMSIS/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
-arm-none-eabi-gcc "../Src/syscalls.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -DSTM32F446xx -c -I../Inc -I"D:/Softwares/Stm32/en.stm32cubef4-v1-28-0/STM32Cube_FW_F4_V1.28.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"D:/Softwares/Stm32/en.stm32cubef4-v1-28-0/STM32Cube_FW_F4_V1.28.0/Drivers/CMSIS/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/syscalls.d" -MT"Src/syscalls.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/syscalls.o"
-arm-none-eabi-gcc "../Src/sysmem.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -DSTM32F446xx -c -I../Inc -I"D:/Softwares/Stm32/en.stm32cubef4-v1-28-0/STM32Cube_FW_F4_V1.28.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"D:/Softwares/Stm32/en.stm32cubef4-v1-28-0/STM32Cube_FW_F4_V1.28.0/Drivers/CMSIS/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/sysmem.d" -MT"Src/sysmem.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/sysmem.o"
-arm-none-eabi-gcc "../Src/uart.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -DSTM32F446xx -c -I../Inc -I"D:/Softwares/Stm32/en.stm32cubef4-v1-28-0/STM32Cube_FW_F4_V1.28.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"D:/Softwares/Stm32/en.stm32cubef4-v1-28-0/STM32Cube_FW_F4_V1.28.0/Drivers/CMSIS/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/uart.d" -MT"Src/uart.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/uart.o"
-arm-none-eabi-gcc -o "20_Uart_Tx_DMA.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\MCU1_Bare_Metal_Progamming_BHM\20_Uart_Tx_DMA\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="20_Uart_Tx_DMA.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: 20_Uart_Tx_DMA.elf
- 
-arm-none-eabi-size  20_Uart_Tx_DMA.elf 
-arm-none-eabi-objdump -h -S 20_Uart_Tx_DMA.elf  > "20_Uart_Tx_DMA.list"
+arm-none-eabi-size  04_GPIO_Input.elf 
    text	   data	    bss	    dec	    hex	filename
-   1436	      0	   1568	   3004	    bbc	20_Uart_Tx_DMA.elf
+    832	      0	   1568	   2400	    960	04_GPIO_Input.elf
 Finished building: default.size.stdout
  
-Finished building: 20_Uart_Tx_DMA.list
- 
-21:03:40 **** Incremental Build of configuration Debug for project 20_Uart_Tx_DMA ****
+23:13:12 **** Incremental Build of configuration Debug for project 04_GPIO_Input ****
 make -j16 all 
-arm-none-eabi-size  20_Uart_Tx_DMA.elf 
+arm-none-eabi-size  04_GPIO_Input.elf 
    text	   data	    bss	    dec	    hex	filename
-   1436	      0	   1568	   3004	    bbc	20_Uart_Tx_DMA.elf
+    832	      0	   1568	   2400	    960	04_GPIO_Input.elf
+Finished building: default.size.stdout
+ 
+23:13:36 **** Build of configuration Debug for project 05_UART_TX ****
+make -j16 all 
+arm-none-eabi-gcc -o "05_UART_TX.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\MCU1_Bare_Metal_Progamming_BHM\05_UART_TX\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="05_UART_TX.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: 05_UART_TX.elf
+ 
+arm-none-eabi-size  05_UART_TX.elf 
+arm-none-eabi-objdump -h -S 05_UART_TX.elf  > "05_UART_TX.list"
+   text	   data	    bss	    dec	    hex	filename
+   1032	      0	   1568	   2600	    a28	05_UART_TX.elf
+Finished building: default.size.stdout
+ 
+Finished building: 05_UART_TX.list
+ 
+23:13:38 **** Incremental Build of configuration Debug for project 05_UART_TX ****
+make -j16 all 
+arm-none-eabi-size  05_UART_TX.elf 
+   text	   data	    bss	    dec	    hex	filename
+   1032	      0	   1568	   2600	    a28	05_UART_TX.elf
+Finished building: default.size.stdout
+ 
+23:13:58 **** Build of configuration Debug for project 06_UART_Printf ****
+make -j16 all 
+arm-none-eabi-gcc -o "06_UART_Printf.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\MCU1_Bare_Metal_Progamming_BHM\06_UART_Printf\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="06_UART_Printf.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: 06_UART_Printf.elf
+ 
+arm-none-eabi-size  06_UART_Printf.elf 
+arm-none-eabi-objdump -h -S 06_UART_Printf.elf  > "06_UART_Printf.list"
+   text	   data	    bss	    dec	    hex	filename
+   5224	     92	   1900	   7216	   1c30	06_UART_Printf.elf
+Finished building: default.size.stdout
+ 
+Finished building: 06_UART_Printf.list
+ 
+23:14:01 **** Incremental Build of configuration Debug for project 06_UART_Printf ****
+make -j16 all 
+arm-none-eabi-size  06_UART_Printf.elf 
+   text	   data	    bss	    dec	    hex	filename
+   5224	     92	   1900	   7216	   1c30	06_UART_Printf.elf
+Finished building: default.size.stdout
+ 
+23:14:15 **** Incremental Build of configuration Debug for project 06_UART_Printf ****
+make -j16 all 
+arm-none-eabi-size  06_UART_Printf.elf 
+   text	   data	    bss	    dec	    hex	filename
+   5224	     92	   1900	   7216	   1c30	06_UART_Printf.elf
+Finished building: default.size.stdout
+ 
+23:14:16 **** Build of configuration Debug for project 07_UART_Modular ****
+make -j16 all 
+arm-none-eabi-gcc -o "07_UART_Modular.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\MCU1_Bare_Metal_Progamming_BHM\07_UART_Modular\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="07_UART_Modular.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: 07_UART_Modular.elf
+ 
+arm-none-eabi-size  07_UART_Modular.elf 
+arm-none-eabi-objdump -h -S 07_UART_Modular.elf  > "07_UART_Modular.list"
+   text	   data	    bss	    dec	    hex	filename
+   5228	     92	   1900	   7220	   1c34	07_UART_Modular.elf
+Finished building: default.size.stdout
+ 
+Finished building: 07_UART_Modular.list
+ 
+23:14:17 **** Incremental Build of configuration Debug for project 06_UART_Printf ****
+make -j16 all 
+arm-none-eabi-size  06_UART_Printf.elf 
+   text	   data	    bss	    dec	    hex	filename
+   5224	     92	   1900	   7216	   1c30	06_UART_Printf.elf
+Finished building: default.size.stdout
+ 
+23:14:17 **** Incremental Build of configuration Debug for project 07_UART_Modular ****
+make -j16 all 
+arm-none-eabi-size  07_UART_Modular.elf 
+   text	   data	    bss	    dec	    hex	filename
+   5228	     92	   1900	   7220	   1c34	07_UART_Modular.elf
+Finished building: default.size.stdout
+ 
+23:14:34 **** Incremental Build of configuration Debug for project 06_UART_Printf ****
+make -j16 all 
+arm-none-eabi-size  06_UART_Printf.elf 
+   text	   data	    bss	    dec	    hex	filename
+   5224	     92	   1900	   7216	   1c30	06_UART_Printf.elf
+Finished building: default.size.stdout
+ 
+23:14:34 **** Incremental Build of configuration Debug for project 07_UART_Modular ****
+make -j16 all 
+arm-none-eabi-size  07_UART_Modular.elf 
+   text	   data	    bss	    dec	    hex	filename
+   5228	     92	   1900	   7220	   1c34	07_UART_Modular.elf
+Finished building: default.size.stdout
+ 
+23:14:34 **** Build of configuration Debug for project 08_UART_RX ****
+make -j16 all 
+arm-none-eabi-gcc -o "08_UART_RX.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\MCU1_Bare_Metal_Progamming_BHM\08_UART_RX\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="08_UART_RX.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: 08_UART_RX.elf
+ 
+arm-none-eabi-size  08_UART_RX.elf 
+arm-none-eabi-objdump -h -S 08_UART_RX.elf  > "08_UART_RX.list"
+   text	   data	    bss	    dec	    hex	filename
+   1160	      0	   1568	   2728	    aa8	08_UART_RX.elf
+Finished building: default.size.stdout
+ 
+Finished building: 08_UART_RX.list
+ 
+23:14:36 **** Incremental Build of configuration Debug for project 06_UART_Printf ****
+make -j16 all 
+arm-none-eabi-size  06_UART_Printf.elf 
+   text	   data	    bss	    dec	    hex	filename
+   5224	     92	   1900	   7216	   1c30	06_UART_Printf.elf
+Finished building: default.size.stdout
+ 
+23:14:36 **** Incremental Build of configuration Debug for project 07_UART_Modular ****
+make -j16 all 
+arm-none-eabi-size  07_UART_Modular.elf 
+   text	   data	    bss	    dec	    hex	filename
+   5228	     92	   1900	   7220	   1c34	07_UART_Modular.elf
+Finished building: default.size.stdout
+ 
+23:14:36 **** Incremental Build of configuration Debug for project 08_UART_RX ****
+make -j16 all 
+arm-none-eabi-size  08_UART_RX.elf 
+   text	   data	    bss	    dec	    hex	filename
+   1160	      0	   1568	   2728	    aa8	08_UART_RX.elf
+Finished building: default.size.stdout
+ 
+23:14:57 **** Build of configuration Debug for project 09_ADC_Single_Conversion ****
+make -j16 all 
+arm-none-eabi-gcc -o "09_ADC_Single_Conversion.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\MCU1_Bare_Metal_Progamming_BHM\09_ADC_Single_Conversion\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="09_ADC_Single_Conversion.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: 09_ADC_Single_Conversion.elf
+ 
+arm-none-eabi-size  09_ADC_Single_Conversion.elf 
+arm-none-eabi-objdump -h -S 09_ADC_Single_Conversion.elf  > "09_ADC_Single_Conversion.list"
+   text	   data	    bss	    dec	    hex	filename
+    928	      0	   1568	   2496	    9c0	09_ADC_Single_Conversion.elf
+Finished building: default.size.stdout
+ 
+Finished building: 09_ADC_Single_Conversion.list
+ 
+23:14:59 **** Incremental Build of configuration Debug for project 09_ADC_Single_Conversion ****
+make -j16 all 
+arm-none-eabi-size  09_ADC_Single_Conversion.elf 
+   text	   data	    bss	    dec	    hex	filename
+    928	      0	   1568	   2496	    9c0	09_ADC_Single_Conversion.elf
+Finished building: default.size.stdout
+ 
+23:15:18 **** Incremental Build of configuration Debug for project 09_ADC_Single_Conversion ****
+make -j16 all 
+arm-none-eabi-size  09_ADC_Single_Conversion.elf 
+   text	   data	    bss	    dec	    hex	filename
+    928	      0	   1568	   2496	    9c0	09_ADC_Single_Conversion.elf
 Finished building: default.size.stdout
  

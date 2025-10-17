@@ -2,3 +2,29 @@
 1760628213579	Delete 2 resources
 1760628788500	Delete resource '20_Uart_Tx_DMA/16_Uart_Rx_Interrupt Debug.launch'
 1760628793335	Delete resource '20_Uart_Tx_DMA/20_Uart_Tx_DMA.launch'
+1760721337844	Rename resource '0_Led_Toggle_Addr'
+1760721466912	Delete resource '00_Led_Toggle_Addr/0_Led_Toggle_Addr Debug.launch'
+1760722219453	Delete resource '00_Led_Toggle_Addr'
+1760722438096	Delete 10 resources
+1760722497942	Delete resource '01_Led_Blinky/1_Led_Blinky.launch'
+1760722503216	Delete 3 resources
+1760722523590	Delete resource '01_Led_Blinky_Struct/1_Led_Blinky_Struct Debug.launch'
+1760722528809	Delete 3 resources
+1760722537082	Delete resource '02_GPIO_Output/2_GPIO_Output.launch'
+1760722543259	Delete 3 resources
+1760722715926	Delete resource '03_GPIO_BSRR/3_GPIO_BSRR Debug.launch'
+1760722725483	Delete 4 resources
+1760722743345	Delete resource '03_GPIO_Output_BSRR_Reg/3_GPIO_Output_BSRR_Reg Debug.launch'
+1760722748481	Delete 3 resources
+1760722753924	Delete resource '04_GPIO_Input/4_GPIO_Input Debug.launch'
+1760722758370	Delete 3 resources
+1760722764356	Delete resource '05_UART_TX/5_UART_TX Debug.launch'
+1760722771650	Delete 5 resources
+1760722779894	Delete resource '06_UART_Printf/6_UART_Printf Debug.launch'
+1760722784656	Delete 3 resources
+1760722792171	Delete resource '07_UART_Modular/7_UART_Modular Debug.launch'
+1760722799878	Delete 6 resources
+1760722804278	Delete resource '08_UART_RX/8_UART_RX Debug.launch'
+1760722807993	Delete 3 resources
+1760722813317	Delete 2 resources
+1760722819201	Delete 3 resources
