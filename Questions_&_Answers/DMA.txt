@@ -1,0 +1,113 @@
+1. DMA is a hardware or software ?
+✅ DMA is a hardware block — a dedicated circuit inside the microcontroller (or SoC) that can access memory and peripherals independently of the CPU.
+Software (your code) just configures it using registers (telling it what to do).
+Once configured, DMA hardware moves data physically across the system bus.
+👉 So, DMA = hardware engine.
+👉 DMA driver = software that controls the engine.
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+2. Even though it off loads the cpu .. Only one can (CPU or DMA) can use the bus at a time so what is the use of it ?
+✅ True: only one master (CPU or DMA) can access a shared bus at a given instant.
+But the advantage comes from parallelism at the system level, not necessarily bus concurrency.
+Let’s break it down:
+While DMA is transferring data, the CPU can execute code from cache or tightly-coupled memory (TCM) or even perform tasks that don’t need the bus at that moment.
+CPU can handle other logic, computations, interrupts, etc., while DMA autonomously manages the I/O.
+DMA usually transfers large chunks of data faster than CPU loops (because DMA does burst transfers and pipeline bus operations efficiently).
+Even if they share the bus, the DMA controller is optimized for data movement — so the transfer overhead is much smaller.
+On multi-layer or AXI-based buses (like STM32F7/H7 or ARM SoCs), multiple bus masters can operate truly in parallel — CPU, DMA, and peripherals each use different paths.
+🧠 Analogy:
+Imagine a single-lane road where vehicles must alternate — but the DMA is a truck carrying 1000 boxes at once, while the CPU is a person carrying one box per trip.
+Even if they share the lane, the truck is still far more efficient overall. 🚛💨
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+3. What is arbitation ?
+Arbitration = deciding who gets control of the bus when multiple masters (like CPU, DMA1, DMA2, etc.) request it at the same time.
+he bus arbiter is a small hardware logic block that looks at all requests and decides priority.
+Each master (CPU, DMA, GPU, etc.) has a priority level.
+Arbitration policies can be:
+Fixed priority: e.g., CPU always wins over DMA.
+Round robin: take turns.
+Dynamic priority: depends on the situation (e.g., QoS or latency).
+✅ In short:
+Arbitration = hardware-level "traffic control" deciding who can use the memory bus next. 🚦
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+4. Word refers to 32 bit ?
+On 32-bit MCUs (like ARM Cortex-M) → a word = 32 bits = 4 bytes.
+On 16-bit CPUs → a word = 16 bits.
+On 64-bit CPUs → a word = 64 bits.
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+5. Channel and stream are both same ?
+They’re related but not the same (especially in STM32 terminology).
+Channel → represents the peripheral request source (e.g., UART_TX, ADC1, SPI2_RX, etc.).
+Stream → is a data path or pipeline inside the DMA controller that executes the transfer.
+Each stream can be mapped to one of several channels (depending on the peripheral).
+🧠 Think of it like this:
+Stream = road,
+Channel = vehicle assigned to that road (UART, SPI, etc.).
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+6. Where the buffer is located in RAM or ROM ?
+✅ Always in RAM (Read/Write Memory).
+DMA writes/reads data dynamically → needs writable memory.
+ROM (Flash) is read-only, so DMA can read from it but cannot write to it.
+So typically:
+For transmitting, DMA reads data from RAM (your buffer) → sends to peripheral.
+For receiving, DMA writes incoming data into a RAM buffer.
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+7. FIFO refers to the queue right ? then why not directly say it as queue ?
+Exactly — FIFO (First-In, First-Out) is conceptually a queue.
+But here’s the subtle difference:
+Queue	Software / algorithms	A data structure concept (implemented using RAM, lists, etc.)
+FIFO	Hardware / electronics	A hardware buffer (small memory circuit) that stores data in the same order it was received
+
+So, FIFO = hardware implementation of a queue.
+In DMA or peripherals like UART, FIFO is a tiny built-in memory (for example, 16 bytes) inside the peripheral or DMA controller.
+It helps smooth out data transfers between fast and slow components — for example, between a fast CPU and a slower UART line.
+
+👉 So we use the term FIFO in hardware because it’s not managed by software like a queue, but physically implemented as a register array that shifts data automatically.
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+8. What is chache ? 
+Cache is a small, high-speed memory located close to the CPU core (sometimes inside the CPU itself).
+It stores recently used data or instructions so that the CPU doesn’t have to fetch them again from the slower main memory (RAM).
+📍 Location:
+Usually on-chip (inside the CPU die).
+Modern CPUs have multiple levels of cache:
+L1 Cache – Smallest and fastest, directly next to the CPU core.
+L2 Cache – Bigger but slightly slower, still on-chip.
+L3 Cache – Shared between cores, much larger, slower than L2 but faster than RAM
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+9. What is the significance / Use of chace?
+Caches exist because:
+The CPU is much faster than RAM.
+Accessing RAM can take dozens to hundreds of clock cycles, but accessing cache takes only a few cycles.
+So cache keeps frequently used instructions and data close to the CPU to minimize delays.
+Here’s an example:
+Let’s say your CPU runs at 200 MHz, and your RAM takes 50 ns (10 CPU cycles) to respond.
+Without a cache, the CPU would wait 10 cycles for every instruction fetch — wasting performance.
+With cache, most of those accesses are instant.
+This speed-up is called the cache hit (when data is found in the cache).
+When data isn’t there, it’s a cache miss, and the CPU must fetch from slower RAM.
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+10. How Close the cache is located ? What "close" does mean here? 
+When we say cache is close to the CPU, we mean:
+It is fabricated on the same silicon die as the CPU core (not on a separate chip like RAM).
+That means cache memory shares the same silicon substrate and metal layers as the CPU’s ALU, registers, and control logic.
+
++-----------------------------------------------------------+
+|                    CPU (single core)                      |
+|   +-----------------------------------------------+       |
+|   | Registers (few bytes)                         | <--- Fastest
+|   | L1 Cache (32 KB - 128 KB, on-die)             | <--- On same die, beside core
+|   +-----------------------------------------------+       
+|   | L2 Cache (256 KB - 1 MB, on-die)              | <--- On same die, near core
+|   +-----------------------------------------------+       
+|   | L3 Cache (shared across cores, on-die)        | <--- On same die, shared bus
+|   +-----------------------------------------------+       
+|   | RAM (off-chip via memory bus)                 | <--- On separate chip
+|   +-----------------------------------------------+       
++-----------------------------------------------------------+
+🧩 In summary:
+Registers are inside the CPU core.
+L1 Cache is physically right next to the execution units.
+L2/L3 Caches are a bit further away but still on the same chip.
+RAM is off-chip — on a completely separate silicon package connected through external buses.
+
+So being “close” = shorter wires, lower latency, faster access.
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
