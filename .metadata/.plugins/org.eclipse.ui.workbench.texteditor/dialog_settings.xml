@@ -3,6 +3,8 @@
 	<item key="hasShownOverlayPopupBefore" value="true"/>
 	<item key="replaceBarOpen" value="false"/>
 	<list key="searchhistory">
+		<item value="dma1_stream6_irq"/>
+		<item value="dma"/>
 		<item value="TIM"/>
 		<item value="exti"/>
 		<item value="exti15_10"/>
