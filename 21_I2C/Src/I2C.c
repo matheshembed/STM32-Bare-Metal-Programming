@@ -64,7 +64,11 @@ I2C - Inter Integrated Circuits
 #include "stm32f4xx.h"
 
 #define GPIOB_CLK_EN				(1U<<2)
-
+#define I2C_CLK_EN					(1U<<21)
+#define I2C_SWRST					(1U<<15)
+#define I2C_100KHZ					80 		// 0b 0101 0000 = Decimal =80
+#define SD_MODE_MAX_RISE_TIME		17 		// Standard Mode Maximum Rise Time
+#define I2C_PE_CR1					(1U<<0)	// I2C Peripheral Enable in the I2C_CR1
 
 void I2C1_Init(void)
 {
@@ -90,7 +94,37 @@ void I2C1_Init(void)
 	GPIOB->OTYPER |= (1U <<9);
 
 
-	/*Enable Pullup for PB8 AND PB9*/
+	/*Enable Pullup for PB8 AND PB9*/ //(10)
+	GPIOB->PUPDR |=  (1U<<16);
+	GPIOB->PUPDR &= ~(1U<<17);
+
+	GPIOB->PUPDR |=  (1U<<18);
+	GPIOB->PUPDR &= ~(1U<<19);
+
 
 	/*Enable The clock access (APB1)*/
+	RCC->APB1ENR |= I2C_CLK_EN;
+
+	/*
+	 *Enter Reset Mode
+	 *Section 24.6.1 in RM
+	 *In order to configure the I2C We have to enter the Reset Mode ...
+	 *To do this ... We have to make thw SWRST(Software Reset) Bit high in the I2C_CR1 Register*/
+	I2C1->CR1 |= I2C_SWRST;
+
+	/*Come out of reset Mode*/
+	I2C1->CR1 &= ~I2C_SWRST;
+
+	/*Set Peripheral Clock frequency*/
+	I2C1->CR2 = (1U << 4); // 16 MHz // Sec 24.6.2
+
+	/*Set I2C to standard mode, 100 Khz Clock*/
+	I2C1->CCR = I2C_100KHZ; // SEC 24.6.8
+
+	/*Set the Rise time SEC: 24.6.9*/
+	I2C1->TRISE = SD_MODE_MAX_RISE_TIME;
+
+	/*Enable the I2C*/
+	I2C1->CR1 |= I2C_PE_CR1;
+
 }

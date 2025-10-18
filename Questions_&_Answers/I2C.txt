@@ -15,6 +15,20 @@ Line 80:
 
 Line 82:
 	2. Why pull up is required ? and why not is pulled down //by default?
+	
+Line 107:
+	3. Why Entering and Exiting from the Reset mode is required ? What is the necessity ? and What if not ?
+
+Line 117:
+	4. Can the Clock speed of I2C set above 16 MHz? and Why Here it is 16 Mhz ?
+
+Line 121:
+	5. How to compute the value of CCR Value in the I2C_CCR Register ? 
+
+Line 124:
+	6. How to compute the value of Standard Mode Max Rise Time ?
+
+
 
 
 */

@@ -1,0 +1,129 @@
+/*
+DMA Programming
+
+Intro
+	-DMA Stands for Direct Memory acces
+	-The DMA allows data transferes to take place in the background, without the intervention of the CORTEX-M Processor
+	-During this operation, the main processor can execute other tasks and it is only interrupted when a whole data block is available for processing
+	-Large amounts of data can be transferred with no major impact on the system performance
+
+DMA-Transfer Properties
+	-DMA Stream/channel
+	-Stream Priority
+	-Source and Destination addresses
+	-Transfer Mode
+	-Transfer size
+	-Source/Destination address incremeting or non-incrementing
+	-Source and Destination data width
+	-Transfer Type
+	-FIFO Mode
+	-Source/Destination burst size
+	-Double-Buffer mode
+	-Flow Control
+
+-The DMA has two ports, one peripheral port and one memory port
+-There are 2 DMA Modules.
+-Each module implement 8 different streams.
+-Each stream is dedicated to managing memory access requests from one or more peripheral
+-Each stream has upto eight selectable channels(requests) in total
+-The selection is software-configurable and allows several peripherals to initiate DMA requests
+-Only One Channel/Request can be active at the same time in a stream
+
+Read - DMA Request Mapping
+
+Dma - Stream priority
+	-The DMA has an arbiter for handling the priority between DMA streams
+	-Stream priority software configurable
+	-There are four levels
+	-If two or more dma streams have the same priority level the hardware priority is used
+	-Hardware priority Stream 0 has priority Over stream 1 etc ..
+
+Dma - source and destination addresses
+	-A dma transfer is defined by a source address and a destination address
+	-Both the source and destinations should be in the ahb or abb Memory ranges
+
+Dma - Transfer Modes
+	-Peripheral to Memory
+	-Memory to Peripheral
+	-Memory to memory ->only available on DMA2 Module
+
+Dma - Trasfer size
+	-Has to be defined only when the DMA is the flow controller
+	-This value defines the volume of data to be transferred from sourse to destination
+
+Dma - Incrementing addresses
+	-DMA can automatically increment source and destination addresses after each transfer.
+
+Dma - Source and Destination Data width
+	- Byte
+	- 2 Byte
+	- 4 byte
+
+Dma - Transfer types
+	-Circular Mode:
+		-For handling circular buffers and continuous data flows.
+		-The DMA_SxNDTR Register is then reloaded automatically with the previous programmed value.
+
+	-Normal Mode:
+		-Once the DMA_SxNDTR Register reaches zero, the stream is disabled.
+*/
+
+
+#include "uart.h"
+// Every DMA Functions located inside this uart.h and .c files
+
+#define GPIOAEN				(1U << 0);
+#define GPIOA_5				(1U << 5);
+
+#define LED_PIN				GPIOA_5
+
+static void DMA_CallBack(void);
+
+
+int main(void)
+{
+	char message[31] = "Hello From Stm32 DMA Transfer\n\r";
+
+	// Clock Access to GPIOA
+	RCC->AHB1ENR |= GPIOAEN;
+
+	// PA5 AS OUTPUT
+	GPIOA->MODER |= (1U << 10);
+	GPIOA->MODER &= (~(1U << 11));
+
+	UART2TX_Init();
+	DMA1_Stream6_Init((uint32_t) message, (uint32_t) &USART2->DR ,31 );
+
+	while(1)
+	{
+
+
+	}
+
+}
+
+static void DMA_CallBack(void)
+{
+	/*Turn on the Led when the transfer is complete*/
+	GPIOA->ODR |= LED_PIN;
+}
+
+void DMA1_Stream6_IRQHandler(void)
+{
+	/*Check for Transfer complete interrupt*/
+	if(DMA1->HISR & HISR_TCIF6)
+	{
+		/*Clear the Transfer complete flag*/ // done in DMA_HIFCR Reg
+		DMA1->HIFCR |= HIFCR_CTC1F6;
+
+		/*Do something*/
+		DMA_CallBack();
+	}
+
+}
+
+
+
+
+
+

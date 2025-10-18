@@ -2,7 +2,7 @@ LaunchTargetManager/org.eclipse.launchbar.core.launchTargetType.local,Local/arch
 LaunchTargetManager/org.eclipse.launchbar.core.launchTargetType.local,Local/name=Local
 LaunchTargetManager/org.eclipse.launchbar.core.launchTargetType.local,Local/os=win32
 activeLaunchTarget=null\:---
-configDescList=org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:20_Uart_Tx_DMA
+configDescList=org.eclipse.launchbar.core.descriptorType.default\:21_I2C Debug
 eclipse.preferences.version=1
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:00_Led_Toggle_Addr\ Debug/activeLaunchMode=debug
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:00_Led_Toggle_Addr\ Debug/activeLaunchTarget=null\:---
@@ -76,6 +76,8 @@ org.eclipse.launchbar.core.descriptorType.default\:15_Input_Interrupt\ Debug/act
 org.eclipse.launchbar.core.descriptorType.default\:15_Input_Interrupt\ Debug/activeLaunchTarget=org.eclipse.launchbar.core.launchTargetType.local\:Local
 org.eclipse.launchbar.core.descriptorType.default\:1_Led_Blinky_Struct\ Debug/activeLaunchMode=run
 org.eclipse.launchbar.core.descriptorType.default\:1_Led_Blinky_Struct\ Debug/activeLaunchTarget=org.eclipse.launchbar.core.launchTargetType.local\:Local
+org.eclipse.launchbar.core.descriptorType.default\:21_I2C\ Debug/activeLaunchMode=run
+org.eclipse.launchbar.core.descriptorType.default\:21_I2C\ Debug/activeLaunchTarget=org.eclipse.launchbar.core.launchTargetType.local\:Local
 org.eclipse.launchbar.core.descriptorType.default\:3_GPIO_BSRR\ Debug/activeLaunchMode=debug
 org.eclipse.launchbar.core.descriptorType.default\:3_GPIO_BSRR\ Debug/activeLaunchTarget=org.eclipse.launchbar.core.launchTargetType.local\:Local
 org.eclipse.launchbar.core.descriptorType.default\:4_GPIO_Input\ Debug/activeLaunchMode=run
