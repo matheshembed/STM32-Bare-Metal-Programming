@@ -111,3 +111,52 @@ RAM is off-chip — on a completely separate silicon package connected through e
 
 So being “close” = shorter wires, lower latency, faster access.
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+/***********************************************************************************************************************************************************************
+Doubts In the Registers and its programming
+Line 55:
+	Why we have to disable the STREAM ?
+		When the EN (Enable) bit of a stream is 1, that stream’s internal hardware state machine is active and locked. 
+		If you try to change most configuration bits while it’s enabled, the DMA ignores your writes — the stream is “busy.”
+		You must disable the stream.
+			This forces the DMA’s internal logic to:
+			1. Stop any ongoing transfer.	
+			2. Flush internal FIFOs.
+			3. Reset its state machine to configuration mode.
+		Then, after the EN bit becomes 0, all register writes are accepted and applied safely.
+		if you skip this step, you’ll get undefined behavior — sometimes it seems to work, sometimes it doesn’t.
+**********************************************************************************************************************************************************************		
+Line 82:
+	Why the Channel 4 is selected ? and is the channel present inside the stream ?
+		🧠 Channel vs. Stream
+		Think of:
+			DMA Controller = Big building (e.g., DMA1)
+			Stream = Separate pipelines inside (e.g., Stream 0–7)
+			Channel = Which peripheral request line that stream listens to.
+			So yes ✅, the channel selector (CHSEL bits) is inside each stream’s control register (CR). It tells that stream which peripheral will trigger it.
+**********************************************************************************************************************************************************************
+Line 85:
+	Why the memory is incremented ? what if we dont increment it ?
+		Memory increment mode means after transferring one data unit (e.g., 1 byte), the DMA automatically increments the memory address pointer by the data width.
+		Example:
+			If your message buffer = "HELLO", located at 0x20000000, DMA transfers happen like:
+	
+	
+			| Transfer | Memory Addr | Data | Peripheral Addr |
+			| -------- | ----------- | ---- | --------------- |
+			| 1        | 0x20000000  | H    | USART2->DR      |
+			| 2        | 0x20000001  | E    | USART2->DR      |
+			| 3        | 0x20000002  | L    | USART2->DR      |
+			| ...      | ...         | ...  | ...             |
+			If you don’t enable increment, the DMA will keep reading from the same memory address repeatedly. 
+			So UART will transmit "HHHHH..." forever 
+			We disable increment only when we want to repeatedly send the same value (e.g., DAC waveform sample or constant pattern).
+**********************************************************************************************************************************************************************
+
+
+************************************************************************************************************************************************************************/
