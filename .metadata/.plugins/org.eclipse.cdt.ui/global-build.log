@@ -198,3 +198,139 @@ arm-none-eabi-size  21_I2C.elf
    1436	      0	   1568	   3004	    bbc	21_I2C.elf
 Finished building: default.size.stdout
  
+14:21:19 **** Incremental Build of configuration Debug for project 21_I2C ****
+make -j16 all 
+arm-none-eabi-gcc "../Src/I2C.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -DSTM32F446xx -c -I../Inc -I"D:/Softwares/Stm32/en.stm32cubef4-v1-28-0/STM32Cube_FW_F4_V1.28.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"D:/Softwares/Stm32/en.stm32cubef4-v1-28-0/STM32Cube_FW_F4_V1.28.0/Drivers/CMSIS/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/I2C.d" -MT"Src/I2C.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/I2C.o"
+../Src/I2C.c: In function 'I2C_ByteRead':
+../Src/I2C.c:140:22: warning: variable 'temp' set but not used [-Wunused-but-set-variable]
+  140 |         volatile int temp;
+      |                      ^~~~
+arm-none-eabi-gcc -o "21_I2C.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\MCU1_Bare_Metal_Progamming_BHM\21_I2C\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="21_I2C.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: 21_I2C.elf
+ 
+arm-none-eabi-size  21_I2C.elf 
+arm-none-eabi-objdump -h -S 21_I2C.elf  > "21_I2C.list"
+   text	   data	    bss	    dec	    hex	filename
+   1436	      0	   1568	   3004	    bbc	21_I2C.elf
+Finished building: default.size.stdout
+ 
+Finished building: 21_I2C.list
+ 
+15:34:54 **** Incremental Build of configuration Debug for project 21_I2C ****
+make -j16 all 
+arm-none-eabi-gcc "../Src/I2C.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -DSTM32F446xx -c -I../Inc -I"D:/Softwares/Stm32/en.stm32cubef4-v1-28-0/STM32Cube_FW_F4_V1.28.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"D:/Softwares/Stm32/en.stm32cubef4-v1-28-0/STM32Cube_FW_F4_V1.28.0/Drivers/CMSIS/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/I2C.d" -MT"Src/I2C.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/I2C.o"
+../Src/I2C.c: In function 'I2C_ByteRead':
+../Src/I2C.c:144:22: warning: variable 'temp' set but not used [-Wunused-but-set-variable]
+  144 |         volatile int temp;
+      |                      ^~~~
+../Src/I2C.c: In function 'I2C1_BurstRead':
+../Src/I2C.c:201:22: warning: variable 'temp' set but not used [-Wunused-but-set-variable]
+  201 |         volatile int temp;
+      |                      ^~~~
+../Src/I2C.c: In function 'I2C1_BurstWrite':
+../Src/I2C.c:321:23: error: 'I2C_TypeDef' has no member named 'CR'; did you mean 'CR1'?
+  321 |                 I2C1->CR |= CR1_STOP;
+      |                       ^~
+      |                       CR1
+../Src/I2C.c:282:22: warning: variable 'temp' set but not used [-Wunused-but-set-variable]
+  282 |         volatile int temp;
+      |                      ^~~~
+make: *** [Src/subdir.mk:31: Src/I2C.o] Error 1
+"make -j16 all" terminated with exit code 2. Build might be incomplete.
+15:34:57 **** Incremental Build of configuration Debug for project 21_I2C ****
+make -j16 all 
+arm-none-eabi-gcc "../Src/I2C.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -DSTM32F446xx -c -I../Inc -I"D:/Softwares/Stm32/en.stm32cubef4-v1-28-0/STM32Cube_FW_F4_V1.28.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"D:/Softwares/Stm32/en.stm32cubef4-v1-28-0/STM32Cube_FW_F4_V1.28.0/Drivers/CMSIS/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/I2C.d" -MT"Src/I2C.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/I2C.o"
+../Src/I2C.c: In function 'I2C_ByteRead':
+../Src/I2C.c:144:22: warning: variable 'temp' set but not used [-Wunused-but-set-variable]
+  144 |         volatile int temp;
+      |                      ^~~~
+../Src/I2C.c: In function 'I2C1_BurstRead':
+../Src/I2C.c:201:22: warning: variable 'temp' set but not used [-Wunused-but-set-variable]
+  201 |         volatile int temp;
+      |                      ^~~~
+../Src/I2C.c: In function 'I2C1_BurstWrite':
+../Src/I2C.c:321:23: error: 'I2C_TypeDef' has no member named 'CR'; did you mean 'CR1'?
+  321 |                 I2C1->CR |= CR1_STOP;
+      |                       ^~
+      |                       CR1
+../Src/I2C.c:282:22: warning: variable 'temp' set but not used [-Wunused-but-set-variable]
+  282 |         volatile int temp;
+      |                      ^~~~
+make: *** [Src/subdir.mk:31: Src/I2C.o] Error 1
+"make -j16 all" terminated with exit code 2. Build might be incomplete.
+15:36:00 **** Incremental Build of configuration Debug for project 21_I2C ****
+make -j16 all 
+arm-none-eabi-gcc "../Src/I2C.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -DSTM32F446xx -c -I../Inc -I"D:/Softwares/Stm32/en.stm32cubef4-v1-28-0/STM32Cube_FW_F4_V1.28.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"D:/Softwares/Stm32/en.stm32cubef4-v1-28-0/STM32Cube_FW_F4_V1.28.0/Drivers/CMSIS/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/I2C.d" -MT"Src/I2C.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/I2C.o"
+../Src/I2C.c: In function 'I2C_ByteRead':
+../Src/I2C.c:144:22: warning: variable 'temp' set but not used [-Wunused-but-set-variable]
+  144 |         volatile int temp;
+      |                      ^~~~
+../Src/I2C.c: In function 'I2C1_BurstRead':
+../Src/I2C.c:201:22: warning: variable 'temp' set but not used [-Wunused-but-set-variable]
+  201 |         volatile int temp;
+      |                      ^~~~
+../Src/I2C.c: In function 'I2C1_BurstWrite':
+../Src/I2C.c:282:22: warning: variable 'temp' set but not used [-Wunused-but-set-variable]
+  282 |         volatile int temp;
+      |                      ^~~~
+arm-none-eabi-gcc -o "21_I2C.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\MCU1_Bare_Metal_Progamming_BHM\21_I2C\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="21_I2C.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: 21_I2C.elf
+ 
+arm-none-eabi-size  21_I2C.elf 
+arm-none-eabi-objdump -h -S 21_I2C.elf  > "21_I2C.list"
+   text	   data	    bss	    dec	    hex	filename
+   1436	      0	   1568	   3004	    bbc	21_I2C.elf
+Finished building: default.size.stdout
+ 
+Finished building: 21_I2C.list
+ 
+15:45:35 **** Incremental Build of configuration Debug for project 21_I2C ****
+make -j16 all 
+arm-none-eabi-gcc "../Src/I2C.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -DSTM32F446xx -c -I../Inc -I"D:/Softwares/Stm32/en.stm32cubef4-v1-28-0/STM32Cube_FW_F4_V1.28.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"D:/Softwares/Stm32/en.stm32cubef4-v1-28-0/STM32Cube_FW_F4_V1.28.0/Drivers/CMSIS/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/I2C.d" -MT"Src/I2C.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/I2C.o"
+../Src/I2C.c: In function 'I2C_ByteRead':
+../Src/I2C.c:144:22: warning: variable 'temp' set but not used [-Wunused-but-set-variable]
+  144 |         volatile int temp;
+      |                      ^~~~
+../Src/I2C.c: In function 'I2C1_BurstRead':
+../Src/I2C.c:201:22: warning: variable 'temp' set but not used [-Wunused-but-set-variable]
+  201 |         volatile int temp;
+      |                      ^~~~
+../Src/I2C.c: In function 'I2C1_BurstWrite':
+../Src/I2C.c:285:47: error: expected ')' before '{' token
+  285 |                 while((I2C1->SR2 & (SR2_BUSY)){}
+      |                      ~                        ^
+      |                                               )
+../Src/I2C.c:324:1: error: expected expression before '}' token
+  324 | }
+      | ^
+../Src/I2C.c:282:22: warning: unused variable 'temp' [-Wunused-variable]
+  282 |         volatile int temp;
+      |                      ^~~~
+make: *** [Src/subdir.mk:31: Src/I2C.o] Error 1
+"make -j16 all" terminated with exit code 2. Build might be incomplete.
+15:46:16 **** Incremental Build of configuration Debug for project 21_I2C ****
+make -j16 all 
+arm-none-eabi-gcc "../Src/I2C.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -DSTM32F446xx -c -I../Inc -I"D:/Softwares/Stm32/en.stm32cubef4-v1-28-0/STM32Cube_FW_F4_V1.28.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"D:/Softwares/Stm32/en.stm32cubef4-v1-28-0/STM32Cube_FW_F4_V1.28.0/Drivers/CMSIS/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/I2C.d" -MT"Src/I2C.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/I2C.o"
+../Src/I2C.c: In function 'I2C_ByteRead':
+../Src/I2C.c:144:22: warning: variable 'temp' set but not used [-Wunused-but-set-variable]
+  144 |         volatile int temp;
+      |                      ^~~~
+../Src/I2C.c: In function 'I2C1_BurstRead':
+../Src/I2C.c:201:22: warning: variable 'temp' set but not used [-Wunused-but-set-variable]
+  201 |         volatile int temp;
+      |                      ^~~~
+../Src/I2C.c: In function 'I2C1_BurstWrite':
+../Src/I2C.c:282:22: warning: variable 'temp' set but not used [-Wunused-but-set-variable]
+  282 |         volatile int temp;
+      |                      ^~~~
+arm-none-eabi-gcc -o "21_I2C.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\MCU1_Bare_Metal_Progamming_BHM\21_I2C\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="21_I2C.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: 21_I2C.elf
+ 
+arm-none-eabi-size  21_I2C.elf 
+arm-none-eabi-objdump -h -S 21_I2C.elf  > "21_I2C.list"
+   text	   data	    bss	    dec	    hex	filename
+   1436	      0	   1568	   3004	    bbc	21_I2C.elf
+Finished building: default.size.stdout
+ 
+Finished building: 21_I2C.list
+ 

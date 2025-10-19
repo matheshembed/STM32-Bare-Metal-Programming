@@ -74,13 +74,19 @@ Discarded input sections
  .bss           0x00000000        0x0 ./Src/I2C.o
  .text.I2C1_Init
                 0x00000000       0xe0 ./Src/I2C.o
- .debug_info    0x00000000      0x379 ./Src/I2C.o
- .debug_abbrev  0x00000000       0xb6 ./Src/I2C.o
+ .text.I2C_ByteRead
+                0x00000000       0xe8 ./Src/I2C.o
+ .text.I2C1_BurstRead
+                0x00000000      0x138 ./Src/I2C.o
+ .text.I2C1_BurstWrite
+                0x00000000       0xc4 ./Src/I2C.o
+ .debug_info    0x00000000      0x4a5 ./Src/I2C.o
+ .debug_abbrev  0x00000000      0x17d ./Src/I2C.o
  .debug_aranges
-                0x00000000       0x20 ./Src/I2C.o
+                0x00000000       0x38 ./Src/I2C.o
  .debug_rnglists
-                0x00000000       0x14 ./Src/I2C.o
- .debug_macro   0x00000000       0xf2 ./Src/I2C.o
+                0x00000000       0x29 ./Src/I2C.o
+ .debug_macro   0x00000000      0x128 ./Src/I2C.o
  .debug_macro   0x00000000      0xaea ./Src/I2C.o
  .debug_macro   0x00000000       0x28 ./Src/I2C.o
  .debug_macro   0x00000000       0x28 ./Src/I2C.o
@@ -97,10 +103,10 @@ Discarded input sections
  .debug_macro   0x00000000      0x11f ./Src/I2C.o
  .debug_macro   0x00000000    0x16749 ./Src/I2C.o
  .debug_macro   0x00000000       0x6d ./Src/I2C.o
- .debug_line    0x00000000      0x5bc ./Src/I2C.o
- .debug_str     0x00000000    0x8b2c7 ./Src/I2C.o
+ .debug_line    0x00000000      0x907 ./Src/I2C.o
+ .debug_str     0x00000000    0x8b39f ./Src/I2C.o
  .comment       0x00000000       0x44 ./Src/I2C.o
- .debug_frame   0x00000000       0x30 ./Src/I2C.o
+ .debug_frame   0x00000000       0xa8 ./Src/I2C.o
  .ARM.attributes
                 0x00000000       0x34 ./Src/I2C.o
  .group         0x00000000        0xc ./Src/main.o

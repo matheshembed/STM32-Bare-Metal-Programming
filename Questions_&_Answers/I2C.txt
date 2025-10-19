@@ -28,7 +28,14 @@ Line 121:
 Line 124:
 	6. How to compute the value of Standard Mode Max Rise Time ?
 
+Line 137:
+	7. What BUSY actually means ? ... Does it using the bus or it is transferring or it is configuring ??
 
+Line 151:
+	8. Why the address is shifted by 1 bit in the data register ?
+	
+
+	
 
 
 */
