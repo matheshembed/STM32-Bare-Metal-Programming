@@ -1,3 +1,1 @@
-../Src/main.c:14:5:main	48	static
-../Src/main.c:36:13:DMA_CallBack	4	static
-../Src/main.c:42:6:DMA1_Stream6_IRQHandler	8	static
+../Src/main.c:3:5:main	24	static

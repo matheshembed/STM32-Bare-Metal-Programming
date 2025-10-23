@@ -32,7 +32,7 @@ org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:1_Led_Blinky/activeLaunchTarget
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:1_Led_Blinky_Struct\ Debug/activeLaunchMode=run
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:20_Uart_Tx_DMA/activeLaunchMode=run
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:20_Uart_Tx_DMA/activeLaunchTarget=null\:---
-org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:21_I2C\ Debug/activeLaunchMode=run
+org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:21_I2C\ Debug/activeLaunchMode=debug
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:21_I2C\ Debug/activeLaunchTarget=null\:---
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:2_GPIO_Output/activeLaunchMode=run
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:3_GPIO_BSRR\ Debug/activeLaunchMode=run
