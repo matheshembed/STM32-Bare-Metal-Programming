@@ -184,7 +184,7 @@ void I2C_ByteRead(char saddr, char maddr, char* data )
 	/*Wait for the START Bit to set*/
 	while(!(I2C1->SR1 & (SR1_SB))){}
 
-	/*Transmit slave address + read*/
+	/*Transmit slve address + read*/
 	I2C1->DR = saddr << 1 | 1;
 
 	/*Wait Until Addr Flag is set*/
