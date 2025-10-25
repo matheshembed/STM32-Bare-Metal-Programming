@@ -1,0 +1,25 @@
+#include "I2C.h"
+
+int main(void)
+{
+    char rx_data[4]; // Buffer to store received data
+
+    I2C1_Init(); // Initialize I2C1 peripheral
+
+    // Optional: small delay for slave to be ready
+    for (volatile int i = 0; i < 100000; i++);
+
+    // Write test: send "HEY" to slave at address 0x42
+    char tx_data[] = { 'H', 'E', 'Y' };
+    I2C1_BurstWrite(0x42, 0x00, 3, tx_data);
+
+    // Read test: read 4 bytes from slave
+    I2C1_BurstRead(0x42, 0x00, 4, rx_data);
+
+    // You can now inspect rx_data[] in debugger or send it to UART
+
+    while (1)
+    {
+        // Loop forever
+    }
+}

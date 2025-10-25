@@ -2,6 +2,8 @@
 
 #ifndef I2C_H_
 #define I2C_H_
+#include "stm32f4xx.h"
+
 
 void I2C1_Init(void);
 void I2C_ByteRead(char saddr, char maddr, char* data );

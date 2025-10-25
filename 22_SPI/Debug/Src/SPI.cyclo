@@ -1,0 +1,2 @@
+../Src/SPI.c:15:6:spi_gpio_init	1
+../Src/SPI.c:59:6:spi_config	1

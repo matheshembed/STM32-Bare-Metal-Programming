@@ -61,7 +61,7 @@ I2C - Inter Integrated Circuits
 
 */
 
-#include "stm32f4xx.h"
+#include "I2C.h"
 
 #define GPIOB_CLK_EN				(1U<<2)
 #define I2C_CLK_EN					(1U<<21)

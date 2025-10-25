@@ -75,25 +75,85 @@ Discarded input sections
  .text.I2C_ByteRead
                 0x00000000       0xe8 ./Src/I2C.o
  .group         0x00000000        0xc ./Src/SENSOR.o
+ .group         0x00000000        0xc ./Src/SENSOR.o
+ .group         0x00000000        0xc ./Src/SENSOR.o
+ .group         0x00000000        0xc ./Src/SENSOR.o
+ .group         0x00000000        0xc ./Src/SENSOR.o
+ .group         0x00000000        0xc ./Src/SENSOR.o
+ .group         0x00000000        0xc ./Src/SENSOR.o
+ .group         0x00000000        0xc ./Src/SENSOR.o
+ .group         0x00000000        0xc ./Src/SENSOR.o
+ .group         0x00000000        0xc ./Src/SENSOR.o
+ .group         0x00000000        0xc ./Src/SENSOR.o
+ .group         0x00000000        0xc ./Src/SENSOR.o
+ .group         0x00000000        0xc ./Src/SENSOR.o
+ .group         0x00000000        0xc ./Src/SENSOR.o
+ .group         0x00000000        0xc ./Src/SENSOR.o
+ .group         0x00000000        0xc ./Src/SENSOR.o
  .text          0x00000000        0x0 ./Src/SENSOR.o
  .data          0x00000000        0x0 ./Src/SENSOR.o
  .bss           0x00000000        0x0 ./Src/SENSOR.o
- .debug_info    0x00000000       0x22 ./Src/SENSOR.o
- .debug_abbrev  0x00000000       0x12 ./Src/SENSOR.o
+ .debug_info    0x00000000       0x69 ./Src/SENSOR.o
+ .debug_abbrev  0x00000000       0x28 ./Src/SENSOR.o
  .debug_aranges
                 0x00000000       0x18 ./Src/SENSOR.o
- .debug_macro   0x00000000       0x1b ./Src/SENSOR.o
+ .debug_macro   0x00000000       0xd8 ./Src/SENSOR.o
  .debug_macro   0x00000000      0xaea ./Src/SENSOR.o
- .debug_line    0x00000000       0x40 ./Src/SENSOR.o
- .debug_str     0x00000000     0x2e8e ./Src/SENSOR.o
+ .debug_macro   0x00000000       0x28 ./Src/SENSOR.o
+ .debug_macro   0x00000000       0x28 ./Src/SENSOR.o
+ .debug_macro   0x00000000       0x22 ./Src/SENSOR.o
+ .debug_macro   0x00000000       0x8e ./Src/SENSOR.o
+ .debug_macro   0x00000000       0x51 ./Src/SENSOR.o
+ .debug_macro   0x00000000      0x103 ./Src/SENSOR.o
+ .debug_macro   0x00000000       0x6a ./Src/SENSOR.o
+ .debug_macro   0x00000000      0x1df ./Src/SENSOR.o
+ .debug_macro   0x00000000       0x1c ./Src/SENSOR.o
+ .debug_macro   0x00000000       0x22 ./Src/SENSOR.o
+ .debug_macro   0x00000000       0xfb ./Src/SENSOR.o
+ .debug_macro   0x00000000     0x1011 ./Src/SENSOR.o
+ .debug_macro   0x00000000      0x11f ./Src/SENSOR.o
+ .debug_macro   0x00000000    0x16749 ./Src/SENSOR.o
+ .debug_macro   0x00000000       0x6d ./Src/SENSOR.o
+ .debug_line    0x00000000      0x54c ./Src/SENSOR.o
+ .debug_str     0x00000000    0x8b0ca ./Src/SENSOR.o
  .comment       0x00000000       0x44 ./Src/SENSOR.o
  .ARM.attributes
                 0x00000000       0x34 ./Src/SENSOR.o
+ .group         0x00000000        0xc ./Src/main.o
+ .group         0x00000000        0xc ./Src/main.o
+ .group         0x00000000        0xc ./Src/main.o
+ .group         0x00000000        0xc ./Src/main.o
+ .group         0x00000000        0xc ./Src/main.o
+ .group         0x00000000        0xc ./Src/main.o
+ .group         0x00000000        0xc ./Src/main.o
+ .group         0x00000000        0xc ./Src/main.o
+ .group         0x00000000        0xc ./Src/main.o
+ .group         0x00000000        0xc ./Src/main.o
+ .group         0x00000000        0xc ./Src/main.o
+ .group         0x00000000        0xc ./Src/main.o
+ .group         0x00000000        0xc ./Src/main.o
+ .group         0x00000000        0xc ./Src/main.o
+ .group         0x00000000        0xc ./Src/main.o
  .group         0x00000000        0xc ./Src/main.o
  .text          0x00000000        0x0 ./Src/main.o
  .data          0x00000000        0x0 ./Src/main.o
  .bss           0x00000000        0x0 ./Src/main.o
  .debug_macro   0x00000000      0xaea ./Src/main.o
+ .debug_macro   0x00000000       0x28 ./Src/main.o
+ .debug_macro   0x00000000       0x28 ./Src/main.o
+ .debug_macro   0x00000000       0x22 ./Src/main.o
+ .debug_macro   0x00000000       0x8e ./Src/main.o
+ .debug_macro   0x00000000       0x51 ./Src/main.o
+ .debug_macro   0x00000000      0x103 ./Src/main.o
+ .debug_macro   0x00000000       0x6a ./Src/main.o
+ .debug_macro   0x00000000      0x1df ./Src/main.o
+ .debug_macro   0x00000000       0x1c ./Src/main.o
+ .debug_macro   0x00000000       0x22 ./Src/main.o
+ .debug_macro   0x00000000       0xfb ./Src/main.o
+ .debug_macro   0x00000000     0x1011 ./Src/main.o
+ .debug_macro   0x00000000      0x11f ./Src/main.o
+ .debug_macro   0x00000000    0x16749 ./Src/main.o
+ .debug_macro   0x00000000       0x6d ./Src/main.o
  .group         0x00000000        0xc ./Src/syscalls.o
  .group         0x00000000        0xc ./Src/syscalls.o
  .group         0x00000000        0xc ./Src/syscalls.o
@@ -834,10 +894,10 @@ LOAD C:/ST/STM32CubeIDE_1.18.1/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.ext
 LOAD C:/ST/STM32CubeIDE_1.18.1/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a
 LOAD C:/ST/STM32CubeIDE_1.18.1/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libgcc.a
 
-.debug_info     0x00000000      0x5ce
+.debug_info     0x00000000      0x606
  .debug_info    0x00000000      0x4a5 ./Src/I2C.o
- .debug_info    0x000004a5       0xf9 ./Src/main.o
- .debug_info    0x0000059e       0x30 ./Startup/startup_stm32f446retx.o
+ .debug_info    0x000004a5      0x131 ./Src/main.o
+ .debug_info    0x000005d6       0x30 ./Startup/startup_stm32f446retx.o
 
 .debug_abbrev   0x00000000      0x271
  .debug_abbrev  0x00000000      0x17d ./Src/I2C.o
@@ -861,35 +921,35 @@ LOAD C:/ST/STM32CubeIDE_1.18.1/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.ext
  .debug_rnglists
                 0x0000003c       0x19 ./Startup/startup_stm32f446retx.o
 
-.debug_macro    0x00000000    0x18ae9
- .debug_macro   0x00000000      0x128 ./Src/I2C.o
- .debug_macro   0x00000128      0xaea ./Src/I2C.o
- .debug_macro   0x00000c12       0x28 ./Src/I2C.o
- .debug_macro   0x00000c3a       0x28 ./Src/I2C.o
- .debug_macro   0x00000c62       0x22 ./Src/I2C.o
- .debug_macro   0x00000c84       0x8e ./Src/I2C.o
- .debug_macro   0x00000d12       0x51 ./Src/I2C.o
- .debug_macro   0x00000d63      0x103 ./Src/I2C.o
- .debug_macro   0x00000e66       0x6a ./Src/I2C.o
- .debug_macro   0x00000ed0      0x1df ./Src/I2C.o
- .debug_macro   0x000010af       0x1c ./Src/I2C.o
- .debug_macro   0x000010cb       0x22 ./Src/I2C.o
- .debug_macro   0x000010ed       0xfb ./Src/I2C.o
- .debug_macro   0x000011e8     0x1011 ./Src/I2C.o
- .debug_macro   0x000021f9      0x11f ./Src/I2C.o
- .debug_macro   0x00002318    0x16749 ./Src/I2C.o
- .debug_macro   0x00018a61       0x6d ./Src/I2C.o
- .debug_macro   0x00018ace       0x1b ./Src/main.o
+.debug_macro    0x00000000    0x18bb0
+ .debug_macro   0x00000000      0x132 ./Src/I2C.o
+ .debug_macro   0x00000132      0xaea ./Src/I2C.o
+ .debug_macro   0x00000c1c       0x28 ./Src/I2C.o
+ .debug_macro   0x00000c44       0x28 ./Src/I2C.o
+ .debug_macro   0x00000c6c       0x22 ./Src/I2C.o
+ .debug_macro   0x00000c8e       0x8e ./Src/I2C.o
+ .debug_macro   0x00000d1c       0x51 ./Src/I2C.o
+ .debug_macro   0x00000d6d      0x103 ./Src/I2C.o
+ .debug_macro   0x00000e70       0x6a ./Src/I2C.o
+ .debug_macro   0x00000eda      0x1df ./Src/I2C.o
+ .debug_macro   0x000010b9       0x1c ./Src/I2C.o
+ .debug_macro   0x000010d5       0x22 ./Src/I2C.o
+ .debug_macro   0x000010f7       0xfb ./Src/I2C.o
+ .debug_macro   0x000011f2     0x1011 ./Src/I2C.o
+ .debug_macro   0x00002203      0x11f ./Src/I2C.o
+ .debug_macro   0x00002322    0x16749 ./Src/I2C.o
+ .debug_macro   0x00018a6b       0x6d ./Src/I2C.o
+ .debug_macro   0x00018ad8       0xd8 ./Src/main.o
 
-.debug_line     0x00000000      0xa50
- .debug_line    0x00000000      0x967 ./Src/I2C.o
- .debug_line    0x00000967       0x6e ./Src/main.o
- .debug_line    0x000009d5       0x7b ./Startup/startup_stm32f446retx.o
+.debug_line     0x00000000      0xf6c
+ .debug_line    0x00000000      0x977 ./Src/I2C.o
+ .debug_line    0x00000977      0x57a ./Src/main.o
+ .debug_line    0x00000ef1       0x7b ./Startup/startup_stm32f446retx.o
 
 .debug_str      0x00000000    0x8b2be
  .debug_str     0x00000000    0x8b2be ./Src/I2C.o
-                              0x8b39f (size before relaxing)
- .debug_str     0x0008b2be     0x2edc ./Src/main.o
+                              0x8b3a7 (size before relaxing)
+ .debug_str     0x0008b2be    0x8b106 ./Src/main.o
  .debug_str     0x0008b2be       0x76 ./Startup/startup_stm32f446retx.o
 
 .comment        0x00000000       0x43
