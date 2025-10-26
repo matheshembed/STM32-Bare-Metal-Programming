@@ -1,3 +1,9 @@
+/*
+ * main.c
+ *
+ *  Created on: Oct 26, 2025
+ *      Author: mathe
+ */
 #include "Exti.h"
 #include "uart.h"
 #define GPIOAEN		(1U << 0)
@@ -56,3 +62,5 @@ void EXTI15_10_IRQHandler(void)
 	}
 
 }
+
+

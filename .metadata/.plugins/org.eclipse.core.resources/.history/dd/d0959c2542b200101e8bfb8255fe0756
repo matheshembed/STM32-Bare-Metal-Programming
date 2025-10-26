@@ -1,0 +1,138 @@
+/*
+ * SP.c
+ *
+ *  Created on: Oct 26, 2025
+ *      Author: mathe
+ */
+
+
+#include "SPI.h"
+
+// Clock enable macros
+#define GPIOA_CLK_EN     (1U<<0)
+#define GPIOB_CLK_EN     (1U<<1)
+#define SPI1_CLK_EN      (1U<<12)
+#define SPI2_CLK_EN      (1U<<14)
+
+// SPI status flags
+
+
+
+
+// PA5=SCK, PA6=MISO, PA7=MOSI, PA9=CS
+void spi1_gpio_init(void)
+{
+    RCC->AHB1ENR |= GPIOA_CLK_EN;
+
+    // PA5, PA6, PA7 to AF mode
+    GPIOA->MODER &= ~(0x3 << 10 | 0x3 << 12 | 0x3 << 14);
+    GPIOA->MODER |=  (0x2 << 10 | 0x2 << 12 | 0x2 << 14);
+
+    // PA9 to output mode for CS
+    GPIOA->MODER &= ~(0x3 << 18);
+    GPIOA->MODER |=  (0x1 << 18);
+
+    // AF5 for SPI1
+    GPIOA->AFR[0] &= ~(0xF << 20 | 0xF << 24 | 0xF << 28);
+    GPIOA->AFR[0] |=  (0x5 << 20 | 0x5 << 24 | 0x5 << 28);
+}
+
+// PB13=SCK, PB14=MISO, PB15=MOSI
+void spi2_gpio_init(void)
+{
+    RCC->AHB1ENR |= GPIOB_CLK_EN;
+
+    // PB13, PB14, PB15 to AF mode
+    GPIOB->MODER &= ~(0x3 << 26 | 0x3 << 28 | 0x3 << 30);
+    GPIOB->MODER |=  (0x2 << 26 | 0x2 << 28 | 0x2 << 30);
+
+    // AF5 for SPI2
+    GPIOB->AFR[1] &= ~(0xF << 20 | 0xF << 24 | 0xF << 28);
+    GPIOB->AFR[1] |=  (0x5 << 20 | 0x5 << 24 | 0x5 << 28);
+}
+
+void spi1_config(void)
+{
+    RCC->APB2ENR |= SPI1_CLK_EN;
+
+    SPI1->CR1 |=  (1U<<3);   // BR = fPCLK/4
+    SPI1->CR1 &= ~(1U<<4 | 1U<<5);
+
+    SPI1->CR1 |=  (1U<<0);   // CPHA = 1
+    SPI1->CR1 |=  (1U<<1);   // CPOL = 1
+
+    SPI1->CR1 &= ~(1U<<10);  // Full duplex
+    SPI1->CR1 &= ~(1U<<7);   // MSB first
+    SPI1->CR1 |=  (1U<<2);   // Master mode
+    SPI1->CR1 &= ~(1U<<11);  // 8-bit data
+
+    SPI1->CR1 |=  (1U<<8);   // SSM
+    SPI1->CR1 |=  (1U<<9);   // SSI
+
+    SPI1->CR1 |=  (1U<<6);   // Enable SPI1
+}
+
+void spi2_config(void)
+{
+    RCC->APB1ENR |= SPI2_CLK_EN;
+
+    SPI2->CR1 &= ~(1U<<2);   // Slave mode
+    SPI2->CR1 |=  (1U<<0);   // CPHA = 1
+    SPI2->CR1 |=  (1U<<1);   // CPOL = 1
+
+    SPI2->CR1 &= ~(1U<<10);  // Full duplex
+    SPI2->CR1 &= ~(1U<<7);   // MSB first
+    SPI2->CR1 &= ~(1U<<11);  // 8-bit data
+
+    SPI2->CR1 |=  (1U<<8);   // SSM
+    SPI2->CR1 |=  (1U<<9);   // SSI
+
+    SPI2->CR1 |=  (1U<<6);   // Enable SPI2
+}
+
+void cs_enable(void)
+{
+    GPIOA->ODR &= ~(1U<<9);
+}
+
+void cs_disable(void)
+{
+    GPIOA->ODR |= (1U<<9);
+}
+
+int main(void)
+{
+    spi1_gpio_init();
+    spi2_gpio_init();
+
+    spi2_config();  // Slave first
+    spi1_config();  // Master second
+
+    cs_enable();    // Select slave
+
+    for (int i = 0; i < 3; i++)
+    {
+        while (!(SPI1->SR & SR_TXE)) {}
+        SPI1->DR = tx_data[i];
+
+        while (!(SPI2->SR & SR_RXNE)) {}
+        rx_data_spi2[i] = SPI2->DR;
+
+        while (!(SPI1->SR & SR_RXNE)) {}
+        volatile uint8_t dummy = SPI1->DR;
+    }
+
+    while (SPI1->SR & SR_BSY) {}
+
+    cs_disable();   // Deselect slave
+
+    // Clear OVR on SPI2
+    volatile uint8_t temp;
+    temp = SPI2->DR;
+    temp = SPI2->SR;
+
+    while (1)
+    {
+        // Add LED toggle or UART print here if needed
+    }
+}

@@ -2,7 +2,20 @@
 
 #define SPI_CLK_EN					(1U<<12)
 #define GPIOA_CLK_EN				(1U<<0)
-//#define PCLK						16000000
+#define SR_TXE						(1U<<1)
+#define SR_RXNE						(1U<<0)
+#define SR_BSY						(1U<<7)
+#define GPIOB_CLK_EN (1U<<1)
+#define SPI2_CLK_EN (1U<<14)
+
+void spi_gpio_init(void);
+void spi2_gpio_init(void);
+void spi_config(void);
+void spi2_config(void);
+void spi1_transmit(uint8_t *data,uint32_t size);
+void spi1_receive(uint8_t *data,uint32_t size);
+void cs_enable(void);
+void cs_disable(void);
 
 
 /*
@@ -56,6 +69,22 @@ void spi_gpio_init(void)
 
 }
 
+
+void spi2_gpio_init(void)
+{
+	RCC->AHB1ENR |= GPIOB_CLK_EN;
+
+	// PB13, PB14, PB15 to Alternate Function
+	GPIOB->MODER &= ~(1U<<26 | 1U<<28 | 1U<<30);
+	GPIOB->MODER |=  (1U<<27 | 1U<<29 | 1U<<31);
+
+	// Set AF5 for SPI2
+	GPIOB->AFR[1] |=  (1U<<20 | 1U<<24 | 1U<<28);
+	GPIOB->AFR[1] &= ~(1U<<21 | 1U<<25 | 1U<<29);
+	GPIOB->AFR[1] |=  (1U<<22 | 1U<<26 | 1U<<30);
+	GPIOB->AFR[1] &= ~(1U<<23 | 1U<<27 | 1U<<31);
+}
+
 void spi_config(void)
 {
 	/*Enable clock access to SPI1*/
@@ -92,5 +121,88 @@ void spi_config(void)
 	/*Set MSB First*/
 	SPI1->CR1 &= ~(1U<<7);
 
+	/*Set mode to MASTER*/
+	SPI1->CR1 |= (1U<<2);
+
+	/*Set 8 bit data mode*/
+	SPI1->CR1 &= ~(1U<<11);
+
+	/*Select software slave management by
+	 * setting SSM=1 and SSI=1*/
+	SPI1->CR1 |= (1<<8);
+	SPI1->CR1 |= (1<<9);
+
+	/*Enable SPI module*/
+	SPI1->CR1 |= (1<<6);
 
 }
+void spi2_config(void)
+{
+	RCC->APB1ENR |= SPI2_CLK_EN;
+
+	SPI2->CR1 &= ~(1U<<2); // Slave mode
+	SPI2->CR1 |=  (1U<<0); // CPOL = 1
+	SPI2->CR1 |=  (1U<<1); // CPHA = 1
+	SPI2->CR1 &= ~(1U<<10); // Full duplex
+	SPI2->CR1 &= ~(1U<<7);  // MSB first
+	SPI2->CR1 &= ~(1U<<11); // 8-bit data
+	SPI2->CR1 |= (1U<<8); // SSM
+	SPI2->CR1 |= (1U<<9); // SSI
+	SPI2->CR1 |=  (1U<<6);  // Enable SPI2
+}
+
+
+void spi1_transmit(uint8_t *data,uint32_t size)
+{
+	uint32_t i=0;
+	uint8_t temp;
+
+	while(i<size)
+	{
+		/*Wait until TXE is set*/
+		while(!(SPI1->SR & (SR_TXE))){}
+
+		/*Write the data to the data register*/
+		SPI1->DR = data[i];
+		i++;
+	}
+	/*Wait until TXE is set*/
+	while(!(SPI1->SR & (SR_TXE))){}
+
+	/*Wait for BUSY flag to reset*/
+	while((SPI1->SR & (SR_BSY))){}
+
+	/*Clear OVR flag*/
+	temp = SPI1->DR;
+	temp = SPI1->SR;
+}
+
+void spi1_receive(uint8_t *data,uint32_t size)
+{
+	while(size)
+	{
+		/*Send dummy data*/
+		SPI1->DR =0;
+
+		/*Wait for RXNE flag to be set*/
+		while(!(SPI1->SR & (SR_RXNE))){}
+
+		/*Read data from data register*/
+		*data++ = (SPI1->DR);
+		size--;
+	}
+}
+
+
+void cs_enable(void)
+{
+	GPIOA->ODR &=~(1U<<9);
+
+}
+
+/*Pull high to disable*/
+void cs_disable(void)
+{
+	GPIOA->ODR |=(1U<<9);
+}
+

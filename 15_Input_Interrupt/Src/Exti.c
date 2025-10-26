@@ -121,23 +121,24 @@ Sub-Priorities
 #define SYSCFGEN	(1U << 14)
 void PC13_Exti_Init(void)
 {
-	/*Disable Global Interrupt (Good Practice .. Does not affect the code) */
+
+	 /*Disable Global Interrupt (Good Practice .. Does not affect the code) */
 	__disable_irq(); // Built in function of ARM (feature)
 
 	/*Enable Clock access for GPIOC (That is where the USR_BTN is connected)*/
 	RCC->AHB1ENR |= GPIOCEN;
 
-	/*EXTI Is part of the SYSCFG Module so we have to enable the clock for it*/
-	RCC->APB2ENR |=SYSCFGEN ;
-
 	/*Make PC13 As input*/
 	GPIOC->MODER &= ~(1U <<26);
 	GPIOC->MODER &= ~(1U <<27);
 
+	/*EXTI Is part of the SYSCFG Module so we have to enable the clock for it*/
+	RCC->APB2ENR |=SYSCFGEN ;
+
 
 	/*Select PORTC For EXTI13*/ // Section 8.2.6
 	/*The values are zero by default so we dont have to clear every bit... if not ..it is mandatory to clear the bits*/
-	SYSCFG->EXTICR[3] |=  (1U <<5);  // Set to Port C //0010 FOR PC13
+	SYSCFG->EXTICR[3] |=  (1U<<5);  // Set to Port C //0010 FOR PC13
 
 	/*Unmask EXTI13*/
 	/*Mask = Ignore*/
@@ -155,5 +156,6 @@ void PC13_Exti_Init(void)
 
 	/*Enable Global Interrupt  */
 	__enable_irq(); // Built in function of ARM (feature)
+
 }
 

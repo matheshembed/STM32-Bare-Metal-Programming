@@ -6,24 +6,27 @@
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
 ../Src/SENSOR.c \
-../Src/SPI.c \
-../Src/main.c \
+../Src/SP.c \
+../Src/main1.c \
 ../Src/syscalls.c \
-../Src/sysmem.c 
+../Src/sysmem.c \
+../Src/uart.c 
 
 OBJS += \
 ./Src/SENSOR.o \
-./Src/SPI.o \
-./Src/main.o \
+./Src/SP.o \
+./Src/main1.o \
 ./Src/syscalls.o \
-./Src/sysmem.o 
+./Src/sysmem.o \
+./Src/uart.o 
 
 C_DEPS += \
 ./Src/SENSOR.d \
-./Src/SPI.d \
-./Src/main.d \
+./Src/SP.d \
+./Src/main1.d \
 ./Src/syscalls.d \
-./Src/sysmem.d 
+./Src/sysmem.d \
+./Src/uart.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes
@@ -33,7 +36,7 @@ Src/%.o Src/%.su Src/%.cyclo: ../Src/%.c Src/subdir.mk
 clean: clean-Src
 
 clean-Src:
-	-$(RM) ./Src/SENSOR.cyclo ./Src/SENSOR.d ./Src/SENSOR.o ./Src/SENSOR.su ./Src/SPI.cyclo ./Src/SPI.d ./Src/SPI.o ./Src/SPI.su ./Src/main.cyclo ./Src/main.d ./Src/main.o ./Src/main.su ./Src/syscalls.cyclo ./Src/syscalls.d ./Src/syscalls.o ./Src/syscalls.su ./Src/sysmem.cyclo ./Src/sysmem.d ./Src/sysmem.o ./Src/sysmem.su
+	-$(RM) ./Src/SENSOR.cyclo ./Src/SENSOR.d ./Src/SENSOR.o ./Src/SENSOR.su ./Src/SP.cyclo ./Src/SP.d ./Src/SP.o ./Src/SP.su ./Src/main1.cyclo ./Src/main1.d ./Src/main1.o ./Src/main1.su ./Src/syscalls.cyclo ./Src/syscalls.d ./Src/syscalls.o ./Src/syscalls.su ./Src/sysmem.cyclo ./Src/sysmem.d ./Src/sysmem.o ./Src/sysmem.su ./Src/uart.cyclo ./Src/uart.d ./Src/uart.o ./Src/uart.su
 
 .PHONY: clean-Src
 
