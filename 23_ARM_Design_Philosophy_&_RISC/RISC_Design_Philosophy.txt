@@ -1,0 +1,34 @@
+1. What is RISC
+    - Reduced Instruction Set Computer
+    - Uses a small set of simple instructions.
+    - Each instruction is designed to execute very quickly, often in a single cycle (in theory).
+    - Instructions are uniform in size and format → easier for hardware to decode.
+    - Example: ARM Cortex‑M (like in STM32), RISC‑V, MIPS.
+    - Strengths: speed, low power, easy pipelining.
+    - Weakness: programs may need more instructions to do the same work.
+
+2. CISC (Complex Instruction Set Computer)
+    - Uses a large set of complex instructions.
+    - A single instruction can perform multi‑step operations (e.g., load + add + store).
+    - Instructions can be variable in length and complexity.
+    - Example: Intel x86, AMD processors.
+    - Strengths: compact code, backward compatibility.
+    - Weakness: harder to pipeline, more complex hardware.
+
+3.What is Pipeline ?
+    - Think of it like an assembly line in a factory.
+    - CPU breaks instruction execution into stages:
+    - Fetch (get instruction)
+    - Decode (understand it)
+    - Execute (do the math/logic)
+    - Memory (read/write data)
+    - Write‑back (store result)
+    - Multiple instructions are in different stages at the same time → higher throughput.
+    - Challenge: hazards (data dependency, branches) can cause stalls.
+
+4.If RISC and CISC were never invented
+    - No standard instruction set → every CPU would be custom.
+    - Software wouldn’t be portable → each program tied to one machine.
+    - Progress in computing would be much slower.
+    - Modern devices (phones, PCs, IoT) wouldn’t exist in their current form.
+
