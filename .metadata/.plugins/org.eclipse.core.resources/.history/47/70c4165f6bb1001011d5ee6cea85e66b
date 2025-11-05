@@ -1,8 +1,0 @@
-#include "SPI.h"
-
-
-void spi_gpio_init(void)
-{
-	/*Enable Clock Access*/
-	RCC->APB2ENR |=
-}

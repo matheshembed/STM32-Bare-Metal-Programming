@@ -1,0 +1,116 @@
+1. What is cache ?
+    Now a computer has two different types of Memory
+    DRAM - Its a memory that usees capacitors to store data and these capacitors have to constantly and dynamically be refreshed often with electricity in order for them to store data.
+    SRAM - This is what is used in the cache and because SRAM doesn't have to be constantly refreshed, it ia lot faster than DRAM and expensive
+
+     The CPU cache is the CPU'S Internal memory, and its job is to store copies of data and ins from RAM that's waiting to be used by th cpu.
+     What the cpu cache thus is that it holds common data that it thinks the cpu is going to access over and over again.
+     Because when the CPU needs to access certain data it always cheques the faster cache memory first to see if the data needs is there And if it's not then the CPU would have to go back to this lower primary memory or ram to get the data it needs 
+     So that is why the cache memory is so important
+
+     There are three levels in the cache Memory
+     L1- Which is also called a primary cache And it's located on the processor itself so it runs at the same speed as the processor so it's very fast and it's the fastest cache on the Computer
+     L2- Which is also called external cache and the level two cache is used to catch recent data access from the processor that were not caught by L1 cache so in a nutshell, if the CPU can't find the data it needs in the L1 then it searches in the L2 cache for the data
+     L3- And if finally if level 3 does not have the data, then the CPU has to go back to the slower RAM to find the data it needs.
+
+    Cache Locations
+    Now in earlier computers, level 2 cache was located on a seperate chip on the motherboard.
+    Where in modern CPU'S it would be located on the processor. 
+    Level 2 chache is larger that Level 1 chache but its not as fast as level 1 cache.
+    And level 3 cache is also located on the procesor . Level 3 is larger that level 3 but its not as fast as level 2 cache 
+    Level 3 is often referred to as a shared cache because its memory is shared between all the cores whereas l1 and l2 cache are dedicated to their own CPU core.
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+What is Tightly Coupled Memory (TCM)?
+    TCM is a very high-speed on-chip memory that is directly connected to the CPU core (not through the system bus or cache).
+    It’s SRAM-based, like normal internal RAM,
+    But it bypasses caches and the bus interconnect — it’s “tightly coupled” (i.e., hard-wired) to the CPU pipeline.
+    Think of it like a private high-speed storage that the CPU can access in deterministic time (constant cycles, no cache misses, no bus contention).
+
+Where it is located ?
+    TCM is physically located inside the CPU core block, not in the general bus system.
+    For example, in ARM Cortex-M7 (like STM32F7 or H7 series), you’ll find:
+    ITCM = Instruction Tightly Coupled Memory (for code)
+    DTCM = Data Tightly Coupled Memory (for data)
+    These connect directly to the instruction and data ports of the core — skipping AHB/AXI buses entirely.
+
+           +-------------------------+
+           |       Cortex-M7 Core    |
+           |                         |
+           |  +--------+  +--------+ |
+           |  |  ITCM  |  |  DTCM  | |
+           |  +--------+  +--------+ |
+           |       |           |     |
+           +-------|-----------|-----+
+                   |           |
+              Instruction   Data
+                port          port
+
+| Feature         | TCM                                 | SRAM (normal)                  | DRAM              | Cache                                  |
+| --------------- | ----------------------------------- | ------------------------------ | ----------------- | ------------------------------------------ |
+| Type        | SRAM                                | SRAM                           | DRAM              | SRAM                                       |
+| Location    | Inside CPU core                     | On-chip, connected via AHB/AXI | Off-chip          | Inside CPU core                            |
+| Access path | Direct, via dedicated port          | Through system bus             | External bus      | Internal hardware-managed                  |
+| Speed       | Same speed as CPU clock             | Slightly slower (bus delay)    | Much slower       | Very fast (but non-deterministic)          |
+| Access type | Deterministic (fixed cycles)        | Bus-latency dependent          | Very variable     | Non-deterministic (depends on hits/misses) |
+| Managed by  | Software (you choose what to place) | Software                       | Software/Hardware | Hardware (automatic)                       |
+| Refresh     | ❌ No                                | ❌ No                        | ✅ Yes            | ❌ No                                     |
+
+🧰 Use cases of TCM
+
+    Real-time and deterministic code execution
+    When you need exact timing (e.g., interrupt handlers, motor control, flight control loops).
+    → Place your critical ISR or control code in ITCM.
+    Low-latency data access
+    For data buffers that need to be accessed in exact cycles (e.g., audio processing, DMA targets).
+    → Place those buffers in DTCM.
+    When cache unpredictability is a problem
+    Cache improves average performance but introduces non-deterministic timing (cache misses).
+    TCM gives consistent timing, even if slightly smaller.
+
+| Memory    | Speed                     | Predictability                   | Typical Size        | Managed by | Common use                   |
+| --------- | ------------------------  | -------------------------------- | ------------------- | ---------- | ---------------------------- |
+| Cache | 🔥 Fastest (1–2 cycles)      | ❌ Non-deterministic              | Tens of KB          | Hardware   | General performance          |
+| TCM   | ⚡ Very fast (few cycles)    | ✅ Deterministic                  | Tens–hundreds of KB | Software   | Real-time critical code/data |
+| SRAM  | 🚀 Fast                      | ✅ Mostly deterministic           | Hundreds of KB      | Software   | Normal variables, stack      |
+| DRAM  | 🐢 Slow                      | ❌ Variable (refresh, bus delays) | MB–GB               | Software   | Large memory storage         |
+
+
+cache is also located inside the core cpu right ? then what is the being the tcm there ??
+               +-------------------------------------------+
+               |                Cortex-M7 Core             |
+               |-------------------------------------------|
+               |                                           |
+               |   +----------+   +----------+             |
+ Instruction -> |   |  I-Cache |---|  ITCM   |--- code     |
+               |   +----------+   +----------+             |
+               |                                           |
+ Data <->      |   +----------+   +----------+             |
+               |   |  D-Cache |---|  DTCM   |--- data      |
+               |   +----------+   +----------+             |
+               |                                           |
+               +-------------------------------------------+
+                           |            |
+                           v            v
+                      System Bus    (AHB/AXI)
+                           |
+                        Main SRAM / Flash / Peripherals
+
+| Feature                   | Cache                                      | TCM (Tightly Coupled Memory)                  |
+| ------------------------- | ---------------------------------------------- | ------------------------------------------------- |
+| Managed by            | Hardware                                   | Software (you decide what goes there)         |
+| Connected to          | Sits *between* the CPU and system memory       | Directly *attached* to the CPU core               |
+| Speed                 | Extremely fast, 1–2 cycles (if hit)            | Also extremely fast, deterministic (fixed cycles) |
+| Timing predictability | ❌ Non-deterministic (cache misses possible)    | ✅ Deterministic (no misses, always same delay)    |
+| Usage style           | Automatic performance optimization             | Manual placement for real-time code/data          |
+| Purpose               | Speed up access to slower memory (Flash, SRAM) | Guarantee real-time, zero-latency access          |
+| Storage type          | SRAM (used as a transparent buffer)            | SRAM (used as an explicit memory space)           |
+
+| Property        | **Cache**                   | **TCM**                      |
+| --------------- | --------------------------- | ---------------------------- |
+| **Location**    | Inside CPU core             | Inside CPU core              |
+| **Control**     | Automatic                   | Manual                       |
+| **Timing**      | Non-deterministic           | Deterministic                |
+| **Speed**       | 1–2 cycles (on hit)         | 1–2 cycles (always)          |
+| **Purpose**     | Improve average performance | Guarantee real-time response |
+| **When to use** | Normal code & data          | Critical ISR / control loops |

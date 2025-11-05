@@ -1,0 +1,97 @@
+MMU- Memory Management Unit 
+MPU- Memory Protection Unit
+
+| Term    | Full form                  | Purpose                                                                                |
+| ------- | -------------------------- | -------------------------------------------------------------------------------------- |
+| **MMU** | **Memory Management Unit** | Translates *virtual addresses* ↔ *physical addresses*, provides protection and paging. |
+| **MPU** | **Memory Protection Unit** | Provides *access protection only* (no address translation).                            |
+
+So:
+MMU = address translation + protection
+MPU = protection only
+
+Why they exist ?
+Cpu's ececute instructions that read/write memory, but memory is shared and critical resource
+You need a hardware unit to:
+    Control which code can access which region,
+    Prevent illegal access (e.g., writing to Flash),
+    Enforce privilege levels (e.g., user vs kernel),
+    And sometimes to map memory differently for processes (that’s what the MMU does).
+
+MPU 
+    Found in ARM cortex-M3/4/7/and sometimes M33
+    💡 What it does:
+
+Divides memory into regions (e.g., 8 or 16 regions).
+Each region has:
+    Base address
+    Size
+    Access permissions (read/write/execute)
+    Cache/bufferability attributes
+    Privilege levels (user/kernel)
+
+EG:
+    Region 0: Flash memory (code)
+   - Base: 0x08000000
+   - Size: 512 KB
+   - Read-only, executable
+
+Region 1: SRAM (data)
+   - Base: 0x20000000
+   - Size: 128 KB
+   - Read-write, non-executable
+
+Region 2: Peripheral
+   - Base: 0x40000000
+   - Size: 64 KB
+   - Read-write, device memory
+
+Now, if your program accidentally tries to execute code from SRAM or write to Flash,
+the MPU will raise a Memory Management Fault (HardFault).
+✅ This is crucial for safety-critical systems (e.g., drones, medical, automotive).
+| Feature                                | MPU                      |
+| -------------------------------------- | ------------------------ |
+| Address translation                    | ❌ No                     |
+| Access permission control              | ✅ Yes                    |
+| Execution control (XN - execute never) | ✅ Yes                    |
+| Region-based (power-of-2 sizes)        | ✅ Yes                    |
+| Used in                                | Embedded MCUs (Cortex-M) |
+| Example                                | STM32F4/F7, etc.         |
+
+MMU VS MPU
+
+| Feature             | **MPU**                    | **MMU**                      |
+| ------------------- | -------------------------- | ---------------------------- |
+| Address translation | ❌ None                     | ✅ Yes                        |
+| Virtual memory      | ❌ No                       | ✅ Yes                        |
+| Access protection   | ✅ Yes                      | ✅ Yes                        |
+| Region definition   | Few fixed regions          | Thousands of pages           |
+| Management          | Simple (direct registers)  | Complex (page tables)        |
+| OS required         | ❌ Optional                 | ✅ Required                   |
+| Typical core        | Cortex-M                   | Cortex-A                     |
+| Use case            | Bare-metal or RTOS systems | Linux / Android / desktop OS |
+
+Where thy sit ?
+       +--------------------+
+       |   CPU Core         |
+       +---------+----------+
+                 |
+          +------+------+
+          | MPU or MMU  |  <-- controls memory access
+          +------+------+
+                 |
+          +------+------+
+          | Memory system |
+          +---------------+
+
+Summary 
+| Aspect              | **MPU**                  | **MMU**                            |
+| ------------------- | ------------------------ | ---------------------------------- |
+| **Purpose**         | Memory protection        | Memory protection + virtual memory |
+| **Hardware cost**   | Low                      | High                               |
+| **Determinism**     | High (used in real-time) | Low (due to page faults)           |
+| **Complexity**      | Simple                   | Complex                            |
+| **Address mapping** | Physical = CPU address   | Virtual ≠ Physical                 |
+| **Found in**        | Cortex-M                 | Cortex-A/R, x86                    |
+| **OS**              | Bare-metal / RTOS        | Full OS (Linux, Windows)           |
+
