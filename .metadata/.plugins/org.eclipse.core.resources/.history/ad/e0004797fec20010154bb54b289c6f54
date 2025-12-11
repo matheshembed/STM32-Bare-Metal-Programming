@@ -1,0 +1,16 @@
+#include "i2c.h"
+
+
+int main(void) {
+    // MCU and clock init ...
+    I2C1_Init();                // already implemented by you
+    // quick single-byte read example:
+    uint8_t b;
+    if (slave_read_reg(0x3C, 0x00, &b) == SLAVE_OK) {
+        // b now contains registers[0] from UNO
+    }
+    // optionally call slave_test_loop(0x3C) to continuously test and blink LED
+    while (1) {
+        // your app
+    }
+}
