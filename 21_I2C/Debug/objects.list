@@ -1,5 +1,5 @@
 "./Src/I2C.o"
-"./Src/SENSOR.o"
+"./Src/SLAVE.o"
 "./Src/main.o"
 "./Src/syscalls.o"
 "./Src/sysmem.o"

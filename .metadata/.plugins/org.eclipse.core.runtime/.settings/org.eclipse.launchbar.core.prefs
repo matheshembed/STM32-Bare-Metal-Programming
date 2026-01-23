@@ -2,7 +2,7 @@ LaunchTargetManager/org.eclipse.launchbar.core.launchTargetType.local,Local/arch
 LaunchTargetManager/org.eclipse.launchbar.core.launchTargetType.local,Local/name=Local
 LaunchTargetManager/org.eclipse.launchbar.core.launchTargetType.local,Local/os=win32
 activeLaunchTarget=null\:---
-configDescList=org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:08_UART_RX Debug,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:21_I2C Debug,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:22_SPI Debug,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:20_Uart_Tx_DMA
+configDescList=org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:23_Adv_Test Debug
 eclipse.preferences.version=1
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:00_Led_Toggle_Addr\ Debug/activeLaunchMode=debug
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:00_Led_Toggle_Addr\ Debug/activeLaunchTarget=null\:---
@@ -36,6 +36,7 @@ org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:20_Uart_Tx_DMA/activeLaunchMode
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:20_Uart_Tx_DMA/activeLaunchTarget=null\:---
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:21_I2C\ Debug/activeLaunchMode=debug
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:21_I2C\ Debug/activeLaunchTarget=null\:---
+org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:23_Adv_Test\ Debug/activeLaunchMode=run
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:2_GPIO_Output/activeLaunchMode=run
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:3_GPIO_BSRR\ Debug/activeLaunchMode=run
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:3_GPIO_BSRR\ Debug/activeLaunchTarget=null\:---
@@ -52,6 +53,8 @@ org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:8_UART_RX\ Debug/activeLaunchTa
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:9_ADC\ Debug/activeLaunchMode=run
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:9_ADC\ Debug/activeLaunchTarget=null\:---
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:9_ADC_Single_Conversion/activeLaunchMode=debug
+org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:Blinky\ Debug/activeLaunchMode=run
+org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:Blinky\ Debug/activeLaunchTarget=null\:---
 org.eclipse.launchbar.core.descriptorType.default\:00_Led_Toggle_Addr\ Debug/activeLaunchMode=run
 org.eclipse.launchbar.core.descriptorType.default\:00_Led_Toggle_Addr\ Debug/activeLaunchTarget=org.eclipse.launchbar.core.launchTargetType.local\:Local
 org.eclipse.launchbar.core.descriptorType.default\:01_Led_Blinky\ Debug/activeLaunchMode=debug
@@ -96,3 +99,5 @@ org.eclipse.launchbar.core.descriptorType.default\:8_UART_RX\ Debug/activeLaunch
 org.eclipse.launchbar.core.descriptorType.default\:8_UART_RX\ Debug/activeLaunchTarget=org.eclipse.launchbar.core.launchTargetType.local\:Local
 org.eclipse.launchbar.core.descriptorType.default\:9_ADC\ Debug/activeLaunchMode=debug
 org.eclipse.launchbar.core.descriptorType.default\:9_ADC\ Debug/activeLaunchTarget=org.eclipse.launchbar.core.launchTargetType.local\:Local
+org.eclipse.launchbar.core.descriptorType.default\:Blinky\ Debug/activeLaunchMode=run
+org.eclipse.launchbar.core.descriptorType.default\:Blinky\ Debug/activeLaunchTarget=org.eclipse.launchbar.core.launchTargetType.local\:Local

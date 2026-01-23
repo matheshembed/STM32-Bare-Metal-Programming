@@ -1,17 +1,10 @@
-15:45:12 **** Incremental Build of configuration Debug for project 22_SPI ****
+12:02:59 **** Incremental Build of configuration Debug for project 22_SPI ****
 make -j16 all 
-arm-none-eabi-gcc "../Src/main1.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -DSTM32F446xx -c -I../Inc -I"D:/Softwares/Stm32/en.stm32cubef4-v1-28-0/STM32Cube_FW_F4_V1.28.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"D:/Softwares/Stm32/en.stm32cubef4-v1-28-0/STM32Cube_FW_F4_V1.28.0/Drivers/CMSIS/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main1.d" -MT"Src/main1.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main1.o"
-arm-none-eabi-gcc -o "22_SPI.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\MCU1_Bare_Metal_Progamming_BHM\22_SPI\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="22_SPI.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: 22_SPI.elf
- 
 arm-none-eabi-size  22_SPI.elf 
-arm-none-eabi-objdump -h -S 22_SPI.elf  > "22_SPI.list"
    text	   data	    bss	    dec	    hex	filename
    1464	      8	   1568	   3040	    be0	22_SPI.elf
 Finished building: default.size.stdout
  
-Finished building: 22_SPI.list
- 
 
-15:45:13 Build Finished. 0 errors, 0 warnings. (took 627ms)
+12:03:00 Build Finished. 0 errors, 0 warnings. (took 195ms)
 

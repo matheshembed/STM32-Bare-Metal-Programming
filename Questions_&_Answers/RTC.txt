@@ -1,0 +1,27 @@
+1.What is Standby mode?
+Standby mode is a deep low-power mode of the MCU where:
+❌ CPU is off
+❌ Most peripherals are off
+❌ SRAM and main registers lose their contents
+✅ The MCU is still powered
+✅ A small “backup power domain” stays alive
+*********************************************************************************************************************************************************************************
+2.What is tamper detection?
+Tamper detection is a hardware security mechanism.
+Its job is simple:
+	Detect unauthorized physical access or manipulation
+	and immediately erase sensitive backup data.
+On STM32, that sensitive data usually lives in:
+	RTC backup registers
+	Sometimes RTC time/date
+*********************************************************************************************************************************************************************************
+3.What is a tamper pin?
+A tamper pin is:
+A dedicated GPIO-like pin
+Directly connected to the RTC backup domain
+Monitored even when the CPU is OFF (Standby mode)
+Typical names:
+	TAMPER
+	TAMP1, TAMP2
+	Often multiplexed with an RTC pin
+*********************************************************************************************************************************************************************************

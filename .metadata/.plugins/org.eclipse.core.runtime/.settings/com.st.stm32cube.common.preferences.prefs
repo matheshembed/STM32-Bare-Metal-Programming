@@ -1,0 +1,6 @@
+DeviceConfigurationTool..OffLineMode=true
+DeviceConfigurationTool.AskToSwitchToCPerspectiveOnCodeGeneration=false
+DeviceConfigurationTool.AskToSwitchToCubeMxPerspective=false
+DeviceConfigurationTool.SwitchToCPerspectiveOnCodeGeneration=true
+DeviceConfigurationTool.SwitchToCubeMxPerspective=true
+eclipse.preferences.version=1
