@@ -7,7 +7,7 @@
 
 #ifndef RTC_H_
 #define RTC_H_
-
-
+#include "stm32f4xx.h"
+#include <stdio.h>
 
 #endif /* RTC_H_ */

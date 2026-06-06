@@ -1,6 +1,6 @@
 ################################################################################
 # Automatically-generated file. Do not edit!
-# Toolchain: GNU Tools for STM32 (13.3.rel1)
+# Toolchain: GNU Tools for STM32 (14.3.rel1)
 ################################################################################
 
 -include ../makefile.init
@@ -33,34 +33,34 @@ $(wildcard ../makefile.init) \
 $(wildcard ../makefile.targets) \
 
 
-BUILD_ARTIFACT_NAME := 02_GPIO_Output
+BUILD_ARTIFACT_NAME := 2_GPIO_Output
 BUILD_ARTIFACT_EXTENSION := elf
 BUILD_ARTIFACT_PREFIX :=
 BUILD_ARTIFACT := $(BUILD_ARTIFACT_PREFIX)$(BUILD_ARTIFACT_NAME)$(if $(BUILD_ARTIFACT_EXTENSION),.$(BUILD_ARTIFACT_EXTENSION),)
 
 # Add inputs and outputs from these tool invocations to the build variables 
 EXECUTABLES += \
-02_GPIO_Output.elf \
+2_GPIO_Output.elf \
 
 MAP_FILES += \
-02_GPIO_Output.map \
+2_GPIO_Output.map \
 
 SIZE_OUTPUT += \
 default.size.stdout \
 
 OBJDUMP_LIST += \
-02_GPIO_Output.list \
+2_GPIO_Output.list \
 
 
 # All Target
 all: main-build
 
 # Main-build Target
-main-build: 02_GPIO_Output.elf secondary-outputs
+main-build: 2_GPIO_Output.elf secondary-outputs
 
 # Tool invocations
-02_GPIO_Output.elf 02_GPIO_Output.map: $(OBJS) $(USER_OBJS) D:\MCU1_Bare_Metal_Progamming_BHM\02_GPIO_Output\STM32F446RETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "02_GPIO_Output.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"D:\MCU1_Bare_Metal_Progamming_BHM\02_GPIO_Output\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="02_GPIO_Output.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+2_GPIO_Output.elf 2_GPIO_Output.map: $(OBJS) $(USER_OBJS) D:\MCU1_Bare_Metal_Progamming_BHM\02_GPIO_Output\STM32F446RETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "2_GPIO_Output.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"D:\MCU1_Bare_Metal_Progamming_BHM\02_GPIO_Output\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="2_GPIO_Output.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
@@ -69,14 +69,14 @@ default.size.stdout: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
 	@echo 'Finished building: $@'
 	@echo ' '
 
-02_GPIO_Output.list: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-objdump -h -S $(EXECUTABLES) > "02_GPIO_Output.list"
+2_GPIO_Output.list: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-objdump -h -S $(EXECUTABLES) > "2_GPIO_Output.list"
 	@echo 'Finished building: $@'
 	@echo ' '
 
 # Other Targets
 clean:
-	-$(RM) 02_GPIO_Output.elf 02_GPIO_Output.list 02_GPIO_Output.map default.size.stdout
+	-$(RM) 2_GPIO_Output.elf 2_GPIO_Output.list 2_GPIO_Output.map default.size.stdout
 	-@echo ' '
 
 secondary-outputs: $(SIZE_OUTPUT) $(OBJDUMP_LIST)
