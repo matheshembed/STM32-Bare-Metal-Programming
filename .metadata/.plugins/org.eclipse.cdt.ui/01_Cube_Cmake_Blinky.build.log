@@ -1,0 +1,6 @@
+01:06:35 **** Incremental Build of configuration Debug for project 01_Cube_Cmake_Blinky ****
+cmake --build Debug 
+ninja: no work to do.
+
+01:06:35 Build Finished. 0 errors, 0 warnings. (took 105ms)
+

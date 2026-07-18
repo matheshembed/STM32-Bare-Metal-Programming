@@ -1,0 +1,10 @@
+22:12:34 **** Incremental Build of configuration Debug for project 00_QEMU_Blinky ****
+make -j16 all 
+arm-none-eabi-size  00_QEMU_Blinky.elf 
+   text	   data	    bss	    dec	    hex	filename
+   9608	    104	   1976	  11688	   2da8	00_QEMU_Blinky.elf
+Finished building: default.size.stdout
+ 
+
+22:12:35 Build Finished. 0 errors, 0 warnings. (took 253ms)
+

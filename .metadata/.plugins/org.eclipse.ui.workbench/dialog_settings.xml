@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="WorkbenchPreferenceDialog.dialogBounds">
-		<item key="DIALOG_X_ORIGIN" value="9"/>
-		<item key="DIALOG_Y_ORIGIN" value="9"/>
-		<item key="DIALOG_WIDTH" value="1920"/>
-		<item key="DIALOG_HEIGHT" value="1080"/>
+		<item key="DIALOG_X_ORIGIN" value="0"/>
+		<item key="DIALOG_Y_ORIGIN" value="0"/>
+		<item key="DIALOG_WIDTH" value="1536"/>
+		<item key="DIALOG_HEIGHT" value="864"/>
 		<item key="DIALOG_FONT_NAME" value="1|Segoe UI|9.0|0|WINDOWS|1|-15|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI"/>
 	</section>
 	<section name="ImportExportAction">
@@ -39,8 +39,8 @@
 	</section>
 	<section name="NewImportWizardAction">
 		<section name="STM32ProjectCreationImportWizard.dialogBounds">
-			<item key="DIALOG_X_ORIGIN" value="619"/>
-			<item key="DIALOG_Y_ORIGIN" value="308"/>
+			<item key="DIALOG_X_ORIGIN" value="425"/>
+			<item key="DIALOG_Y_ORIGIN" value="198"/>
 			<item key="DIALOG_WIDTH" value="700"/>
 			<item key="DIALOG_HEIGHT" value="482"/>
 			<item key="DIALOG_FONT_NAME" value="1|Segoe UI|9.0|0|WINDOWS|1|-15|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI"/>

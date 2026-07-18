@@ -1,0 +1,15 @@
+arm.gdb.client.commands=set mem inaccessible-by-default off
+arm.gdb.client.executable=${cross_prefix}gdb${cross_suffix}
+arm.gdb.client.other=
+arm.gdb.qemu.boardName=stm32vldiscovery
+arm.gdb.qemu.deviceName=cortex-m3
+arm.gdb.qemu.doDebugInRam=true
+arm.gdb.qemu.doInitialReset=false
+arm.gdb.qemu.doPreRunReset=true
+arm.gdb.qemu.enableSemihosting=true
+arm.gdb.qemu.init.other=
+arm.gdb.qemu.preRun.other=
+arm.gdb.server.doStart=true
+arm.gdb.server.executable=${qemu_arm_path}/${qemu_arm_executable}
+arm.gdb.server.other=-d unimp,guest_errors
+eclipse.preferences.version=1

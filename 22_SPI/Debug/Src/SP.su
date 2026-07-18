@@ -1,6 +1,0 @@
-../Src/SP.c:24:6:spi1_gpio_init	4	static
-../Src/SP.c:42:6:spi2_gpio_init	4	static
-../Src/SP.c:55:6:spi1_config	4	static
-../Src/SP.c:76:6:spi2_config	4	static
-../Src/SP.c:94:6:cs_enable	4	static
-../Src/SP.c:99:6:cs_disable	4	static

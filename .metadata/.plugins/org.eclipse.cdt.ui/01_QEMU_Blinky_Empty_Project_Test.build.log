@@ -1,0 +1,20 @@
+01:04:33 **** Incremental Build of configuration Debug for project 01_QEMU_Blinky_Empty_Project_Test ****
+make -j16 all 
+arm-none-eabi-gcc -mcpu=cortex-m4 -g3 -DDEBUG -c -x assembler-with-cpp -MMD -MP -MF"Startup/startup_stm32f407vgtx.d" -MT"Startup/startup_stm32f407vgtx.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Startup/startup_stm32f407vgtx.o" "../Startup/startup_stm32f407vgtx.s"
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F407VGTx -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+arm-none-eabi-gcc "../Src/syscalls.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F407VGTx -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/syscalls.d" -MT"Src/syscalls.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/syscalls.o"
+arm-none-eabi-gcc "../Src/sysmem.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F407VGTx -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/sysmem.d" -MT"Src/sysmem.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/sysmem.o"
+arm-none-eabi-gcc -o "01_QEMU_Blinky_Empty_Project_Test.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\HAL_EMULATOR\01_QEMU_Blinky_Empty_Project_Test\STM32F407VGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="01_QEMU_Blinky_Empty_Project_Test.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: 01_QEMU_Blinky_Empty_Project_Test.elf
+ 
+arm-none-eabi-size  01_QEMU_Blinky_Empty_Project_Test.elf 
+arm-none-eabi-objdump -h -S 01_QEMU_Blinky_Empty_Project_Test.elf  > "01_QEMU_Blinky_Empty_Project_Test.list"
+   text	   data	    bss	    dec	    hex	filename
+    676	      0	   1568	   2244	    8c4	01_QEMU_Blinky_Empty_Project_Test.elf
+Finished building: default.size.stdout
+ 
+Finished building: 01_QEMU_Blinky_Empty_Project_Test.list
+ 
+
+01:04:34 Build Finished. 0 errors, 0 warnings. (took 765ms)
+
